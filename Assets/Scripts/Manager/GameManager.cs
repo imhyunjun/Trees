@@ -1,0 +1,120 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public delegate void SceneEventHandler(bool _changeScene);
+
+public class GameManager : MonoBehaviour
+{
+    public static GameManager instance = null;
+
+    public int treeGrowStatus;
+    public GameObject fadeObject;                       //페이드효과 줄 것
+    public GameObject player;                           //플레이어오브젝트 - 씬 로드할때 
+    public uint YNButtonGameProcedure;                  //게임흐름관련YN버튼 진행상황, 일단 숫자로
+    public int gameSceneProcedure;                      //게임 씬( 리빙룸, 드림 맵 등등 )
+    public string locationPlayerIsIn;                   //플레이어가 있느 장소 - 발자국 사운드 관리
+    public bool changeSceneSwith;                       //true면 씬 전환
+
+    Image fadeImg;                                      //페이드 효과에 쓸 화면 색깔
+    Color tempColor;                                    //색 바꿀때 쓸 임시 색
+
+    public event SceneEventHandler ChangeSceneEvent;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
+        treeGrowStatus = 0;
+        YNButtonGameProcedure = 0;
+        gameSceneProcedure = 0;
+
+        locationPlayerIsIn = "House";
+
+        fadeImg = fadeObject.GetComponent<Image>();
+        tempColor = fadeImg.color;
+        tempColor.a = 1;
+        fadeImg.color = tempColor;                      //시작시 이미지 검은 화면
+    }
+
+
+    //나중에 fade in/ fadeout은 많이 쓸 것 같아서 일단 만듦
+    public IEnumerator IFadeIn(float _fadeinTime)               //이건 그냥 지
+    {
+        Color color = fadeImg.color;
+        while (color.a > 0f)
+        {
+            color.a -= Time.deltaTime / _fadeinTime;
+            fadeImg.color = color;
+            yield return null;
+        }
+        if (color.a <= 0f) color.a = 0f;
+        fadeImg.color = color;
+    }
+
+    public IEnumerator IFadeOut(float _fadeOutTime) //fade out
+    {
+        Color color = fadeImg.color;
+        while (color.a < 1f)
+        {
+            color.a += Time.deltaTime / _fadeOutTime;
+            fadeImg.color = color;
+            yield return null;
+        }
+        if (color.a >= 1f) color.a = 0f;
+        fadeImg.color = color;
+    }
+
+    public IEnumerator IFadeIn(float _fadeinTime, GameObject _gameObject) //fade in
+    {
+        Image img = _gameObject.GetComponent<Image>();
+        Color color = img.color;
+        while (color.a > 0f)
+        {
+            color.a -= Time.deltaTime / _fadeinTime;
+            img.color = color;
+            yield return null;
+        }
+        if (color.a <= 0f) color.a = 0f;
+        img.color = color;
+    }
+
+    public IEnumerator IFadeOut(float _fadeOutTime, GameObject _gameObject) //fade out
+    {
+        Image img = _gameObject.GetComponent<Image>();
+        Color color = img.color;
+        while (color.a < 1f)
+        {
+            color.a += Time.deltaTime / _fadeOutTime;
+            img.color = color;
+            yield return null;
+        }
+        if (color.a >= 1f) color.a = 0f;
+        img.color = color;
+    }
+
+    public IEnumerator ILoadScene(string _sceneName, float _fadetime, string _playerIn)     //일단 변수 3개 마지막 변수는 이동방법 및, 씬 이름나오면 나중에
+    {
+        yield return StartCoroutine(IFadeOut(_fadetime));
+        player.transform.position = new Vector2(0, -3);                             //씬 이동 후 좌표 설정
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(_sceneName);
+
+        Camera.main.transform.position = new Vector3(0, 0, -10);                    //카메라 좌표 설정
+        player.transform.position = new Vector2(0, -3);                             //씬 이동 후 좌표 설정
+        player.GetComponent<SpriteRenderer>().sortingOrder = 3;
+
+        locationPlayerIsIn = _playerIn;
+    }
+}
+
