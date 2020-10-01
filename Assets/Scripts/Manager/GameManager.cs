@@ -8,7 +8,8 @@ public delegate void SceneEventHandler(bool _changeScene);
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null;
+    private static GameManager instance;
+    public static GameManager Instance => instance;
 
     public int treeGrowStatus;
     public GameObject fadeObject;                       //페이드효과 줄 것

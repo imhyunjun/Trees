@@ -14,12 +14,12 @@ public class YNButton1 : ButtonPanel, IButtonCommand
     public void YButtonExecute()
     {
         yButtonisClicked = true;                                            //y 버튼 눌림
-        PlayerScan.eatMed = true;
+        PlayerScan.Instance.eatMed = true;
         waterSwallowing.Play();
     }
 
     public void NButtonExecute()
     {
-        StartCoroutine(DialogueManager.instance.PlayText(10));
+        StartCoroutine(DialogueManager.Instance.PlayText(10));
     }
 }

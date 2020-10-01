@@ -17,6 +17,6 @@ public class TreeSprite : MonoBehaviour
 
     private void Update()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = treeSpriteList[GameManager.instance.treeGrowStatus];
+        gameObject.GetComponent<SpriteRenderer>().sprite = treeSpriteList[GameManager.Instance.treeGrowStatus];
     }
 }

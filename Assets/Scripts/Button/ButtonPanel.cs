@@ -12,7 +12,6 @@ public class ButtonPanel : MonoBehaviour
         yield return new WaitForSeconds(1f);
         OnOffTheChildButton(0, true);
         OnOffTheChildButton(1, true);                    //1초 후 0, 1번 버튼 키기
-        
     }
 
     public void OnOffTheChildButton(int _childorder, bool _onoff)               //원하는 자식 버튼 키고 끄기

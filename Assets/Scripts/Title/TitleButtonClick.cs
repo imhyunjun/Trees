@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class TitleButtonClick : MonoBehaviour
 {
-    public GameObject fadeImg;
     public void OnClickStartButton()
     {
         gameObject.GetComponent<AudioSource>().Play();
@@ -18,5 +16,4 @@ public class TitleButtonClick : MonoBehaviour
     {
         SceneManager.LoadScene("Prologue");
     }
-
 }

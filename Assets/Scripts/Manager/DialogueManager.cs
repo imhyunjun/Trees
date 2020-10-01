@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    public static DialogueManager instance;
+    private static DialogueManager instance;
+    public static DialogueManager Instance => instance;
 
     Dialogue dialogueDB;
     int dataLength;                             //다이얼로그 데이터의 길이
@@ -65,13 +66,23 @@ public class DialogueManager : MonoBehaviour
         buttonPanel.SetActive(true);                                                                //버튼 창도 활성화
 
         StartCoroutine(PlayText(dialIndex));
-       
-        yield return new WaitUntil(() => ButtonPanel.yButtonisClicked);                            //y버튼이 눌릴때까지대기
-        yield return StartCoroutine(GameManager.instance.IFadeIn(3f));                              //페이드 아웃이 끝난 후
-        yield return new WaitForSeconds(1f);
 
-        dialIndex = 3;                                                                              //3번 다이얼로그부터 시작
-        StartCoroutine(IContinueDialogue(dialIndex, 4));                                            //혼잣말 시작
+        ButtonPanelTemp.Instance.SetUp(() =>
+        {
+            StartCoroutine(GameManager.Instance.IFadeIn(3f));
+            dialIndex = 3;
+            StartCoroutine(IContinueDialogue(dialIndex, 4));                                            //혼잣말 시작
+        }, () =>
+        {
+            StartCoroutine(PlayText(2));
+        });
+       
+        //yield return new WaitUntil(() => ButtonPanel.yButtonisClicked);                            //y버튼이 눌릴때까지대기
+        //yield return StartCoroutine(GameManager.Instance.IFadeIn(3f));                              //페이드 아웃이 끝난 후
+        //yield return new WaitForSeconds(1f);
+
+        //dialIndex = 3;                                                                              //3번 다이얼로그부터 시작
+        //StartCoroutine(IContinueDialogue(dialIndex, 4));                                            //혼잣말 시작
     }
 
     private void Update()
@@ -165,6 +176,4 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
     }
-
-
 }

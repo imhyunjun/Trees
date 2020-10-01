@@ -6,17 +6,14 @@ using UnityEngine.UI;
 
 public class ButtonClick : ButtonPanel
 {
-    
-    public static int dialIndex = 2;
-
     Queue<IButtonCommand> buttonClickMethods = new Queue<IButtonCommand>();             //y, n버튼 기능 모음
     YNButton0 ynButton0;
     YNButton1 ynButton1;
 
     private void Start()
     {
-        ynButton0 = gameObject.AddComponent<YNButton0>() as YNButton0;
-        ynButton1 = gameObject.AddComponent<YNButton1>() as YNButton1;
+        ynButton0 = gameObject.AddComponent<YNButton0>();
+        ynButton1 = gameObject.AddComponent<YNButton1>();
 
         buttonClickMethods.Enqueue(ynButton0);
         buttonClickMethods.Enqueue(ynButton1);
@@ -26,8 +23,8 @@ public class ButtonClick : ButtonPanel
     {
         gameObject.GetComponent<AudioSource>().Play();
 
-        DialogueManager.instance.dialText.text = "";                    //대화창 초기화
-        DialogueManager.instance.isDialogueActive = false;
+        DialogueManager.Instance.dialText.text = "";                    //대화창 초기화
+        DialogueManager.Instance.isDialogueActive = false;
         OnOffTheChildButton(0, false);
         OnOffTheChildButton(1, false);                                  //0,1번 버튼 끄기
 
@@ -37,7 +34,7 @@ public class ButtonClick : ButtonPanel
     public void OnClickNoButton()                                       //no버튼 클릭시 다이얼로그 1번 출력
     {
         gameObject.GetComponent<AudioSource>().Play();
-        DialogueManager.instance.dialText.text = null;
+        DialogueManager.Instance.dialText.text = null;
         buttonClickMethods.Peek().NButtonExecute();                     //큐의 제일 앞부분의 n버튼 기능 사용
     }
 }
