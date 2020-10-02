@@ -86,7 +86,7 @@ public class Inventory : MonoBehaviour
                         GameManager.instance.treeGrowStatus += clickedSlot.hasItem.GetComponent<Item>().changeTree; 
                         if(clickedSlot.hasItem.GetComponent<Item>().changeTree == 1)                            //나무 상태를 변화시키면
                         {
-                            StartCoroutine(GameManager.instance.ILoadScene(_sceneName: "Chapter1", _fadetime: 4, _playerIn: "House"));      //일반화 나중에
+                            StartCoroutine(GameManager.instance.ILoadScene(_sceneName: "Prologue", _fadetime: 4, _playerIn: "House"));      //일반화 나중에
                         }
                         clickedSlot.hasItem.gameObject.SetActive(false);                      
                         clickedSlot.isSlotHasItem = false;
