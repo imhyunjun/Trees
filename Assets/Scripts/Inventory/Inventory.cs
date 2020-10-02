@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class Inventory : PanelSingletone<Inventory>                 //인벤토리를 싱글톤 형태로 바꿈
 {
     List<Slot> slotList = new List<Slot>();                         //슬롯관리
     //List<Item> itemList = new List<Item>();                         //아이템 정보 관리
@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
 
         for(int i = 0; i < maxSlotCount; i ++)
         {
-            slotList.Add(gameObject.transform.GetChild(i).GetComponent<Slot>());            //슬롯리스트에 슬롯 추가
+            slotList.Add(gameObject.transform.GetChild(0).GetChild(i).GetComponent<Slot>());            //슬롯리스트에 슬롯 추가
             //itemList.Add(null);
         }
     }
@@ -37,28 +37,7 @@ public class Inventory : MonoBehaviour
                 switch (colliderTag)
                 {
                     case "Item":
-
-                        Item clickedItem = hit.collider.GetComponent<Item>();
-
-                        StartCoroutine(GetItemPanel.instance.IShowText(clickedItem.itemName));
-
-                        DialogueManager.instance.currentProcedureIndexS = clickedItem.increaseDialogueStart;
-                        DialogueManager.instance.currentProcedureIndexE = clickedItem.increaseDialogueEnd;
-
-                        //itemList.Add(clickedItem);                                                //나중에 쓸진 모르겠으나 일단 리스트에 클릭한 아이템 저장
-                        hit.collider.gameObject.SetActive(false);                                   //클릭한 오브젝트 비활성화
-                        //clickedItem.isInInventory = true;                                         //클릭한 아이템은 이제 인벤토리에
-
-                        foreach (Slot slot in slotList)
-                        {
-                            if (!slot.isSlotHasItem)                                                 //슬롯이 비어있다면 아이템 정보 추가
-                            {                                                                       //모든 슬롯이 꽉차이는 경우는 아직 x
-                                slot.isSlotHasItem = true;
-                                slot.hasItem = hit.collider.gameObject;
-                                slot.hasItemSprite = clickedItem.itemSprite;
-                                break;
-                            }
-                        }
+                        GetItemInSlot(hit.collider.gameObject);
                         break;
 
                     case "Slot":
@@ -101,6 +80,31 @@ public class Inventory : MonoBehaviour
                 clickedSlot.hasItem.transform.position = Vector3.zero;
                 isItemClickedInInven = false;
                 clickedSlot.tempColor.a = 1f;
+            }
+        }
+    }
+
+    public void GetItemInSlot(GameObject _item)
+    {
+        Item clickedItem = _item.GetComponent<Item>();
+
+        StartCoroutine(GetItemPanel.instance.IShowText(clickedItem.itemName));
+
+        DialogueManager.instance.currentProcedureIndexS = clickedItem.increaseDialogueStart;
+        DialogueManager.instance.currentProcedureIndexE = clickedItem.increaseDialogueEnd;
+
+        //itemList.Add(clickedItem);                                                //나중에 쓸진 모르겠으나 일단 리스트에 클릭한 아이템 저장
+        _item.SetActive(false);                                   //클릭한 오브젝트 비활성화
+                                                                                    //clickedItem.isInInventory = true;                                         //클릭한 아이템은 이제 인벤토리에
+
+        foreach (Slot slot in slotList)
+        {
+            if (!slot.isSlotHasItem)                                                 //슬롯이 비어있다면 아이템 정보 추가
+            {                                                                       //모든 슬롯이 꽉차이는 경우는 아직 x
+                slot.isSlotHasItem = true;
+                slot.hasItem = _item;
+                slot.hasItemSprite = clickedItem.itemSprite;
+                break;
             }
         }
     }

@@ -10,5 +10,9 @@ public class Tree : NPC
         {
             StartCoroutine(DialogueManager.instance.IContinueDialogue(11, 22, DialogueManager.instance.currentProcedureIndexS, DialogueManager.instance.currentProcedureIndexE));
         }
+        else if(PlayerScan.instance.progressStatus == ProgressStatus.E_GetBackMirror)
+        {
+            //
+        }
     }
 }

@@ -1278,7 +1278,6 @@ GameObject:
   - component: {fileID: 495079299}
   - component: {fileID: 495079298}
   - component: {fileID: 495079300}
-  - component: {fileID: 495079301}
   m_Layer: 5
   m_Name: SlotPanel
   m_TagString: Untagged
@@ -1374,18 +1373,6 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
---- !u!114 &495079301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495079296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709963de8aa35d46804c6d3e4ee06b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3157,7 +3144,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.8301887, g: 0.53648984, b: 0.53648984, a: 1}
   m_FlipX: 0
@@ -3180,7 +3167,7 @@ GameObject:
   - component: {fileID: 1337989191}
   - component: {fileID: 1337989193}
   - component: {fileID: 1337989192}
-  - component: {fileID: 1337989194}
+  - component: {fileID: 1337989195}
   m_Layer: 5
   m_Name: InventoryPanel
   m_TagString: Untagged
@@ -3246,7 +3233,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337989190}
   m_CullTransparentMesh: 0
---- !u!114 &1337989194
+--- !u!114 &1337989195
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3255,7 +3242,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1337989190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9c8df5f0108dbc4b9ee1210c1ab7282, type: 3}
+  m_Script: {fileID: 11500000, guid: 8709963de8aa35d46804c6d3e4ee06b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1412572181
@@ -3584,7 +3571,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.8034314, g: 0.8113208, b: 0.17221434, a: 1}
   m_FlipX: 0
@@ -4975,3 +4962,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2048711712}
   m_CullTransparentMesh: 0
+--- !u!1 &2114497804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2114497806}
+  - component: {fileID: 2114497805}
+  m_Layer: 0
+  m_Name: CheatForDebug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2114497805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114497804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f19fc5093a6a174ba106bcd7b663ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUsingCheat: 0
+  progress: 0
+  sceneName: 
+--- !u!4 &2114497806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114497804}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -29.600384, y: 1.3318421, z: -45.44922}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
