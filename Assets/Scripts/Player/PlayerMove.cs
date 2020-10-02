@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-
-    float playerXAxis;
-    float playerYAxis;
+    private float playerXAxis;
+    private float playerYAxis;
 
     public float playerSpeed;
 
-    Vector3 playerMoveVec;
-    Rigidbody2D playerRigid;
-    SpriteRenderer playerSprite;
+    private Vector3 playerMoveVec;
+    private Rigidbody2D playerRigid;
+    private SpriteRenderer playerSprite;
 
-    Animator playerAnim;                //플레이어 애니메이션
+    private Animator playerAnim;       //플레이어 애니메이션
+
+    public static bool canMove = true;
    
     private void Start()
     {
@@ -25,7 +26,6 @@ public class PlayerMove : MonoBehaviour
         playerSprite.flipX = false;
 
         DontDestroyOnLoad(gameObject);
-
     }
 
     private void Update()
@@ -33,7 +33,11 @@ public class PlayerMove : MonoBehaviour
         playerXAxis = Input.GetAxisRaw("Horizontal");
         playerYAxis = Input.GetAxisRaw("Vertical");
        
+<<<<<<< Updated upstream
         if (!DialogueManager.Instance.isDialogueActive)
+=======
+        if (canMove)
+>>>>>>> Stashed changes
         {
             playerMoveVec.Set(playerXAxis, playerYAxis, 0f);
 
@@ -55,8 +59,6 @@ public class PlayerMove : MonoBehaviour
         }
       
     }
-
-
 
     private void FixedUpdate()
     {

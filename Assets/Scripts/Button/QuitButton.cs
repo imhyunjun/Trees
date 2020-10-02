@@ -16,12 +16,13 @@ public class QuitButton : MonoBehaviour             //일단 급하게 추가 �
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            QuitPanel.SetActive(!paused);
             paused = !paused;
+            QuitPanel.SetActive(paused);
             if (paused) Time.timeScale = 0;
             else Time.timeScale = 1;
         }
     }
+
     public void OnClickQuitButton()
     {
         Application.Quit(0);

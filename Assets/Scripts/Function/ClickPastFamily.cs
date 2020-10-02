@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class ClickPastFamily : MonoBehaviour
 {
-    //public int startDialogueIndex;      //각자 엄마, 아빠 ,정이 가지고 있는 숫자로 했었는데 잘 안되서 그냥 아래처럼 
-    //public int endDialogueIndex;
-    bool isClickedJung = false;
-    bool isClickedMoM = false;
+    [SerializeField]
+    private GameObject backMirror;
 
     void Update()
     {
@@ -15,6 +13,7 @@ public class ClickPastFamily : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity);
             if (!hit) return;
+<<<<<<< Updated upstream
             if(isClickedJung == true && hit.collider.name == "PastFather")
             {
                 StartCoroutine(DialogueManager.Instance.IContinueDialogue(31, 33));
@@ -25,18 +24,35 @@ public class ClickPastFamily : MonoBehaviour
             {
                 StartCoroutine(DialogueManager.Instance.IContinueDialogue(25, 27));
                 isClickedMoM = true;
-            }
-
-            if (isClickedMoM == true && hit.collider.name == "PastJung")
+=======
+            if (PlayerScan.instance.progressStatus == ProgressStatus.E_Sleep && hit.collider.name == "PastMother")
             {
+                StartCoroutine(DialogueManager.instance.IContinueDialogue(25, 27));
+                PlayerScan.instance.progressStatus++;
+>>>>>>> Stashed changes
+            }
+            else if (PlayerScan.instance.progressStatus == ProgressStatus.E_TalkWithPastMom && hit.collider.name == "PastJung")
+            {
+<<<<<<< Updated upstream
                 StartCoroutine(DialogueManager.Instance.IContinueDialogue(28, 30));
                 isClickedJung = true;
+=======
+                StartCoroutine(DialogueManager.instance.IContinueDialogue(28, 30));
+                PlayerScan.instance.progressStatus++;
+            }
+            else if (PlayerScan.instance.progressStatus == ProgressStatus.E_TalkWithPastJung && hit.collider.name == "PastFather")
+            {
+                StartCoroutine(DialogueManager.instance.IContinueDialogue(31, 33));
+                StartCoroutine(SettingActive());
+                PlayerScan.instance.progressStatus++;
+>>>>>>> Stashed changes
             }
         }
     }
 
     IEnumerator SettingActive()
     {
+<<<<<<< Updated upstream
         bool stop = false;
         while (stop == false)
         {
@@ -48,6 +64,15 @@ public class ClickPastFamily : MonoBehaviour
             gameObject.GetComponent<AudioSource>().Stop();
             stop = true;
         }
+=======
+        yield return StartCoroutine(DialogueManager.instance.IContinueDialogue(31, 33));   //아빠 대화 끝나고 
+        yield return new WaitForSeconds(1.5f);                                                              //1.5초 후에
+        AudioSource audio = SoundManager.PlaySFX("Siren", true);
+        backMirror.SetActive(true);  // 백미러등장
+        yield return new WaitForSeconds(1.5f);                                                              //임시로 끝나는거 설정
+        audio.Stop();
+        PlayerScan.instance.progressStatus++;
+>>>>>>> Stashed changes
     }
 }
 

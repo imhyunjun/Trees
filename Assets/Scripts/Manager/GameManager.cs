@@ -14,13 +14,10 @@ public class GameManager : MonoBehaviour
     public int treeGrowStatus;
     public GameObject fadeObject;                       //페이드효과 줄 것
     public GameObject player;                           //플레이어오브젝트 - 씬 로드할때 
-    public uint YNButtonGameProcedure;                  //게임흐름관련YN버튼 진행상황, 일단 숫자로
-    public int gameSceneProcedure;                      //게임 씬( 리빙룸, 드림 맵 등등 )
     public string locationPlayerIsIn;                   //플레이어가 있느 장소 - 발자국 사운드 관리
-    public bool changeSceneSwith;                       //true면 씬 전환
 
-    Image fadeImg;                                      //페이드 효과에 쓸 화면 색깔
-    Color tempColor;                                    //색 바꿀때 쓸 임시 색
+    private Image fadeImg;                                      //페이드 효과에 쓸 화면 색깔
+    private Color tempColor;                                    //색 바꿀때 쓸 임시 색
 
     public event SceneEventHandler ChangeSceneEvent;
 
@@ -37,9 +34,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         treeGrowStatus = 0;
-        YNButtonGameProcedure = 0;
-        gameSceneProcedure = 0;
-
         locationPlayerIsIn = "House";
 
         fadeImg = fadeObject.GetComponent<Image>();
@@ -104,7 +98,7 @@ public class GameManager : MonoBehaviour
         img.color = color;
     }
 
-    public IEnumerator ILoadScene(string _sceneName, float _fadetime, string _playerIn)     //일단 변수 3개 마지막 변수는 이동방법 및, 씬 이름나오면 나중에
+    public IEnumerator ILoadScene(string _sceneName, float _fadetime, string _playerIn, System.Action callBack = null)     //일단 변수 3개 마지막 변수는 이동방법 및, 씬 이름나오면 나중에
     {
         yield return StartCoroutine(IFadeOut(_fadetime));
         player.transform.position = new Vector2(0, -3);                             //씬 이동 후 좌표 설정
@@ -116,6 +110,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<SpriteRenderer>().sortingOrder = 3;
 
         locationPlayerIsIn = _playerIn;
+        callBack?.Invoke();
     }
 }
 

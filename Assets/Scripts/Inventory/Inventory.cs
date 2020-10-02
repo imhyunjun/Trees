@@ -12,7 +12,6 @@ public class Inventory : MonoBehaviour
 
     int maxSlotCount;                                               //최대 슬롯 개수
     bool isItemClickedInInven;                                      //인벤토리안의 아이템이 클릭되었는지
-    public GameObject getItemPanel;                            //플레이어가 얻은 아이템 표시
 
     private void Awake()
     {
@@ -41,9 +40,7 @@ public class Inventory : MonoBehaviour
 
                         Item clickedItem = hit.collider.GetComponent<Item>();
 
-                        getItemPanel.transform.GetChild(0).GetComponent<Text>().text = clickedItem.itemName + "를 얻었다.";
-
-                        StartCoroutine(IShowGetItem());
+                        StartCoroutine(GetItemPanel.instance.IShowText(clickedItem.itemName));
 
                         DialogueManager.Instance.currentProcedureIndexS = clickedItem.increaseDialogueStart;
                         DialogueManager.Instance.currentProcedureIndexE = clickedItem.increaseDialogueEnd;
@@ -106,12 +103,5 @@ public class Inventory : MonoBehaviour
                 clickedSlot.tempColor.a = 1f;
             }
         }
-    }    
-
-    IEnumerator IShowGetItem()                  //아이템 획득시 팝업
-    {
-        getItemPanel.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        getItemPanel.SetActive(false);
     }
 }

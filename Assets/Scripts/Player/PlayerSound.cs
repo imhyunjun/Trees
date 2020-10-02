@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerSound : MonoBehaviour
 {
+<<<<<<< Updated upstream
     public AudioClip walkInHouse;
     public AudioClip walkInDreamMap;
 
@@ -25,9 +26,19 @@ public class PlayerSound : MonoBehaviour
         playerAudio.clip = playerSoundDic[GameManager.Instance.locationPlayerIsIn];
     }
 
+=======
+>>>>>>> Stashed changes
     public void Walk()
     {
-        if(playerAudio.clip != null)
-            playerAudio.Play();   
+        switch (GameManager.instance.locationPlayerIsIn)
+        {
+            case "House":
+                SoundManager.PlayCappedSFX("Footstep_inside3_re", "Player");
+                break;
+
+            case "DreamMap":
+                SoundManager.PlayCappedSFX("Footstep3_dream", "Player");
+                break;
+        }
     }
 }

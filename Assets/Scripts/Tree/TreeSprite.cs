@@ -7,16 +7,22 @@ public class TreeSprite : MonoBehaviour
     public Sprite tree0Sprite;
     public Sprite tree1Sprite;
 
-    List<Sprite> treeSpriteList = new List<Sprite>();
+    private SpriteRenderer spriteRenderer;
+    private List<Sprite> treeSpriteList = new List<Sprite>();
 
     private void Awake()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         treeSpriteList.Add(tree0Sprite);
         treeSpriteList.Add(tree1Sprite);
     }
 
     private void Update()
     {
+<<<<<<< Updated upstream
         gameObject.GetComponent<SpriteRenderer>().sprite = treeSpriteList[GameManager.Instance.treeGrowStatus];
+=======
+        spriteRenderer.sprite = treeSpriteList[GameManager.instance.treeGrowStatus];
+>>>>>>> Stashed changes
     }
 }

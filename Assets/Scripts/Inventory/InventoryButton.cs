@@ -13,13 +13,13 @@ public class InventoryButton : MonoBehaviour
     {
         isinventoryOpend = false;
         inventoryRect = inventoryButton.GetComponent<RectTransform>();
-
     }
+
     public void OnClickInventoryButton()
     {
-        gameObject.GetComponent<AudioSource>().Play();
+        SoundManager.PlaySFX("Click_3");
 
-        if(!isinventoryOpend)
+        if (!isinventoryOpend)
         {
             inventoryRect.Translate(inventoryMoveDistance * Vector3.left);
             isinventoryOpend = true;

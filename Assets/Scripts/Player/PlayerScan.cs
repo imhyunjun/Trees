@@ -13,6 +13,7 @@ public class PlayerScan : MonoBehaviour
     public bool isWeared = false; //처음에는 교복 안 입고 있음.
     public bool eatMed = false;//처음에는 수면제 안 먹음. 일단 스태틱~~~~~ 구동만 되게 시연회..!
 
+<<<<<<< Updated upstream
     public RuntimeAnimatorController pajamaAnim;            //잠옷입은 애니메이터
 
     public int dressStartingPitch = 0; //옷 입는 초기 오디오 소스 음량 조절
@@ -27,6 +28,9 @@ public class PlayerScan : MonoBehaviour
     public Sprite sleepingJung;                         //일단 임시 방편 for 시연회
 
     public int countOfJungMetTree = 0;
+=======
+    public ProgressStatus progressStatus { get; set; }
+>>>>>>> Stashed changes
 
     private void Awake()
     {
@@ -36,6 +40,7 @@ public class PlayerScan : MonoBehaviour
             Destroy(gameObject);
     }
 
+<<<<<<< Updated upstream
     private void Start() //오디오 초기 음량 설정
     {
         dressStartAudioSource = transform.Find("dress").gameObject.GetComponent<AudioSource>();
@@ -51,6 +56,8 @@ public class PlayerScan : MonoBehaviour
         bedSource.pitch = 0;
     }
 
+=======
+>>>>>>> Stashed changes
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
