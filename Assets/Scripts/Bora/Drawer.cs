@@ -6,25 +6,24 @@ public class Drawer : NPC
 {
     public override void Interact()
     {
-        bool isWeared = PlayerScan.Instance.isWeared;
-        bool eatMed = PlayerScan.Instance.eatMed;
-        if (!isWeared && !eatMed)
+        ProgressStatus status = PlayerScan.instance.progressStatus;
+        if (status == ProgressStatus.E_Start)
         {
-            StartCoroutine(DialogueManager.Instance.IContinueDialogue(7, 7));
+            StartCoroutine(DialogueManager.instance.IContinueDialogue(7, 7));
         }
-        else if (isWeared && !eatMed)
+        else if (status == ProgressStatus.E_ChangeClothes)
         {
-            PlayerScan.Instance.transform.Find("drawer").gameObject.GetComponent<AudioSource>().pitch = 2;
-            DialogueManager.Instance.OnOffDialogueImage(true); //yes, no 버튼 있을 경우 반복문 사용 금지. stack에 쌓여서 못 빠져 나옴.
-            StartCoroutine(DialogueManager.Instance.PlayText(9));
+            PlayerScan.instance.transform.Find("drawer").gameObject.GetComponent<AudioSource>().pitch = 2;
+            DialogueManager.instance.OnOffDialogueImage(true); //yes, no 버튼 있을 경우 반복문 사용 금지. stack에 쌓여서 못 빠져 나옴.
+            StartCoroutine(DialogueManager.instance.PlayText(9));
 
-            ButtonPanelTemp.Instance.SetUp(() =>
+            ButtonPanelTemp.instance.SetUp(() =>
             {
-                PlayerScan.Instance.eatMed = true;
+                PlayerScan.instance.progressStatus++;
                 GameObject.Find("water-gulp").GetComponent<AudioSource>().Play();
             }, () =>
             {
-                StartCoroutine(DialogueManager.Instance.PlayText(10));
+                StartCoroutine(DialogueManager.instance.PlayText(10));
             });
         }
     }

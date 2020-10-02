@@ -6,9 +6,9 @@ public class Tree : NPC
 {
     public override void Interact()
     {
-        if (PlayerScan.Instance.countOfJungMetTree == 0)
+        if (PlayerScan.instance.progressStatus < ProgressStatus.E_GetBackMirror)
         {
-            StartCoroutine(DialogueManager.Instance.IContinueDialogue(11, 22, DialogueManager.Instance.currentProcedureIndexS, DialogueManager.Instance.currentProcedureIndexE));
+            StartCoroutine(DialogueManager.instance.IContinueDialogue(11, 22, DialogueManager.instance.currentProcedureIndexS, DialogueManager.instance.currentProcedureIndexE));
         }
     }
 }

@@ -6,18 +6,20 @@ using System;
 
 public class ButtonPanelTemp : MonoBehaviour
 {
-    [SerializeField] Button yesButton;
-    [SerializeField] Button noButton;
+    [SerializeField]
+    private Button yesButton;
+    [SerializeField]
+    private Button noButton;
 
-    private static ButtonPanelTemp instance;
-    public static ButtonPanelTemp Instance => instance;
+    private static ButtonPanelTemp instanced;
+    public static ButtonPanelTemp instance => instanced;
 
     private AudioSource audioSource;
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
+        if (instanced == null)
+            instanced = this;
         else
             Destroy(gameObject);
     }
@@ -32,8 +34,8 @@ public class ButtonPanelTemp : MonoBehaviour
         yesButton.onClick.AddListener(( ) =>
         {
             audioSource.Play();
-            DialogueManager.Instance.dialText.text = string.Empty;
-            DialogueManager.Instance.isDialogueActive = false;
+            DialogueManager.instance.dialText.text = string.Empty;
+            DialogueManager.instance.isDialogueActive = false;
             yesButton.gameObject.SetActive(false);
             noButton.gameObject.SetActive(false);
             yesEvent?.Invoke();
@@ -43,7 +45,7 @@ public class ButtonPanelTemp : MonoBehaviour
         noButton.onClick.AddListener(() =>
         {
             audioSource.Play();
-            DialogueManager.Instance.dialText.text = string.Empty;
+            DialogueManager.instance.dialText.text = string.Empty;
             noEvent?.Invoke();
         });
 

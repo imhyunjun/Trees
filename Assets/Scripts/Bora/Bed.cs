@@ -8,24 +8,24 @@ public class Bed : NPC
 
     public override void Interact()
     {
-        bool isWeared = PlayerScan.Instance.isWeared;
-        bool eatMed = PlayerScan.Instance.eatMed;
-        if(!isWeared && !eatMed)
+        ProgressStatus status = PlayerScan.instance.progressStatus;
+        if(status == ProgressStatus.E_Start)
         {
-            StartCoroutine(DialogueManager.Instance.IContinueDialogue(7, 7));
+            StartCoroutine(DialogueManager.instance.IContinueDialogue(7, 7));
         }
-        else if(isWeared && !eatMed)
+        else if(status == ProgressStatus.E_ChangeClothes)
         {
-            StartCoroutine(DialogueManager.Instance.IContinueDialogue(8, 8));
+            StartCoroutine(DialogueManager.instance.IContinueDialogue(8, 8));
         }
-        else if(isWeared && eatMed)
+        else if(status == ProgressStatus.E_EatMedicine)
         {
-            PlayerScan.Instance.transform.Find("bed").gameObject.GetComponent<AudioSource>().pitch = 3;
+            PlayerScan.instance.transform.Find("bed").gameObject.GetComponent<AudioSource>().pitch = 3;
             GetComponent<SpriteRenderer>().sprite = sleepingJung;
-            PlayerScan.Instance.GetComponent<SpriteRenderer>().sortingOrder = -1;
-            StartCoroutine(GameManager.Instance.IFadeOut(5f));
-            StartCoroutine(GameManager.Instance.ILoadScene("DreamMap", 5f, "DreamMap"));
-            GameManager.Instance.gameSceneProcedure++;
+            PlayerScan.instance.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            StartCoroutine(GameManager.instance.IFadeOut(5f));
+            StartCoroutine(GameManager.instance.ILoadScene("DreamMap", 5f, "DreamMap"));
+            GameManager.instance.gameSceneProcedure++;
+            PlayerScan.instance.progressStatus++;
         }
     }
 }

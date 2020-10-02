@@ -4039,8 +4039,6 @@ MonoBehaviour:
   dialogueImage: {fileID: 1800629202}
   dialText: {fileID: 1990880485}
   nameText: {fileID: 313683920}
-  buttonPanel: {fileID: 1412572181}
-  yButton: {fileID: 1412572181}
   scriptAudioClip: {fileID: 8300000, guid: b2ce0fb7c15c28046a84c381205496d4, type: 3}
 --- !u!82 &1503064506
 AudioSource:
@@ -5336,15 +5334,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7ffdfe108b44d48b60a7d247087e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWeared: 0
-  eatMed: 0
   pajamaAnim: {fileID: 9100000, guid: e2a40a269a4071944bae021ce1be9acc, type: 2}
   dressStartingPitch: 0
   drawerStartingPitch: 0
   waterGulpStartingPitch: 0
   sleepingJung: {fileID: -6645550556135078359, guid: b37e47eec71e3c64db02e2f313dab943,
     type: 3}
-  countOfJungMetTree: 0
 --- !u!95 &1895607656
 Animator:
   serializedVersion: 3

@@ -8,8 +8,8 @@ public delegate void SceneEventHandler(bool _changeScene);
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
-    public static GameManager Instance => instance;
+    private static GameManager instanced;
+    public static GameManager instance => instanced;
 
     public int treeGrowStatus;
     public GameObject fadeObject;                       //페이드효과 줄 것
@@ -26,11 +26,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (instanced == null)
         {
-            instance = this;
+            instanced = this;
         }
-        else if (instance != this)
+        else if (instanced != this)
         {
             Destroy(gameObject);
         }

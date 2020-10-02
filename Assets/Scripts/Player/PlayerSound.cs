@@ -22,7 +22,7 @@ public class PlayerSound : MonoBehaviour
 
     private void Update()
     {
-        playerAudio.clip = playerSoundDic[GameManager.Instance.locationPlayerIsIn];
+        playerAudio.clip = playerSoundDic[GameManager.instance.locationPlayerIsIn];
     }
 
     public void Walk()

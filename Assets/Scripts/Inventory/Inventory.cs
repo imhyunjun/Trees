@@ -45,8 +45,8 @@ public class Inventory : MonoBehaviour
 
                         StartCoroutine(IShowGetItem());
 
-                        DialogueManager.Instance.currentProcedureIndexS = clickedItem.increaseDialogueStart;
-                        DialogueManager.Instance.currentProcedureIndexE = clickedItem.increaseDialogueEnd;
+                        DialogueManager.instance.currentProcedureIndexS = clickedItem.increaseDialogueStart;
+                        DialogueManager.instance.currentProcedureIndexE = clickedItem.increaseDialogueEnd;
 
                         //itemList.Add(clickedItem);                                                //나중에 쓸진 모르겠으나 일단 리스트에 클릭한 아이템 저장
                         hit.collider.gameObject.SetActive(false);                                   //클릭한 오브젝트 비활성화
@@ -80,13 +80,13 @@ public class Inventory : MonoBehaviour
                     if (hit.collider.name == clickedSlot.hasItem.GetComponent<Item>().canInteractWith && isItemClickedInInven)   //인벤토리에서 물건을 꺼내고 상호작용하는 물체와 이름이 같다면
                     {
                         
-                        DialogueManager.Instance.currentProcedureIndexS += clickedSlot.hasItem.GetComponent<Item>().afterGiveTreeStart;
-                        DialogueManager.Instance.currentProcedureIndexE += clickedSlot.hasItem.GetComponent<Item>().afterGiveTreeEnd;
+                        DialogueManager.instance.currentProcedureIndexS += clickedSlot.hasItem.GetComponent<Item>().afterGiveTreeStart;
+                        DialogueManager.instance.currentProcedureIndexE += clickedSlot.hasItem.GetComponent<Item>().afterGiveTreeEnd;
 
-                        GameManager.Instance.treeGrowStatus += clickedSlot.hasItem.GetComponent<Item>().changeTree; 
+                        GameManager.instance.treeGrowStatus += clickedSlot.hasItem.GetComponent<Item>().changeTree; 
                         if(clickedSlot.hasItem.GetComponent<Item>().changeTree == 1)                            //나무 상태를 변화시키면
                         {
-                            StartCoroutine(GameManager.Instance.ILoadScene(_sceneName: "Chapter1", _fadetime: 4, _playerIn: "House"));      //일반화 나중에
+                            StartCoroutine(GameManager.instance.ILoadScene(_sceneName: "Chapter1", _fadetime: 4, _playerIn: "House"));      //일반화 나중에
                         }
                         clickedSlot.hasItem.gameObject.SetActive(false);                      
                         clickedSlot.isSlotHasItem = false;
