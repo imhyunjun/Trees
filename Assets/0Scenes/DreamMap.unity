@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 439591827}
   - component: {fileID: 439591828}
   - component: {fileID: 439591829}
-  - component: {fileID: 439591831}
+  - component: {fileID: 439591830}
   m_Layer: 0
   m_Name: BrokenBackMirror
   m_TagString: Item
@@ -600,7 +600,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2818298, y: 1.148345}
   m_EdgeRadius: 0
---- !u!114 &439591831
+--- !u!114 &439591830
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -609,10 +609,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 439591826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9955b4ae7f489b543b8d9c89c01d5e1b, type: 3}
+  m_Script: {fileID: 11500000, guid: a4e05ab541117d7458c46ccf2b45e55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: "\uAE68\uC9C4 \uBC31\uBBF8\uB7EC"
+  itemName: "\uAEA0\uC9C4 \uBC31\uBBF8\uB7EC"
   isInInventory: 0
   itemSprite: {fileID: 0}
   canInteractWith: Tree
@@ -2130,7 +2130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrivePoint: {fileID: 2085886319}
   cameraArrivePoint: {fileID: 233095444}
-  destinationName: NoWhere
+  destinationName: 
   isOpened: 0
   playSfx: 1
 --- !u!1 &2085886319

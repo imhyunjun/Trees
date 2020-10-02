@@ -25,7 +25,7 @@ public class Bed : NPC
             GetComponent<SpriteRenderer>().sprite = sleepingJung;
             PlayerScan.instance.GetComponent<SpriteRenderer>().sortingOrder = -1;
             StartCoroutine(GameManager.instance.ILoadScene("DreamMap", 5f, "DreamMap", () => { PlayerMove.canMove = true; }));
-            PlayerScan.instance.progressStatus++;
+            PlayerScan.instance.progressStatus = ProgressStatus.E_Sleep;
         }
     }
 }

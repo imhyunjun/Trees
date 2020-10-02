@@ -4,17 +4,9 @@ using UnityEngine;
 
 public class PastRoomDoor : Door
 {
-    private void Start()
+    private void Update()
     {
-        isOpened = false;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player") )
-        {
-
-        }
+        isOpened = PlayerScan.instance.progressStatus >= ProgressStatus.E_TalkWithTreeFirstTime;
     }
 
     public void Open(GameObject _door) //문 열기 구현
@@ -27,7 +19,5 @@ public class PastRoomDoor : Door
     {
         isOpened = true;
         _door.SetActive(true);
-
     }
-    
 }
