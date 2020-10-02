@@ -10,20 +10,20 @@ public class Drawer : NPC
 
         if (status == ProgressStatus.E_Start)
         {
-            StartCoroutine(DialogueManager.instance.IContinueDialogue(7, 7));
+            StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_5"));
         }
         else if (status == ProgressStatus.E_ChangeClothes)
         {
             SoundManager.PlaySFX("drawer");
             DialoguePanel.instance.Show();
-            StartCoroutine(DialogueManager.instance.PlayText(9));
+            StartCoroutine(DialogueManager.instance.PlayText("prologue_7"));
             ButtonPanel.instance.SetUp(() =>
             {
                 PlayerScan.instance.progressStatus++;
                 SoundManager.PlaySFX("re_water_gulp");
             }, () =>
             {
-                StartCoroutine(DialogueManager.instance.PlayText(10));
+                StartCoroutine(DialogueManager.instance.PlayText("prologue_8"));
             });
         }
     }

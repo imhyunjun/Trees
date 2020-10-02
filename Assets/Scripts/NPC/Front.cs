@@ -11,7 +11,7 @@ public class Front : MonoBehaviour
     {
         if(collision.CompareTag("Player")) 
         {
-            StartCoroutine(DialogueManager.instance.IContinueDialogue(5, 5)); // 처음 들어올 때는 방으로 들어가자고 말함
+            StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_3")); // 처음 들어올 때는 방으로 들어가자고 말함
         }
     }
 
@@ -28,7 +28,7 @@ public class Front : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) // 다시 나가려고 하면 아빠가 오기전에 방으로 들어가자고 말함
         {
-            StartCoroutine(DialogueManager.instance.IContinueDialogue(6, 6));
+            StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_4"));
         }
     }
 }

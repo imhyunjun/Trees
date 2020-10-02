@@ -15,17 +15,17 @@ public class ClickPastFamily : MonoBehaviour
             if (!hit) return;
             if (PlayerScan.instance.progressStatus == ProgressStatus.E_TalkWithTreeFirstTime && hit.collider.name == "PastMother")
             {
-                StartCoroutine(DialogueManager.instance.IContinueDialogue(25, 27));
+                StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_11"));
                 PlayerScan.instance.progressStatus++;
             }
             else if (PlayerScan.instance.progressStatus == ProgressStatus.E_TalkWithPastMom && hit.collider.name == "PastJung")
             {
-                StartCoroutine(DialogueManager.instance.IContinueDialogue(28, 30));
+                StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_13"));
                 PlayerScan.instance.progressStatus++;
             }
             else if (PlayerScan.instance.progressStatus == ProgressStatus.E_TalkWithPastJung && hit.collider.name == "PastFather")
             {
-                StartCoroutine(DialogueManager.instance.IContinueDialogue(31, 33));
+                StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_14"));
                 StartCoroutine(SettingActive());
                 PlayerScan.instance.progressStatus++;
             }
@@ -34,7 +34,7 @@ public class ClickPastFamily : MonoBehaviour
 
     IEnumerator SettingActive()
     {
-        yield return StartCoroutine(DialogueManager.instance.IContinueDialogue(31, 33));   //아빠 대화 끝나고 
+        yield return StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_14"));             //아빠 대화 끝나고 
         yield return new WaitForSeconds(1.5f);                                                              //1.5초 후에
         AudioSource audio = SoundManager.PlaySFX("Siren", true);
         backMirror.SetActive(true);  // 백미러등장

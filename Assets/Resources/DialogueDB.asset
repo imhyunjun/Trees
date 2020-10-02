@@ -18,173 +18,192 @@ MonoBehaviour:
   - order: '#Prologue'
     talking: 
     dialogue: 
-  - order: 0
-    talking: System
+  - order: prologue_0
+    talking: "\uC2DC\uC2A4\uD15C"
     dialogue: "\uBD88\uC744 \uCF1C\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
-  - order: 1
-    talking: Jung
+  - order: prologue_1
+    talking: "\uC815"
     dialogue: "\uBD88\uC744 \uCF1C\uC57C \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC08 \uC218
       \uC788\uC5B4."
-  - order: 2
-    talking: Jung
+  - order: prologue_2
+    talking: "\uC815"
     dialogue: "\uB2E4\uB140\uC654\uC2B5\uB2C8\uB2E4."
-  - order: 3
-    talking: Jung
+  - order: prologue_2
+    talking: "\uC815"
     dialogue: "\uC544\uBB34\uB3C4 \uC5C6\uB124."
-  - order: 4
-    talking: Jung
+  - order: prologue_3
+    talking: "\uC815"
     dialogue: "\uBC29\uC73C\uB85C \uB4E4\uC5B4\uAC00\uC790."
-  - order: 5
-    talking: Jung
+  - order: prologue_4
+    talking: "\uC815"
     dialogue: "\uC544\uBC84\uC9C0\uAC00 \uC9D1\uC5D0 \uB3CC\uC544\uC624\uAE30 \uC804\uC5D0
       \uBC29\uC73C\uB85C \uB4E4\uC5B4\uAC00\uC790."
-  - order: 6
-    talking: Jung
+  - order: prologue_5
+    talking: "\uC815"
     dialogue: "\uC637\uBD80\uD130 \uAC08\uC544\uC785\uC790."
-  - order: 7
-    talking: Jung
+  - order: prologue_6
+    talking: "\uC815"
     dialogue: "\uADF8 \uC804\uC5D0 \uD574\uC57C\uD560 \uC77C\uC774 \uC788\uC5B4."
-  - order: 8
-    talking: System
+  - order: prologue_7
+    talking: "\uC2DC\uC2A4\uD15C"
     dialogue: "\uC218\uBA74\uC81C\uB97C \uB4DC\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
-  - order: 9
-    talking: Jung
+  - order: prologue_8
+    talking: "\uC815"
     dialogue: "\uC218\uBA74\uC81C\uB97C \uBA39\uC9C0 \uC54A\uC73C\uBA74 \uC7A0\uC744
       \uC798 \uC218\uAC00 \uC5C6\uC5B4."
-  - order: 10
-    talking: Jung
+  - order: prologue_9
+    talking: "\uC2DC\uC2A4\uD15C"
+    dialogue: "\uC544\uC9C1 \uB4E4\uC5B4\uAC08 \uC218 \uC5C6\uB2E4."
+  - order: prologue_10
+    talking: "\uC815"
     dialogue: "\uC548\uB155"
-  - order: 11
-    talking: Tree
+  - order: prologue_10
+    talking: "\uB098\uBB34"
     dialogue: "\uC548\uB155"
-  - order: 12
-    talking: Tree
+  - order: prologue_10
+    talking: "\uB098\uBB34"
     dialogue: "\uC624\uB298\uC740 \uC5B4\uB560\uC5B4?"
-  - order: 13
-    talking: Jung
+  - order: prologue_10
+    talking: "\uC815"
     dialogue: "\uB611\uAC19\uC9C0, \uBB50."
-  - order: 14
-    talking: Tree
+  - order: prologue_10
+    talking: "\uB098\uBB34"
     dialogue: ...
-  - order: 15
-    talking: Jung
+  - order: prologue_10
+    talking: "\uC815"
     dialogue: ...
-  - order: 16
-    talking: Jung
+  - order: prologue_10
+    talking: "\uC815"
     dialogue: "\uC624\uB298\uB530\uB77C \uC5C4\uB9C8\uAC00 \uBCF4\uACE0\uC2F6\uC5B4."
-  - order: 17
-    talking: Jung
+  - order: prologue_10
+    talking: "\uC815"
     dialogue: "\uADF8 \uC0AC\uACE0\uAC00 \uC544\uC9C1\uB3C4 \uC5CA\uADF8\uC81C \uC77C
       \uAC19\uC544. "
-  - order: 18
-    talking: Jung
+  - order: prologue_10
+    talking: "\uC815"
     dialogue: "\uC5C4\uB9C8\uB9CC \uB3CC\uC544\uC628\uB2E4\uBA74,, \uC800\uB534 \uC544\uBE60\uB294
       \uC5C6\uC5B4\uC838\uB3C4 \uC88B\uC544."
-  - order: 19
-    talking: Tree
+  - order: prologue_10
+    talking: "\uB098\uBB34"
     dialogue: "\uB09C \uC740\uADFC\uD788 \uB124\uAC00 \uB0A0 \uC5C4\uB9C8 \uB300\uC2E0\uC774\uB77C\uACE0
       \uC0DD\uAC01\uD558\uB294 \uC904 \uC54C\uC558\uB294\uB370."
-  - order: 20
-    talking: Tree
+  - order: prologue_10
+    talking: "\uB098\uBB34"
     dialogue: "\uAC71\uC815 \uB9C8 . \uB09C \uC601\uC6D0\uD788 \uB124 \uACC1\uC5D0
       \uC788\uC5B4."
-  - order: 21
-    talking: Tree
+  - order: prologue_10
+    talking: "\uB098\uBB34"
     dialogue: "\uC5EC\uAE30 \uC774 \uBC29\uC5D0."
-  - order: 22
-    talking: Tree
+  - order: prologue_10
+    talking: "\uB098\uBB34"
     dialogue: "\uB0B4\uAC00 \uB108\uACE0, \uB124\uAC00 \uB098\uC796\uC544."
   - order: '#Prologue (Accident)'
     talking: 
     dialogue: 
-  - order: 0
-    talking: Mother
+  - order: prologue_11
+    talking: "\uC5C4\uB9C8"
     dialogue: ...
-  - order: 1
-    talking: Mother
+  - order: prologue_11
+    talking: "\uC5C4\uB9C8"
     dialogue: ...
-  - order: 2
-    talking: Jung
+  - order: prologue_12
+    talking: "\uC815"
     dialogue: "(\uC5C4\uB9C8\uB294 \uB9D0\uC774 \uC5C6\uB2E4. \uC228\uC744 \uC26C\uC9C0
       \uC54A\uB294\uB2E4.)"
-  - order: 3
-    talking: Jung
+  - order: prologue_13
+    talking: "\uC815"
     dialogue: "\uC5C4\uB9C8. \uB098 \uC5BC\uAD74\uC774.. \uB108\uBB34 \uB728\uAC70\uC6CC.."
-  - order: 4
-    talking: Jung
+  - order: prologue_13
+    talking: "\uC815"
     dialogue: "\uC5BC\uAD74\uC774 \uD0C0\uB294 \uAC83 \uAC19\uC544.."
-  - order: 5
-    talking: Jung
+  - order: prologue_13
+    talking: "\uC815"
     dialogue: "\uC5C4\uB9C8.."
-  - order: 6
-    talking: father
+  - order: prologue_14
+    talking: "\uC544\uBE60"
     dialogue: "\uC73C..\uC73C.."
-  - order: 7
-    talking: father
+  - order: prologue_14
+    talking: "\uC544\uBE60"
     dialogue: "119..119\uB97C \uBD88\uB7EC..."
-  - order: 8
-    talking: father
+  - order: prologue_14
+    talking: "\uC544\uBE60"
     dialogue: "\uB124 \uC5C4\uB9C8\uB294..."
   - order: '#Prologue (After Get BrockenMirror)'
     talking: 
     dialogue: 
-  - order: 0
-    talking: Tree
+  - order: prologue_15
+    talking: "\uB098\uBB34"
     dialogue: "\uC548\uB155."
-  - order: 1
-    talking: Tree
+  - order: prologue_15
+    talking: "\uB098\uBB34"
     dialogue: "\uBB50 \uC880 \uAC00\uC838\uC654\uB2C8?"
-  - order: 2
-    talking: Jung
+  - order: prologue_15
+    talking: "\uC815"
+    dialogue: 
+  - order: prologue_15
+    talking: "\uB098\uBB34"
     dialogue: "\uC751."
-  - order: 3
-    talking: Tree
-    dialogue: "\uB098\uC5D0\uAC8C \uC918."
-  - order: 4
-    talking: Tree
+  - order: prologue_15
+    talking: "\uB098\uBB34"
     dialogue: "\uB124\uAC00 \uAC00\uC838\uC624\uB294 \uC544\uD508 \uAE30\uC5B5\uB4E4\uC740
       \uB098\uB97C \uC131\uC7A5\uC2DC\uD0A4\uAC70\uB4E0."
-  - order: 5
-    talking: Tree
+  - order: prologue_16
+    talking: "\uB098\uBB34"
     dialogue: "\uC88B\uC544."
-  - order: 6
-    talking: Tree
+  - order: prologue_16
+    talking: "\uB098\uBB34"
     dialogue: "\uC885\uC885 \uAC00\uC838\uB2E4 \uC918. \uB0B4 \uB2E4\uC815\uD55C
       \uCE5C\uAD6C\uC57C"
   - order: '#Chapter1'
     talking: 
     dialogue: 
-  - order: 0
-    talking: jung
+  - order: chapter_0
+    talking: "\uC815"
     dialogue: "\uB2E4\uB140\uC624\uC168\uC5B4\uC694?"
-  - order: 1
-    talking: father
+  - order: chapter_0
+    talking: "\uC544\uBE60"
     dialogue: "\u2026."
-  - order: 2
-    talking: father
+  - order: chapter_0
+    talking: "\uC544\uBE60"
     dialogue: "\uB098\uAC00\uC11C \uC220 \uC880 \uC0AC\uC640."
-  - order: 3
-    talking: father
-    dialogue: "\uD14C\uC774\uBE14 \uC704\uC5D0 \uCE74\uB4DC \uAC00\uC838\uAC00\uB77C. "
-  - order: 4
-    talking: marketowner
-    dialogue: "\uB610 \uC544\uBC84\uC9C0 \uC2EC\uBD80\uB984\uC774\uB2C8?"
-  - order: 5
-    talking: marketowner
+  - order: chapter_0
+    talking: "\uC544\uBE60"
+    dialogue: "\uD14C\uC774\uBE14 \uC704\uC5D0 \uCE74\uB4DC \uAC00\uC838\uAC00\uB77C.
+      \uC2EC\uBD80\uB984 \uAC12\uC774\uB791"
+  - order: chapter_1
+    talking: "\uC2DC\uC2A4\uD15C"
+    dialogue: "\uC77C\uB2E8 \uCE74\uB4DC\uB97C \uCC59\uAE30\uC790."
+  - order: chapter_2
+    talking: "\uC815"
+    dialogue: "\uC288\uD37C\uB85C \uAC00\uC57C\uD574."
+  - order: chapter_3
+    talking: "\uC288\uD37C\uC8FC\uC778"
+    dialogue: "\uC5B4\uC11C\uC624\uB834."
+  - order: chapter_4
+    talking: "\uC288\uD37C\uC8FC\uC778"
     dialogue: "5\uCC9C\uC6D0, \uCE74\uB4DC\uB2C8?"
-  - order: 6
-    talking: marketowner
+  - order: chapter_5
+    talking: "\uC288\uD37C\uC8FC\uC778"
     dialogue: "\uACC4\uC0B0 \uB2E4 \uB410\uC5B4."
-  - order: 7
-    talking: marketowner
+  - order: chapter_5
+    talking: "\uC288\uD37C\uC8FC\uC778"
     dialogue: "\uB108\uB124 \uC544\uBC84\uC9C0 \uBCF4\uACE0 \uC220\uC880 \uADF8\uB9CC\uD558\uB77C
       \uD574\uB77C."
-  - order: 8
-    talking: jung
-    dialogue: "\uC544\uBC84\uC9C0\uC5D0\uAC8C \uC220\uC744 \uB4DC\uB824\uC57C \uD574."
-  - order: 9
-    talking: father
-    dialogue: "\uD14C\uC774\uBE14 \uC704\uC5D0 \uC62C\uB824\uB194\uB77C"
-  - order: 10
-    talking: father
-    dialogue: "\uBC29\uC5D0 \uB4E4\uC5B4\uAC00\uB77C."
+  - order: chapter_6
+    talking: "\uC544\uBE60"
+    dialogue: "\uD14C\uC774\uBE14 \uC704\uC5D0 \uC62C\uB824\uB194."
+  - order: chapter_7
+    talking: "\uC544\uBE60"
+    dialogue: "\uB124 \uBC29\uC73C\uB85C \uB4E4\uC5B4\uAC00."
+  - order: chapter_8
+    talking: "\uC544\uBE60"
+    dialogue: "\uC5B4\uB51C \uAC00\uB294 \uAC70\uC57C?"
+  - order: chapter_9
+    talking: "\uC544\uBE60"
+    dialogue: "\uC220\uC740?"
+  - order: chapter_10
+    talking: "\uC544\uBE60"
+    dialogue: "\uCE74\uB4DC\uB294?"
+  - order: chapter_11
+    talking: "\uC815"
+    dialogue: "\uBC29\uC73C\uB85C \uB4E4\uC5B4\uAC00\uC790."
