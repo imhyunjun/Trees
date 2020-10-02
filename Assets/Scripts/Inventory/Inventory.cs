@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class Inventory : PanelSingletone<Inventory>                 //인벤토리를 싱글톤 형태로 바꿈
 {
     private List<Slot> slotList = new List<Slot>();                  //슬롯관리
     private Slot clickedSlot;                                                //클릭된 슬롯
@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
 
         for(int i = 0; i < maxSlotCount; i ++)
         {
-            slotList.Add(gameObject.transform.GetChild(i).GetComponent<Slot>());            //슬롯리스트에 슬롯 추가
+            slotList.Add(gameObject.transform.GetChild(0).GetChild(i).GetComponent<Slot>());            //슬롯리스트에 슬롯 추가
         }
     }
 
@@ -79,7 +79,7 @@ public class Inventory : MonoBehaviour
                     }
                 }
             }
-            else if(clickedSlot != null && clickedSlot.hasItem != null)
+            else if(clickedSlot != null && clickedSlot.isSlotHasItem)
             {
                 clickedSlot.hasItem.transform.position = Vector3.zero;
                 clickedSlot.tempColor.a = 1f;

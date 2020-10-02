@@ -1,10 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Tree : NPC
 {
-
     public override void Interact()
     {
         ProgressStatus status = PlayerScan.instance.progressStatus;
