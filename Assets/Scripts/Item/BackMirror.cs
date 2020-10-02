@@ -13,8 +13,8 @@ public class BackMirror : Item
     public override void UseItem()
     {
         base.UseItem();
+        GameManager.instance.StartLoadSceneCoroutine( "Prologue",  4, "House");
         GameManager.instance.treeGrowStatus++; // 나무 성장
-        StartCoroutine(GameManager.instance.ILoadScene(_sceneName: "Prologue", _fadetime: 4, _playerIn: "House"));
         PlayerScan.instance.progressStatus = ProgressStatus.E_GiveBackMirrorToTree;
     }
 }
