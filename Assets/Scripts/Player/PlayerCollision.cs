@@ -18,7 +18,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.collider.CompareTag("Door"))
         {
-            StartCoroutine(DialogueManager.instance.IContinueDialogue(6, 6));
+            StartCoroutine(DialogueManager.instance.IContinueDialogue(6, 6)); //- 수정 필요
         }
         else if(collision.collider.CompareTag("Doors"))                              //각 문을 doors로 혹은 다른것으로 태그 설정 -> 플레이어가 충돌시 지정된 좌표로 이동
         {

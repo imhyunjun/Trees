@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   helpOn: 1
-  showInfo: 1
-  showDev: 1
+  showInfo: 0
+  showDev: 0
   showList: 0
   showAdd: 0
   showSFX: 1
