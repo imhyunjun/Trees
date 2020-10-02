@@ -13,7 +13,7 @@ public class ClickPastFamily : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity);
             if (!hit) return;
-            if (PlayerScan.instance.progressStatus == ProgressStatus.E_Sleep && hit.collider.name == "PastMother")
+            if (PlayerScan.instance.progressStatus == ProgressStatus.E_TalkWithTreeFirstTime && hit.collider.name == "PastMother")
             {
                 StartCoroutine(DialogueManager.instance.IContinueDialogue(25, 27));
                 PlayerScan.instance.progressStatus++;

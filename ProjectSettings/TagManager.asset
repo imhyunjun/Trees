@@ -4,12 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Front
   - Door
   - RoomDoor
-  - Closet
-  - Bed
-  - Drawer
   - object
   - PastRoom
   - Doors

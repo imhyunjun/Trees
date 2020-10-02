@@ -10,6 +10,7 @@ public enum ProgressStatus
     E_ChangeClothes,
     E_EatMedicine,
     E_Sleep,
+    E_TalkWithTreeFirstTime,
     E_TalkWithPastMom,
     E_TalkWithPastJung,
     E_TalkWithPastDad,
