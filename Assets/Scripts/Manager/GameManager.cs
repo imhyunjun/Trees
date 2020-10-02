@@ -112,6 +112,11 @@ public class GameManager : MonoBehaviour
         img.color = color;
     }
 
+    public void StartLoadSceneCoroutine(string _sceneName, float _fadeTime, string _playerIn, System.Action callBack = null)
+    {
+        StartCoroutine(ILoadScene(_sceneName, _fadeTime, _playerIn, callBack));
+    }
+
     public IEnumerator ILoadScene(string _sceneName, float _fadetime, string _playerIn, System.Action callBack = null)     //일단 변수 3개 마지막 변수는 이동방법 및, 씬 이름나오면 나중에
     {
         yield return StartCoroutine(IFadeOut(_fadetime));

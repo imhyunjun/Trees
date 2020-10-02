@@ -19,8 +19,8 @@ public class Drawer : NPC
             StartCoroutine(DialogueManager.instance.PlayText("prologue_7"));
             ButtonPanel.instance.SetUp(() =>
             {
-                PlayerScan.instance.progressStatus++;
                 SoundManager.PlaySFX("re_water_gulp");
+                PlayerScan.instance.progressStatus = ProgressStatus.E_EatMedicine;
             }, () =>
             {
                 StartCoroutine(DialogueManager.instance.PlayText("prologue_8"));

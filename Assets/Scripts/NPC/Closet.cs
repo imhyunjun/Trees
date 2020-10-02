@@ -14,7 +14,7 @@ public class Closet : NPC
         {
             SoundManager.PlaySFX("clothes");
             PlayerScan.instance.GetComponent<Animator>().runtimeAnimatorController = pajamaAnim;
-            PlayerScan.instance.progressStatus++;
+            PlayerScan.instance.progressStatus = ProgressStatus.E_ChangeClothes;
         }
     }
 }
