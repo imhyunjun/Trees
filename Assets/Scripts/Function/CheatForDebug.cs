@@ -28,8 +28,7 @@ public class CheatForDebug : DontDestroy<CheatForDebug>
     }
 
     void SetCondition()
-    {
-        
+    { 
          PlayerScan.instance.progressStatus = progress;
     }
 

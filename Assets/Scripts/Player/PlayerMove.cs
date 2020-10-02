@@ -33,11 +33,7 @@ public class PlayerMove : MonoBehaviour
         playerXAxis = Input.GetAxisRaw("Horizontal");
         playerYAxis = Input.GetAxisRaw("Vertical");
        
-<<<<<<< Updated upstream
-        if (!DialogueManager.Instance.isDialogueActive)
-=======
         if (canMove)
->>>>>>> Stashed changes
         {
             playerMoveVec.Set(playerXAxis, playerYAxis, 0f);
 

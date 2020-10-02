@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    private static DialogueManager instance;
-    public static DialogueManager Instance => instance;
+    private static DialogueManager instanced;
+    public static DialogueManager instance => instanced;
 
     private Dialogue dialogueDB;
     private int dataLength;                             //다이얼로그 데이터의 길이
@@ -15,28 +15,16 @@ public class DialogueManager : MonoBehaviour
     public int currentProcedureIndexS;          //시작점 증가
 
     public string[] dialogueString;             //다이얼로그들 string으로 변환 한 것
-    //public bool isDialogueActive;               //다이얼로그가 활성화 되있는지
-    //public GameObject dialogueImage;            //대화 이미지
     public Text dialText;
     public Text nameText;
 
-<<<<<<< Updated upstream
-    public GameObject buttonPanel;
-    public GameObject yButton;                  //yes 버튼
-    private ButtonClick yButtonClick;
-
-    public AudioClip scriptAudioClip;           //오디오 소스!
-    AudioSource scriptAudioSource;
-
-=======
->>>>>>> Stashed changes
     void Awake()
     {
-        if (instance == null)
+        if (instanced == null)
         {
-            instance = this;
+            instanced = this;
         }
-        else if (instance != this)
+        else if (instanced != this)
         {
             Destroy(gameObject);
         }
@@ -59,25 +47,16 @@ public class DialogueManager : MonoBehaviour
     IEnumerator Start()
     {
         dialIndex = 1;
-        yButtonClick = yButton.gameObject.GetComponent<ButtonClick>();                              //초기화
 
         yield return new WaitForSeconds(1f);
-<<<<<<< Updated upstream
-        OnOffDialogueImage(true);                                                                   //시작 후 1초 뒤 대화창 활성화
-        buttonPanel.SetActive(true);                                                                //버튼 창도 활성화
 
-        StartCoroutine(PlayText(dialIndex));
-
-        ButtonPanelTemp.Instance.SetUp(() =>
-=======
         DialoguePanel.instance.Show(); //시작 후 1초 뒤 대화창 활성화
 
         StartCoroutine(PlayText(dialIndex));
 
         ButtonPanel.instance.SetUp(() =>
->>>>>>> Stashed changes
         {
-            StartCoroutine(GameManager.Instance.IFadeIn(3f));
+            StartCoroutine(GameManager.instance.IFadeIn(3f));
             dialIndex = 3;
             StartCoroutine(IContinueDialogue(dialIndex, 4));                                            //혼잣말 시작
         }, () =>
