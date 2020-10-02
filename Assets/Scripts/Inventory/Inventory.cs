@@ -87,4 +87,21 @@ public class Inventory : PanelSingletone<Inventory>                 //인벤토�
             }
         }
     }
+
+    public void GetItemInSlot(GameObject item)
+    {
+
+        item.gameObject.SetActive(false);                                   //클릭한 오브젝트 비활성화
+        Item clickedItem = item.GetComponent<Item>();
+        foreach (Slot slot in slotList)
+        {
+            if (!slot.isSlotHasItem)                                                 //슬롯이 비어있다면 아이템 정보 추가
+            {                                                                       //모든 슬롯이 꽉차이는 경우는 아직 x
+                slot.hasItem = clickedItem;
+                slot.hasItemSprite = clickedItem.itemSprite;
+                clickedItem.GetItem();                                      // 해당 아이템을 얻었을 때 발생하는 이벤트
+                break;
+            }
+        }
+    }
 }
