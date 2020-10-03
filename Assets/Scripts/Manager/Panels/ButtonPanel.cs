@@ -17,7 +17,7 @@ public class ButtonPanel : PanelSingletone<ButtonPanel>
         {
             SoundManager.PlaySFX("Click_3");
             DialogueManager.instance.dialText.text = string.Empty;
-            DialoguePanel.instance.Hide();
+            DialoguePanel.instance.Hide(0);
             yesEvent?.Invoke();
             yesButton.onClick.RemoveAllListeners();
             noButton.onClick.RemoveAllListeners();

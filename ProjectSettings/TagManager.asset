@@ -4,8 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Door
-  - RoomDoor
   - object
   - PastRoom
   - Doors

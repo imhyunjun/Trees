@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class Inventory : PanelSingletone<Inventory>                 //인벤토리를 싱글톤 형태로 바꿈
+    
+public class Inventory : PanelSingletone<Inventory>                     //인벤토리를 싱글톤 형태로 바꿈
 {
     [SerializeField]
-    private Transform inventoryWorldItems;              // 획득한 아이템들의 World 오브젝트를 임시로 보관할 곳
+    private Transform inventoryWorldItems;                              // 획득한 아이템들의 World 오브젝트를 임시로 보관할 곳
 
-    private List<Slot> slotList = new List<Slot>();                  //슬롯관리
-    private Slot clickedSlot;                                                //클릭된 슬롯
-    private int maxSlotCount;                                   //최대 슬롯 개수
+    private List<Slot> slotList = new List<Slot>();                     //슬롯관리
+    private Slot clickedSlot;                                           //클릭된 슬롯
+    private int maxSlotCount;                                           //최대 슬롯 개수
 
     private void Awake()
     {

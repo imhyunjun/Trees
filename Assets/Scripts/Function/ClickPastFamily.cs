@@ -15,7 +15,6 @@ public class ClickPastFamily : MonoBehaviour
             if (!hit || DialoguePanel.instance.isActiveAndEnabled) return; // 대화 중이면 클릭 안되게
             if (PlayerScan.instance.progressStatus == ProgressStatus.E_TalkWithTreeFirstTime && hit.collider.name == "PastMother")
             {
-
                 StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_11"));
                 PlayerScan.instance.progressStatus = ProgressStatus.E_TalkWithPastMom;
             }

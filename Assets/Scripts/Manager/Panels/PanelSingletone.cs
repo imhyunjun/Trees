@@ -35,4 +35,15 @@ public class PanelSingletone<T> : MonoBehaviour where T : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    //panel그 자체보다 자식 오브젝트 키고 끄기( 대화창, 대화말풍선같은 경우.. ) 
+    public virtual void Show(int i)
+    {
+        gameObject.transform.GetChild(i).gameObject.SetActive(true);
+    }
+    public virtual void Hide(int i)
+    {
+        gameObject.transform.GetChild(i).gameObject.SetActive(false);
+    }
+
+
 }

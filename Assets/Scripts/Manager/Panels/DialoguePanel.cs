@@ -16,4 +16,15 @@ public class DialoguePanel : PanelSingletone<DialoguePanel>
         PlayerMove.canMove = true;
     }
 
+    public override void Show(int i)
+    {
+        base.Show(i);
+        PlayerMove.canMove = false;
+    }
+
+    public override void Hide(int i)
+    {
+        base.Hide(i);
+        PlayerMove.canMove = true;
+    }
 }
