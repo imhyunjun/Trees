@@ -10,9 +10,9 @@ public class DialogueManager : MonoBehaviour
 
     private Dialogue dialogueDB;
     private int dataLength;                             //다이얼로그 데이터의 길이
-    private int dialIndex;                              //다이얼 순번
-    public int currentProcedureIndexE;                  //대화 끝 지점 증가//현재 상황을 알려줌(어떤 아이템을 주웠는지) -> 숫자만큼 다이얼로그에 더해서 나무와 대화 변경
-    public int currentProcedureIndexS;                  //시작점 증가
+    //private int dialIndex;                              //다이얼 순번
+    //public int currentProcedureIndexE;                  //대화 끝 지점 증가//현재 상황을 알려줌(어떤 아이템을 주웠는지) -> 숫자만큼 다이얼로그에 더해서 나무와 대화 변경
+    //public int currentProcedureIndexS;                  //시작점 증가
 
     Dictionary<string, List<string>> dialogueDic = new Dictionary<string, List<string>>();
     Dictionary<string, List<string>> dialogueNameDic = new Dictionary<string, List<string>>();
@@ -31,9 +31,6 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        currentProcedureIndexE = 0;
-        currentProcedureIndexS = 0;
-
         DontDestroyOnLoad(gameObject);
         DialoguePanel.instance.Hide();
 
@@ -76,8 +73,6 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator Start()
     {
-        dialIndex = 1;
-
         yield return new WaitForSeconds(1f);
 
         DialoguePanel.instance.Show(); //시작 후 1초 뒤 대화창 활성화
@@ -87,7 +82,6 @@ public class DialogueManager : MonoBehaviour
         ButtonPanel.instance.SetUp(() =>
         {
             StartCoroutine(GameManager.instance.IFadeIn(3f));
-            dialIndex = 3;
             StartCoroutine(IContinueDialogue("prologue_2"));                                            //혼잣말 시작
         }, () =>
         {
@@ -128,38 +122,38 @@ public class DialogueManager : MonoBehaviour
     //    DialoguePanel.instance.Hide();
     //}
 
-    public IEnumerator IContinueDialogue(int _currentIndex, int _until, int _howMuchIncreseStart, int _howMuchIncreseEnd) //(System이 아닌 일반 대화용) 몇번째 까지 실행
-    {
-        DialoguePanel.instance.Show();
+    //public IEnumerator IContinueDialogue(int _currentIndex, int _until, int _howMuchIncreseStart, int _howMuchIncreseEnd) //(System이 아닌 일반 대화용) 몇번째 까지 실행
+    //{
+    //    DialoguePanel.instance.Show();
 
-        while (_currentIndex + _howMuchIncreseStart < _until + 1 + _howMuchIncreseEnd)
-        {
-            string testText = null;
-            //dialText.text = dialogueString[_currentIndex].ToString();
-            nameText.text = dialogueDB.dataArray[_currentIndex + _howMuchIncreseStart].Talking;
-            dialText.text = null;
-            string dialTxt = dialogueString[_currentIndex + _howMuchIncreseStart].ToString(); // 한 글자씩 나오게 하는 코드
-            foreach (char c in dialTxt)
-            {
-                SoundManager.PlaySFX("Text_typing");
-                bool stop = false;
-                if (stop == false)
-                {
-                    testText += c;
-                    stop = true;
-                }
-                dialText.text = testText;
-                yield return new WaitForSeconds(0.05f);
-            }
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));                     //엔터키 전까지 기다리기
-            SoundManager.PlaySFX("Script_3 (1)");
-            _currentIndex++;
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return)); //다음 창 바로 뜨지 않게 다시 엔터키 전까지 기다리게 하기
-            dialText.text = null;
-        }
+    //    while (_currentIndex + _howMuchIncreseStart < _until + 1 + _howMuchIncreseEnd)
+    //    {
+    //        string testText = null;
+    //        //dialText.text = dialogueString[_currentIndex].ToString();
+    //        nameText.text = dialogueDB.dataArray[_currentIndex + _howMuchIncreseStart].Talking;
+    //        dialText.text = null;
+    //        string dialTxt = dialogueString[_currentIndex + _howMuchIncreseStart].ToString(); // 한 글자씩 나오게 하는 코드
+    //        foreach (char c in dialTxt)
+    //        {
+    //            SoundManager.PlaySFX("Text_typing");
+    //            bool stop = false;
+    //            if (stop == false)
+    //            {
+    //                testText += c;
+    //                stop = true;
+    //            }
+    //            dialText.text = testText;
+    //            yield return new WaitForSeconds(0.05f);
+    //        }
+    //        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));                     //엔터키 전까지 기다리기
+    //        SoundManager.PlaySFX("Script_3 (1)");
+    //        _currentIndex++;
+    //        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return)); //다음 창 바로 뜨지 않게 다시 엔터키 전까지 기다리게 하기
+    //        dialText.text = null;
+    //    }
 
-        DialoguePanel.instance.Hide();
-    }
+    //    DialoguePanel.instance.Hide();
+    //}
 
     public IEnumerator PlayText(string _dialogueOrder)                 //시스템과 대화할 때 나오는 경우 - 왜 시스템만 했을까 그분이
     {

@@ -10,13 +10,13 @@ public class Tree : NPC
         if (status < ProgressStatus.E_GetBackMirror)
         {
             //StartCoroutine(DialogueManager.instance.IContinueDialogue(11, 22, DialogueManager.instance.currentProcedureIndexS, DialogueManager.instance.currentProcedureIndexE));
-            StartCoroutine(DialogueManager.instance.IContinueDialogue(11, 22));
+            StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_10"));
             if (PlayerScan.instance.progressStatus == ProgressStatus.E_Sleep)
                 PlayerScan.instance.progressStatus = ProgressStatus.E_TalkWithTreeFirstTime;
         }
         else if(status == ProgressStatus.E_GetBackMirror)
         {
-            //StartCoroutine(DialogueManager.instance.IContinueDialogue(, )); // 뭐 좀 가져 왔니?
+            StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_15")); // 뭐 좀 가져 왔니?
         }
     }
 }
