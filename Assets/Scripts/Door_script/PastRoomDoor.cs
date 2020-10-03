@@ -9,15 +9,11 @@ public class PastRoomDoor : Door
         isOpened = PlayerScan.instance.progressStatus >= ProgressStatus.E_TalkWithTreeFirstTime;
     }
 
-    public void Open(GameObject _door) //문 열기 구현
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        isOpened = false;
-        _door.SetActive(false);
-    }
-
-    public void Close(GameObject _door) //문 닫기 구현
-    {
-        isOpened = true;
-        _door.SetActive(true);
+        if (collision.gameObject.CompareTag("Player") && !isOpened)
+        {
+            StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_17"));   // 아직 들어갈 수 없다
+        }
     }
 }

@@ -15,7 +15,9 @@ public enum ProgressStatus
     E_TalkWithPastJung,
     E_TalkWithPastDad,
     E_GetBackMirror,
-    E_GiveBackMirrorToTree
+    E_GiveBackMirrorToTree,
+    E_TalkWithCurrentDad,
+    E_GetCashCard
 }
 
 public delegate void SceneEventHandler(bool _changeScene);
@@ -80,7 +82,7 @@ public class GameManager : MonoBehaviour
             fadeImg.color = color;
             yield return null;
         }
-        if (color.a >= 1f) color.a = 0f;
+        if (color.a >= 1f) color.a = 1f;
         fadeImg.color = color;
     }
 
@@ -108,28 +110,25 @@ public class GameManager : MonoBehaviour
             img.color = color;
             yield return null;
         }
-        if (color.a >= 1f) color.a = 0f;
+        if (color.a >= 1f) color.a = 1f;
         img.color = color;
     }
 
-    public void StartLoadSceneCoroutine(string _sceneName, float _fadeTime, string _playerIn, System.Action callBack = null)
+    public IEnumerator ILoadScene(string _sceneName, float _fadeOutTime, float _fadeIntTime, string _playerIn, System.Action callBack = null)  
     {
-        StartCoroutine(ILoadScene(_sceneName, _fadeTime, _playerIn, callBack));
-    }
+        yield return StartCoroutine(IFadeOut(_fadeOutTime));                      // 완전히 페이트 아웃 할 때 까지 대기
 
-    public IEnumerator ILoadScene(string _sceneName, float _fadetime, string _playerIn, System.Action callBack = null)     //일단 변수 3개 마지막 변수는 이동방법 및, 씬 이름나오면 나중에
-    {
-        yield return StartCoroutine(IFadeOut(_fadetime));
-        player.transform.position = new Vector2(0, -3);                             //씬 이동 후 좌표 설정
-        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(_sceneName);
 
         Camera.main.transform.position = new Vector3(0, 0, -10);                    //카메라 좌표 설정
         player.transform.position = new Vector2(0, -3);                             //씬 이동 후 좌표 설정
         player.GetComponent<SpriteRenderer>().sortingOrder = 3;
-
         locationPlayerIsIn = _playerIn;
+
+        StartCoroutine(IFadeIn(_fadeIntTime));
+
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == _sceneName);    // 씬 로드될 때 까지 대기
+
         callBack?.Invoke();
     }
 }
-

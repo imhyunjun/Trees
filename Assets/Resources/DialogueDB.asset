@@ -106,7 +106,7 @@ MonoBehaviour:
   - order: prologue_11
     talking: "\uC5C4\uB9C8"
     dialogue: ...
-  - order: prologue_12
+  - order: prologue_11
     talking: "\uC815"
     dialogue: "(\uC5C4\uB9C8\uB294 \uB9D0\uC774 \uC5C6\uB2E4. \uC228\uC744 \uC26C\uC9C0
       \uC54A\uB294\uB2E4.)"
@@ -139,10 +139,10 @@ MonoBehaviour:
     dialogue: "\uBB50 \uC880 \uAC00\uC838\uC654\uB2C8?"
   - order: prologue_15
     talking: "\uC815"
-    dialogue: 
+    dialogue: "\uC751."
   - order: prologue_15
     talking: "\uB098\uBB34"
-    dialogue: "\uC751."
+    dialogue: "\uB098\uC5D0\uAC8C \uC918."
   - order: prologue_15
     talking: "\uB098\uBB34"
     dialogue: "\uB124\uAC00 \uAC00\uC838\uC624\uB294 \uC544\uD508 \uAE30\uC5B5\uB4E4\uC740
@@ -154,6 +154,9 @@ MonoBehaviour:
     talking: "\uB098\uBB34"
     dialogue: "\uC885\uC885 \uAC00\uC838\uB2E4 \uC918. \uB0B4 \uB2E4\uC815\uD55C
       \uCE5C\uAD6C\uC57C"
+  - order: prologue_17
+    talking: "\uC815"
+    dialogue: "\uC544\uC9C1 \uB4E4\uC5B4\uAC08 \uC218 \uC5C6\uB2E4."
   - order: '#Chapter1'
     talking: 
     dialogue: 

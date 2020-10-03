@@ -11,7 +11,9 @@ public class Front : MonoBehaviour
     {
         if(collision.CompareTag("Player")) 
         {
-            StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_3")); // 처음 들어올 때는 방으로 들어가자고 말함
+            ProgressStatus status = PlayerScan.instance.progressStatus;
+            if (status == ProgressStatus.E_Start)
+                StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_3")); // 처음 들어올 때는 방으로 들어가자고 말함
         }
     }
 
@@ -19,16 +21,27 @@ public class Front : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            for (int i = 0; i < coliders.Length; i++)  // 방으로 들어가면 다시 못나가게 경계 생김
-                coliders[i].isTrigger = false;
+            ProgressStatus status = PlayerScan.instance.progressStatus;
+            if (status == ProgressStatus.E_Start)  // 다시 못나가게 경계 생김
+                CanPass(false);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) // 다시 나가려고 하면 아빠가 오기전에 방으로 들어가자고 말함
+        if (collision.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_4"));
+            ProgressStatus status = PlayerScan.instance.progressStatus;
+            if (status < ProgressStatus.E_Sleep) // 다시 나가려고 하면 아빠가 오기전에 방으로 들어가자고 말함
+                StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_4"));
+            else if (status == ProgressStatus.E_TalkWithCurrentDad)
+                StartCoroutine(DialogueManager.instance.IContinueDialogue("chapter_1")); // 카드를 챙기자고 말함
         }
+    }
+
+    public void CanPass(bool can)
+    {
+        for (int i = 0; i < coliders.Length; i++)
+            coliders[i].isTrigger = can;
     }
 }

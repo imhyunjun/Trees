@@ -24,7 +24,7 @@ public class Bed : NPC
             SoundManager.PlaySFX("lying-on-bed");
             GetComponent<SpriteRenderer>().sprite = sleepingJung;
             PlayerScan.instance.GetComponent<SpriteRenderer>().sortingOrder = -1;
-            StartCoroutine(GameManager.instance.ILoadScene("DreamMap", 5f, "DreamMap", () => { PlayerMove.canMove = true; }));
+            StartCoroutine(GameManager.instance.ILoadScene("DreamMap", 5f, 2f,"DreamMap", () => { PlayerMove.canMove = true; }));
             PlayerScan.instance.progressStatus = ProgressStatus.E_Sleep;
         }
     }
