@@ -17,7 +17,8 @@ public enum ProgressStatus
     E_GetBackMirror,
     E_GiveBackMirrorToTree,
     E_TalkWithCurrentDad,
-    E_GetCashCard
+    E_GetCashCard,
+    E_GetAlcholBottle
 }
 
 public delegate void SceneEventHandler(bool _changeScene);
