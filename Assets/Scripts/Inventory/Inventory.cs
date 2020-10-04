@@ -8,7 +8,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
     [SerializeField]
     private Transform inventoryWorldItems;                              // 획득한 아이템들의 World 오브젝트를 임시로 보관할 곳
 
-    private List<Slot> slotList = new List<Slot>();                     //슬롯관리
+    private List<Slot> slotList = new List<Slot>(6);                    //슬롯관리
     private Slot clickedSlot;                                           //클릭된 슬롯
     private int maxSlotCount;                                           //최대 슬롯 개수
 
@@ -121,5 +121,60 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                 break;
             }
         }
+    }
+    
+    /// <summary>
+    /// 인벤토리에 물건들이 있는지
+    /// </summary>
+    /// <param name="args"></param> 물건들
+    /// <returns>
+    /// true : 물건이 모두 있음
+    /// false : 물건이 모두 없음
+    /// </returns>
+    public bool IsPlayerHasItem(params string[] args)     
+    {
+        int count = 0;
+        foreach(Slot slot in slotList)
+        {
+            if (!slot.isSlotHasItem)                                //인벤토리에 순서대로 있으므로 아이템이 없는 슬롯부터는 체크 안해도 됨
+                break;
+            for (int i = 0; i < args.Length; i ++)
+            {
+                if (slot.hasItem.itemName == args[i])               //아이템이 있으면
+                    count++;                                        //count ++;
+                if (count == args.Length)                           //아이템이 다 있으면 true 반환
+                    return true;
+            }
+           
+        }
+        return false;                                               //하나라도 없으면 false;
+    }
+
+    /// <summary>
+    /// 인벤토리에 물건들이 없는지
+    /// </summary>
+    /// <param name="args"></param> 물건들
+    /// <returns>
+    /// true : 물건이 모두 없음
+    /// false : 물건이 하나라도 있음
+    /// </returns>
+    public bool IsPlayerDoesntHasItem(params string[] args)
+    {
+        int count = 0;
+        foreach (Slot slot in slotList)
+        {
+            if (!slot.isSlotHasItem)                                //인벤토리에 순서대로 있으므로 아이템이 없는 슬롯부터는 체크 안해도 됨
+                break;
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (slot.hasItem.itemName == args[i])               //아이템이 있으면
+                    count++;                                        //count ++;
+            }
+            
+        }
+        if (count == 0)
+            return true;                                            //모두 없으면 true
+        else
+            return false;                                           //하나라도 없으면 false;
     }
 }
