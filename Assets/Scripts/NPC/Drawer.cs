@@ -15,7 +15,7 @@ public class Drawer : NPC
         else if (status == ProgressStatus.E_ChangeClothes)
         {
             SoundManager.PlaySFX("drawer");
-            DialoguePanel.instance.Show();
+            //DialoguePanel.instance.Show();
             StartCoroutine(DialogueManager.instance.PlayText("prologue_7"));
             ButtonPanel.instance.SetUp(() =>
             {

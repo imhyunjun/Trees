@@ -41,11 +41,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
 
                         StartCoroutine(GetItemPanel.instance.IShowText(clickedItem.itemName)); 
 
-                        //DialogueManager.instance.currentProcedureIndexS = clickedItem.increaseDialogueStart;
-                        //DialogueManager.instance.currentProcedureIndexE = clickedItem.increaseDialogueEnd;
-
                         //hit.collider.gameObject.SetActive(false);                                   //클릭한 오브젝트 비활성화
-
                         hit.transform.SetParent(inventoryWorldItems);                  // 클릭한 오브젝트 부모 변경 후 위치 변경해서 안보이게
                         hit.transform.localPosition = Vector3.zero;
 
@@ -72,7 +68,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                     Item clickedSlotItem = clickedSlot.hasItem; 
                     if (hit.collider.name == clickedSlotItem.canInteractWith)   //인벤토리에서 물건을 꺼내고 상호작용하는 물체와 이름이 같다면 아이템 사용
                     {
-                        clickedSlotItem.UseItem();                       // 해당 아이템을 사용했을 때 발생하는 이벤트
+                        clickedSlotItem.UseItem();                              // 해당 아이템을 사용했을 때 발생하는 이벤트
                         clickedSlot.hasItem = null;
                         clickedSlot.hasItemSprite = clickedSlot.slotDefaultSprite;
                         DeSelectSlot();

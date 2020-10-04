@@ -67,8 +67,6 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        DialoguePanel.instance.Show(0); //시작 후 1초 뒤 대화창 활성화
-
         StartCoroutine(PlayText("prologue_0"));
 
         ButtonPanel.instance.SetUp(() =>
@@ -84,6 +82,7 @@ public class DialogueManager : MonoBehaviour
 
     public IEnumerator PlayText(string _dialogueOrder)                 //시스템과 대화할 때 나오는 경우 - 왜 시스템만 했을까 그분이
     {
+        DialoguePanel.instance.Show(0);
         dialText.text = null;
         nameText.text = dialogueNameDic[_dialogueOrder][0];
         string dialTxt = dialogueDic[_dialogueOrder][0]; // 한 글자씩 나오게 하는 코드
@@ -135,9 +134,11 @@ public class DialogueManager : MonoBehaviour
     {
         //위치는 나중에~~
         DialoguePanel.instance.Show(1);
-        dialogueBalloon.GetComponent<Text>().text = dialogueDic[_dialogueOrder][0];//말풍선은 대화 하나로 가정
+        dialogueBalloon.transform.GetChild(0).GetComponent<Text>().text = dialogueDic[_dialogueOrder][0];//말풍선은 대화 하나로 가정 ㅠㅠ 두개가 생겼다..
+        Debug.Log("말풍선 켜짐");
         yield return new WaitForSeconds(3f);
         DialoguePanel.instance.Hide(1);
+        Debug.Log("말풍선 꺼짐");
     }
 
 }
