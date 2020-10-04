@@ -17,7 +17,7 @@ public enum ProgressStatus
     E_GetBackMirror,
     E_GiveBackMirrorToTree,
     E_TalkWithCurrentDad,
-    E_GetCashCard,
+    E_GetCashNCard,
     E_GetAlcholBottle,
     E_PayedDone
 }
@@ -116,7 +116,12 @@ public class GameManager : MonoBehaviour
         img.color = color;
     }
 
-    public IEnumerator ILoadScene(string _sceneName, float _fadeOutTime, float _fadeIntTime, string _playerIn, System.Action callBack = null)  
+    public  void StartLoadSceneCor(string _sceneName, float _fadeOutTime, float _fadeInTime, string _playerIn, System.Action callBack = null)
+    {
+        StartCoroutine(ILoadScene(_sceneName, _fadeOutTime, _fadeInTime, _playerIn, callBack));
+    }
+
+    public IEnumerator ILoadScene(string _sceneName, float _fadeOutTime, float _fadeInTime, string _playerIn, System.Action callBack = null)  
     {
         yield return StartCoroutine(IFadeOut(_fadeOutTime));                      // 완전히 페이트 아웃 할 때 까지 대기
 
@@ -127,7 +132,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<SpriteRenderer>().sortingOrder = 3;
         locationPlayerIsIn = _playerIn;
 
-        StartCoroutine(IFadeIn(_fadeIntTime));
+        StartCoroutine(IFadeIn(_fadeInTime));
 
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == _sceneName);    // 씬 로드될 때 까지 대기
 

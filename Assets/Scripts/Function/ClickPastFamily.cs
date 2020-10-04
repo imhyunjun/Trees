@@ -12,7 +12,7 @@ public class ClickPastFamily : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity);
-            if (!hit || DialoguePanel.instance.isActiveAndEnabled) return; // 대화 중이면 클릭 안되게
+            if (!hit || DialoguePanel.instance.IsDialogueOn()) return; // 대화 중이면 클릭 안되게
             if (PlayerScan.instance.progressStatus == ProgressStatus.E_TalkWithTreeFirstTime && hit.collider.name == "PastMother")
             {
                 StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_11"));

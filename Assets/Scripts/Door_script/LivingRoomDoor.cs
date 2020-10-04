@@ -7,7 +7,9 @@ public class LivingRoomDoor : Door
     [SerializeField]
     private Father father;
     [SerializeField]
-    private CashCard cashCard;
+    private Card card;
+    [SerializeField]
+    private Cash cash;
     [SerializeField]
     private Front front;
 
@@ -20,8 +22,8 @@ public class LivingRoomDoor : Door
             if (status == ProgressStatus.E_GiveBackMirrorToTree)
             {
                 father.gameObject.SetActive(true); 
-                cashCard.gameObject.SetActive(true);
-
+                card.gameObject.SetActive(true);
+                cash.gameObject.SetActive(true);
                 StartCoroutine(DialogueManager.instance.IContinueDialogue("chapter_0"));
                 front.CanPass(false);                                         // 못나가게 막기
                 PlayerScan.instance.progressStatus = ProgressStatus.E_TalkWithCurrentDad;

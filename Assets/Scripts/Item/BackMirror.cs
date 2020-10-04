@@ -24,7 +24,7 @@ public class BackMirror : Item
         PlayerScan.instance.progressStatus = ProgressStatus.E_GiveBackMirrorToTree;
 
         PlayerMove.canMove = false;
-        StartCoroutine(GameManager.instance.ILoadScene("Prologue", 4f, 3f, "House", () =>
+        GameManager.instance.StartLoadSceneCor("Prologue", 4f, 3f, "House", () =>
         {
             Transform bed = FindObjectOfType<Bed>().transform;
             Transform jungsRoom = bed.parent;
@@ -33,6 +33,6 @@ public class BackMirror : Item
 
             // 일어나는 애니메이션
             PlayerMove.canMove = true;
-        }));
+        });
     }
 }

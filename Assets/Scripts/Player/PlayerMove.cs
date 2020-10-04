@@ -16,7 +16,7 @@ public class PlayerMove : MonoBehaviour
     private Animator playerAnim;       //플레이어 애니메이션
 
     public static bool canMove = true;
-   
+
     private void Start()
     {
         playerRigid = GetComponent<Rigidbody2D>();

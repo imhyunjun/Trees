@@ -150,6 +150,23 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         return false;                                               //하나라도 없으면 false;
     }
 
+    public bool IsPlayerHasItem(params System.Type[] args)
+    {
+        int count = 0;
+        foreach(Slot slot in slotList)
+        {
+            if (!slot.isSlotHasItem) break;
+            for(int i =0; i < args.Length; i++)
+            {
+                if (slot.hasItem.GetType() == args[i])
+                    count++;
+                if (count == args.Length)
+                    return true;
+            }
+        }
+        return false;
+    }
+
     /// <summary>
     /// 인벤토리에 물건들이 없는지
     /// </summary>
