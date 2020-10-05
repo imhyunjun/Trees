@@ -29,4 +29,9 @@ public class DialoguePanel : PanelSingletone<DialoguePanel>
         base.Hide(i);
         PlayerMove.canMove = true;
     }
+
+    private void Awake()
+    {
+        Debug.Log(transform.position);
+    }
 }

@@ -136,8 +136,19 @@ public class DialogueManager : MonoBehaviour
     /// <param name="_whoIsTalking"></param>    위치를 말하는 사람 기준으로 정하기
     public IEnumerator IShowDialogueBalloon(GameObject _whoIsTalking, string _dialogueOrder)
     {
-        dialogueBalloon.transform.position = _whoIsTalking.transform.position + new Vector3(x,y, 0);    //위치 조절 다른 방법..
-        Debug.Log(dialogueBalloon.transform.position);
+        //dialogueBalloon.transform.position = _whoIsTalking.transform.position + new Vector3(x,y, 0);    //위치 조절 다른 방법..
+        //dialogueBalloon.transform.position = _whoIsTalking.transform.position + new Vector3(10f, 10f, 0); -> 이게 왜 안되냐
+        //dialogueBalloon.transform.localPosition = _whoIsTalking.transform.position + new Vector3(10f, 10f, 0);
+        //dialogueBalloon.transform.position = Vector3.zero; ->원점하면 왜 원점아닌데가 원점이지 
+        //dialogueBalloon.GetComponent<RectTransform>().localPosition = _whoIsTalking.transform.position + new Vector3(10f, 10f, 0);
+        //Debug.Log(_whoIsTalking.transform.position);
+        //Debug.Log(dialogueBalloon.transform.position);
+        //Debug.Log(_whoIsTalking.transform.position + new Vector3(10f, 10f, 0));
+        //Debug.Log(dialogueBalloon.transform.localPosition);
+        //Debug.Log(dialogueBalloon.GetComponent<RectTransform>().position);
+        //Debug.Log(dialogueBalloon.GetComponent<RectTransform>().localPosition);
+
+
         DialoguePanel.instance.Show(1);
         dialogueBalloon.transform.GetChild(0).GetComponent<Text>().text = dialogueDic[_dialogueOrder][0];//말풍선은 대화 하나로 가정 ㅠㅠ 두개가 생겼다..
 

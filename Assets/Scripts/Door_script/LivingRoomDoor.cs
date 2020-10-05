@@ -28,22 +28,7 @@ public class LivingRoomDoor : Door
                 front.CanPass(false);                                         // 못나가게 막기
                 PlayerScan.instance.progressStatus = ProgressStatus.E_TalkWithCurrentDad;
             }
-            else if (status == ProgressStatus.E_PayedDone)
-            {
-                isOpened = false;
-                if (Inventory.instance.IsPlayerHasItem("Alcohol", "Card"))
-                {
-                    DialogueManager.instance.IShowDialogueBalloon(null, "chapter_8");
-                }
-                else if(Inventory.instance.IsPlayerHasItem("Alcohol"))              //술 안줬으면 술은?   , 두개 합친느건 나중에 생각
-                {
-                    DialogueManager.instance.IShowDialogueBalloon(null, "chapter_9");
-                }
-                else if(Inventory.instance.IsPlayerHasItem("Card"))                 //카드를 안줬으면 카드는?
-                {
-                    DialogueManager.instance.IShowDialogueBalloon(null, "chapter_10");
-                }
-            }
+           
             else
             {
                 isOpened = true;

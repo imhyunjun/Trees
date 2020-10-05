@@ -113,8 +113,8 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         Item clickedItem = item.GetComponent<Item>();
         foreach (Slot slot in slotList)
         {
-            if (!slot.isSlotHasItem)                                                 //슬롯이 비어있다면 아이템 정보 추가
-            {                                                                       //모든 슬롯이 꽉차이는 경우는 아직 x
+            if (!slot.isSlotHasItem)                                        //슬롯이 비어있다면 아이템 정보 추가
+            {                                                               //모든 슬롯이 꽉차이는 경우는 아직 x
                 slot.hasItem = clickedItem;
                 slot.hasItemSprite = clickedItem.itemSprite;
                 clickedItem.GetItem();                                      // 해당 아이템을 얻었을 때 발생하는 이벤트
@@ -155,7 +155,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         int count = 0;
         foreach(Slot slot in slotList)
         {
-            //if (!slot.isSlotHasItem) break;
+            if (!slot.isSlotHasItem) break;
             for(int i =0; i < args.Length; i++)
             {
                 if (slot.hasItem.GetType() == args[i])
@@ -166,7 +166,6 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         }
         return false;
     }
-
     /// <summary>
     /// 인벤토리에 물건들이 없는지
     /// </summary>
@@ -193,5 +192,27 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
             return true;                                            //모두 없으면 true
         else
             return false;                                           //하나라도 없으면 false;
+    }
+
+    /// <summary>
+    /// 아이템 재사용(다시 인벤토리로)
+    /// </summary>
+    /// <param name="_canUseAgain"></param>true면 재사용, false면 아님
+    public void ReUseItme(bool _canUseAgain, GameObject _gameObject) 
+    {
+        if(_canUseAgain)
+        {
+            Item clickedItem = _gameObject.GetComponent<Item>();
+            foreach (Slot slot in slotList)
+            {
+                if (!slot.isSlotHasItem)                                        //슬롯이 비어있다면 아이템 정보 추가
+                {                                                               //모든 슬롯이 꽉차이는 경우는 아직 x
+                    slot.hasItem = clickedItem;
+                    slot.hasItemSprite = clickedItem.itemSprite;
+                    clickedItem.GetItem();                                      // 해당 아이템을 얻었을 때 발생하는 이벤트
+                    break;
+                }
+            }
+        }
     }
 }
