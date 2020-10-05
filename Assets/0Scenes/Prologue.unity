@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8678043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -712,6 +712,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219239767}
   m_CullTransparentMesh: 0
+--- !u!1 &272466766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 272466767}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &272466767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272466766}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -75.28569, y: 5.0221057, z: -48.087616}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &299091687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,6 +2314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 743460590}
   - component: {fileID: 743460591}
+  - component: {fileID: 743460592}
   m_Layer: 0
   m_Name: Carpet
   m_TagString: Untagged
@@ -2331,6 +2362,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.069654, y: 6.9441824}
   m_EdgeRadius: 0
+--- !u!114 &743460592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743460589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 525d01d67b46f884e82710a8422212e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  father: {fileID: 1545729703}
 --- !u!1 &753937968
 GameObject:
   m_ObjectHideFlags: 0
@@ -3198,6 +3242,7 @@ MonoBehaviour:
   destinationName: 
   isOpened: 1
   playSfx: 0
+  marketOwner: {fileID: 1768675002}
 --- !u!61 &967843915
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4029,6 +4074,7 @@ GameObject:
   - component: {fileID: 1350586794}
   - component: {fileID: 1350586795}
   - component: {fileID: 1350586796}
+  - component: {fileID: 1350586797}
   m_Layer: 0
   m_Name: Alcohol
   m_TagString: Item
@@ -4113,11 +4159,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aaac68564ea6494284ec7fbbe2d55d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: "\uC220"
   isInInventory: 0
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: ca694582bc2783d45b6f5ef22c5868e3, type: 3}
   canInteractWith: Counter
-  counter: {fileID: 0}
+  counter: {fileID: 1250559353}
+  marketOwner: {fileID: 1768675002}
+--- !u!61 &1350586797
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350586793}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.45, y: 1.3666667}
+    newSize: {x: 1.45, y: 1.3666667}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.45, y: 1.3666667}
+  m_EdgeRadius: 0
 --- !u!1 &1412572181
 GameObject:
   m_ObjectHideFlags: 0
@@ -4418,6 +4491,8 @@ MonoBehaviour:
   dialogueBalloon: {fileID: 8678042}
   dialText: {fileID: 1990880485}
   nameText: {fileID: 313683920}
+  x: 140
+  y: 1
 --- !u!1 &1545729703
 GameObject:
   m_ObjectHideFlags: 0
@@ -4596,7 +4671,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650871034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0493, y: 0.0415, z: 0}
+  m_LocalPosition: {x: 0.02609, y: 0.0415, z: 0}
   m_LocalScale: {x: 0.099999994, y: 0.19999999, z: 1}
   m_Children: []
   m_Father: {fileID: 978749610}
@@ -5120,7 +5195,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5387,11 +5462,13 @@ MonoBehaviour:
   isInInventory: 0
   itemSprite: {fileID: -6962669613251080864, guid: bff9badb68345464686b33aec9cc5b06,
     type: 3}
-  canInteractWith: 
+  canInteractWith: Counter
   front: {fileID: 974108581}
   frontDoor: {fileID: 132984645}
-  alcohol: {fileID: 0}
-  plasticbagSprite: {fileID: 0}
+  alcohol: {fileID: 1350586793}
+  plasticbagSprite: {fileID: -2328204438550238909, guid: 611328eec8022904fa8585096d1a6050,
+    type: 3}
+  marketOwner: {fileID: 1768675002}
 --- !u!212 &1825641531
 SpriteRenderer:
   m_ObjectHideFlags: 0

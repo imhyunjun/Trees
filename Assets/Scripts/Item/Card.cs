@@ -12,6 +12,8 @@ public class Card : Item                //일단 카드로 생각하고 했어�
     private GameObject alcohol;             //술병
     [SerializeField]
     private Sprite plasticbagSprite;        //검은봉투스프라이트
+    [SerializeField]
+    private GameObject marketOwner;
 
     public override void GetItem()
     {
@@ -37,7 +39,7 @@ public class Card : Item                //일단 카드로 생각하고 했어�
     {
         yield return new WaitForSeconds(0.5f);
         //클릭사운드 추가
-        StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(null, "chapter_5"));   //말풍선.. 근데 두개 넘어가는 방식 알려주시면 수정
+        StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(marketOwner, "chapter_5"));   //말풍선.. 근데 두개 넘어가는 방식 알려주시면 수정
         alcohol.GetComponent<SpriteRenderer>().sprite = plasticbagSprite;                   //술 스프라이트 -> 검은봉투로 변경 일단 동시에
         PlayerScan.instance.progressStatus = ProgressStatus.E_PayedDone;
     }

@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
     private Image fadeImg;                                      //페이드 효과에 쓸 화면 색깔
     private Color tempColor;                                    //색 바꿀때 쓸 임시 색
 
-    public event SceneEventHandler ChangeSceneEvent;
 
     private void Awake()
     {

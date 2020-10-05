@@ -16,8 +16,12 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField]
     private GameObject dialogueBalloon;
+
     public Text dialText;
     public Text nameText;
+
+    public float x;
+    public float y;             //말풍선 위치 조절용 임시용
 
     void Awake()
     {
@@ -132,13 +136,14 @@ public class DialogueManager : MonoBehaviour
     /// <param name="_whoIsTalking"></param>    위치를 말하는 사람 기준으로 정하기
     public IEnumerator IShowDialogueBalloon(GameObject _whoIsTalking, string _dialogueOrder)
     {
-        //위치는 나중에~~
+        dialogueBalloon.transform.position = _whoIsTalking.transform.position + new Vector3(x,y, 0);    //위치 조절 다른 방법..
+        Debug.Log(dialogueBalloon.transform.position);
         DialoguePanel.instance.Show(1);
         dialogueBalloon.transform.GetChild(0).GetComponent<Text>().text = dialogueDic[_dialogueOrder][0];//말풍선은 대화 하나로 가정 ㅠㅠ 두개가 생겼다..
-        Debug.Log("말풍선 켜짐");
+
         yield return new WaitForSeconds(3f);
         DialoguePanel.instance.Hide(1);
-        Debug.Log("말풍선 꺼짐");
+
     }
 
 }

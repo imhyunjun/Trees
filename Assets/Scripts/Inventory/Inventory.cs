@@ -136,8 +136,8 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         int count = 0;
         foreach(Slot slot in slotList)
         {
-            if (!slot.isSlotHasItem)                                //인벤토리에 순서대로 있으므로 아이템이 없는 슬롯부터는 체크 안해도 됨
-                break;
+            //if (!slot.isSlotHasItem)                                //인벤토리에 순서대로 있으므로 아이템이 없는 슬롯부터는 체크 안해도 됨
+            //    break;
             for (int i = 0; i < args.Length; i ++)
             {
                 if (slot.hasItem.itemName == args[i])               //아이템이 있으면
@@ -155,7 +155,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         int count = 0;
         foreach(Slot slot in slotList)
         {
-            if (!slot.isSlotHasItem) break;
+            //if (!slot.isSlotHasItem) break;
             for(int i =0; i < args.Length; i++)
             {
                 if (slot.hasItem.GetType() == args[i])
