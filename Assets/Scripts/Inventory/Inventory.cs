@@ -34,6 +34,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                 switch (colliderTag)
                 {
                     case "Item":                                           // 맵에 있는 아이템 획득
+                        //소리가 있으면 소리 추가( 검은 봉투 ) 
 
                         Item clickedItem = hit.collider.GetComponent<Item>();
 
@@ -112,15 +113,14 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         foreach(Slot slot in slotList)
         {
             //if (!slot.isSlotHasItem)                                //인벤토리에 순서대로 있으므로 아이템이 없는 슬롯부터는 체크 안해도 됨
-            //    break;
+                //break;
             for (int i = 0; i < args.Length; i ++)
             {
                 if (slot.hasItem.itemName == args[i])               //아이템이 있으면
                     count++;                                        //count ++;
                 if (count == args.Length)                           //아이템이 다 있으면 true 반환
                     return true;
-            }
-           
+            } 
         }
         return false;                                               //하나라도 없으면 false;
     }
@@ -184,6 +184,32 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                     clickedItem.GetItem();
                     break;
                 }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 인벤토리의 아이템에 상호작용하는 물체 변경
+    /// </summary>
+    /// <param name="_item"></param>    Card 등등
+    /// <param name="_interactObject"></param>  앞으로 상호작용할 물체
+    public void ChangeInteractObjectInInven(string _item, string _interactObject)
+    {
+        foreach (Slot slot in slotList)
+        {
+            //if (slot.hasItem.name == _item)
+            //{
+            //    slot.hasItem.canInteractWith = _interactObject;
+            //    Debug.Log("1");
+            //}
+            //else if (slot == null)
+            //    continue;
+            if (slot.hasItem.itemName == null)
+                Debug.Log("3");
+            else
+            {
+                Debug.Log(slot.hasItem.itemName);
+                Debug.Log("1");
             }
         }
     }

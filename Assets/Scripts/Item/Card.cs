@@ -14,6 +14,8 @@ public class Card : Item                //일단 카드로 생각하고 했어�
     private Sprite plasticbagSprite;        //검은봉투스프라이트
     [SerializeField]
     private GameObject marketOwner;
+    [SerializeField]
+    private GameObject father;
 
     public override void GetItem()
     {
@@ -36,6 +38,19 @@ public class Card : Item                //일단 카드로 생각하고 했어�
             alcohol.GetComponent<SpriteRenderer>().sprite = plasticbagSprite;                   //술 스프라이트 -> 검은봉투로 변경 일단 동시에
             Inventory.instance.ReUseItem(true, gameObject);
             PlayerScan.instance.progressStatus = ProgressStatus.E_PayedDone;
+        }
+        else if (PlayerScan.instance.progressStatus == ProgressStatus.E_PayedDone)
+        {
+            //놓는 사운드 추가
+            gameObject.SetActive(true);
+            Vector3 tempvec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            tempvec.z = 0;
+            gameObject.transform.position = tempvec;
+            if (Inventory.instance.IsPlayerDoesntHaveItem("술"))
+            {
+                DialogueManager.instance.IShowDialogueBalloon(father, "chapter_7");              // 네 방으로 들어가
+                PlayerScan.instance.progressStatus = ProgressStatus.E_ErrandFinished;
+            }
         }
     }
 }
