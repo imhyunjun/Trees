@@ -158,13 +158,15 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                 break;
             for (int i = 0; i < args.Length; i++)
             {
-                if (slot.hasItem.itemName == args[i])               //아이템이 있으면
+                if (slot.hasItem != null && slot.hasItem.itemName == args[i])               //아이템이 있으면
                     count++;                                        //count ++;
             }
             
         }
-
-        return count == 0;              // 모두 없으면 true 하나라도 없으면 false
+        if (count == 0)
+            return true;
+        else                    // 모두 없으면 true 하나라도 없으면 false
+            return false;
     }
 
     /// <summary>
@@ -197,19 +199,9 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
     {
         foreach (Slot slot in slotList)
         {
-            //if (slot.hasItem.name == _item)
-            //{
-            //    slot.hasItem.canInteractWith = _interactObject;
-            //    Debug.Log("1");
-            //}
-            //else if (slot == null)
-            //    continue;
-            if (slot.hasItem.itemName == null)
-                Debug.Log("3");
-            else
+            if(slot.hasItem != null)
             {
-                Debug.Log(slot.hasItem.itemName);
-                Debug.Log("1");
+                slot.hasItem.canInteractWith = _interactObject;
             }
         }
     }
