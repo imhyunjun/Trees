@@ -39,7 +39,7 @@ public class ClickPastFamily : MonoBehaviour
         AudioSource audio = SoundManager.PlaySFX("Siren", true);
         backMirror.SetActive(true);  // 백미러등장
         yield return new WaitForSeconds(1.5f);                                                              //임시로 끝나는거 설정
-        audio.Stop();
+        if(audio != null) audio.Stop();
     }
 }
 

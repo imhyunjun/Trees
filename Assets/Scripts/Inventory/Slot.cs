@@ -5,34 +5,51 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    public Sprite slotDefaultSprite;        //슬록 기본 이미지
-    public Sprite hasItemSprite;            //슬롯이 가지고 있는 아이템 이미지
-    Color slotColor;                        //아이템 투명도 조절(클릭)
-    public Color tempColor;                 //임시 칼라 이것으로 직접 조절
+    private Image image;                   // 아이템 이미지 컴퍼넌트
+    private Sprite slotDefaultSprite;        //슬롯 기본 이미지
+
     public bool isSlotHasItem => hasItem != null;  //슬롯에 아이템이 있는지
     public Item hasItem;              //가지고 있는 아이템
 
     private void Awake()
     {
-        slotDefaultSprite = gameObject.transform.GetChild(0).GetComponent<Image>().sprite;
-        hasItemSprite = null;
+        image = transform.GetChild(0).GetComponent<Image>();
+        slotDefaultSprite = image.sprite;
         hasItem = null;
-        slotColor = gameObject.transform.GetChild(0).GetComponent<Image>().color;
-        tempColor = slotColor;
     }
 
-    private void Update()
+    public void OnClick()   // 슬롯 버튼이 눌렸을 때
     {
-        if(isSlotHasItem)                                   
-        {
-            gameObject.transform.GetChild(0).GetComponent<Image>().sprite = hasItemSprite;      //아이템 가지고 있으면 아이템 이미지
-        }
-        else
-        {
-            gameObject.transform.GetChild(0).GetComponent<Image>().sprite = slotDefaultSprite;  //없으면 기본 이미지
-        }
-
-        slotColor = tempColor;
-        gameObject.transform.GetChild(0).GetComponent<Image>().color = slotColor;
+        Inventory.instance.SelectSlot(this);
     }
+
+    public void Select()      // 슬롯이 선택 되었을 때
+    {
+        if (isSlotHasItem)
+        {
+            Color color = image.color;
+            color.a = 0.5f;
+            image.color = color;
+        }
+    }
+
+    public void DeSelect()      // 슬롯 선택이 해지되었을 때
+    {
+        Color color = image.color;
+        color.a = 1f;
+        image.color = color;
+    }
+
+    public void GetItem(Item item)      // 슬롯에 아이템이 들어왔을 때
+    {
+        hasItem = item;
+        image.sprite = item.itemSprite;
+    }
+
+    public void UseItem()           // 슬롯에 있는 아이템을 사용했을 때
+    {
+        hasItem = null;
+        image.sprite = slotDefaultSprite;
+    }
+
 }

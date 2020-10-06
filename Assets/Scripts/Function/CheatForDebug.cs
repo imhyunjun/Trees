@@ -18,9 +18,18 @@ public class CheatForDebug : DontDestroy<CheatForDebug>
     [ContextMenuItem("DreamMap", "ToDreamMap")]
     private string sceneName;
 
-    [Header("스폰할 아이템 프리팹 넣고 스폰 버튼 클릭")]
+    private enum Items
+    {
+        BackMirror,
+        MarketOwner
+    }
+
     [SerializeField]
-    private GameObject itemToSpawn;
+    private GameObject[] itemArray;
+
+    [Header("스폰할 아이템 선택하고 스폰 버튼 클릭")]
+    [SerializeField]
+    private Items items;
 
     private void Update()
     {
@@ -50,13 +59,16 @@ public class CheatForDebug : DontDestroy<CheatForDebug>
 
     public void SpawItem()
     {
-        if (itemToSpawn == null)
+        if(itemArray.Length > (int)items)
         {
-            Debug.LogError("스폰할 아이템 프리팹을 할당해주세요!!");
-            return;
+            GameObject gameObject = Instantiate(itemArray[(int)items], transform);
+            gameObject.transform.position = GameManager.instance.player.transform.position;
+            gameObject.SetActive(true);
         }
-        GameObject gameObject = Instantiate(itemToSpawn, transform);
-        gameObject.transform.position = GameManager.instance.player.transform.position;
-        gameObject.SetActive(true);
+        else
+        {
+            Debug.Log("ItemArray에 할당되어 있는지 확인하세요!");
+        }
+
     }
 }

@@ -16,12 +16,12 @@ public class Item : MonoBehaviour
         itemSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
     }
 
-    public virtual void GetItem() // 해당 아이템을 얻었을 때 실행되는 함수
+    public virtual void GetItem()
     {
         isInInventory = true;
     }
 
-    public virtual void UseItem() // 해당 아이템을 사용했을 때 실행되는 함수
+    public virtual void UseItem()
     {
         isInInventory = false;
     }
