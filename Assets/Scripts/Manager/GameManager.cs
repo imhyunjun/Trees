@@ -20,7 +20,8 @@ public enum ProgressStatus
     E_GetCashNCard,
     E_GetAlcholBottle,
     E_PayedDone,
-    E_ErrandFinished
+    E_ErrandFinished,
+    E_JungWannaKillFather
 }
 
 public delegate void SceneEventHandler(bool _changeScene);

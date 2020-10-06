@@ -21,14 +21,18 @@ public class LivingRoomDoor : Door
         {
             if (status == ProgressStatus.E_GiveBackMirrorToTree)
             {
-                father.gameObject.SetActive(true); 
+                father.gameObject.SetActive(true);
                 card.gameObject.SetActive(true);
                 cash.gameObject.SetActive(true);
                 StartCoroutine(DialogueManager.instance.IContinueDialogue("chapter_0"));
                 front.CanPass(false);                                         // 못나가게 막기
                 PlayerScan.instance.progressStatus = ProgressStatus.E_TalkWithCurrentDad;
             }
-           
+            else if (status == ProgressStatus.E_ErrandFinished)
+            {
+                isOpened = false;
+                StartCoroutine(DialogueManager.instance.IContinueDialogue("chapter_14"));               //나가기 싫어..잠이나 자자
+            }
             else
             {
                 isOpened = true;

@@ -20,12 +20,21 @@ public class Bed : NPC
         }
         else if(status == ProgressStatus.E_EatMedicine)
         {
-            PlayerMove.canMove = false;
-            SoundManager.PlaySFX("lying-on-bed");
-            GetComponent<SpriteRenderer>().sprite = sleepingJung;
-            PlayerScan.instance.GetComponent<SpriteRenderer>().sortingOrder = -1;
-            GameManager.instance.StartLoadSceneCor("DreamMap", 5f, 2f, "DreamMap", () => { PlayerMove.canMove = true; });
+            GoToDreamMap();
             PlayerScan.instance.progressStatus = ProgressStatus.E_Sleep;
         }
+        else if(status == ProgressStatus.E_ErrandFinished)
+        {
+            GoToDreamMap();
+        }
+    }
+
+    private void GoToDreamMap()
+    {
+        PlayerMove.canMove = false;
+        SoundManager.PlaySFX("lying-on-bed");
+        GetComponent<SpriteRenderer>().sprite = sleepingJung;
+        PlayerScan.instance.GetComponent<SpriteRenderer>().sortingOrder = -1;
+        GameManager.instance.StartLoadSceneCor("DreamMap", 5f, 2f, "DreamMap", () => { PlayerMove.canMove = true; });
     }
 }

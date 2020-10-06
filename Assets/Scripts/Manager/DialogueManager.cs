@@ -154,9 +154,12 @@ public class DialogueManager : MonoBehaviour
         //Debug.Log(dialogueBalloon.GetComponent<RectTransform>().position);
         //Debug.Log(dialogueBalloon.GetComponent<RectTransform>().localPosition);
 
-
         DialoguePanel.instance.Show(1);
-        dialogueBalloon.transform.GetChild(0).GetComponent<Text>().text = dialogueDic[_dialogueOrder][0];//말풍선은 대화 하나로 가정 ㅠㅠ 두개가 생겼다..
+        for (int i = 0; i < dialogueDic[_dialogueOrder].Count; i++)
+        {
+            dialogueBalloon.transform.GetChild(0).GetComponent<Text>().text = dialogueDic[_dialogueOrder][i];//말풍선은 대화 하나로 가정 ㅠㅠ 두개가 생겼다..
+            yield return new WaitForSeconds(1f);
+        }
 
         yield return new WaitForSeconds(3f);
         DialoguePanel.instance.Hide(1);

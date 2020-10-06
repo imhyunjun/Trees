@@ -17,5 +17,11 @@ public class Tree : NPC
         {
             StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_15")); // 뭐 좀 가져 왔니?
         }
+        else if(status == ProgressStatus.E_ErrandFinished)
+        {
+            StartCoroutine(DialogueManager.instance.IContinueDialogue("chapter_15")); // 어디 다녀왔어~~?
+            PlayerScan.instance.progressStatus = ProgressStatus.E_JungWannaKillFather;
+            //문 여는 소리
+        }
     }
 }
