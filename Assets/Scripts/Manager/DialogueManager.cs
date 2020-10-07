@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
         {
             instanced = this;
         }
-        else if (instanced != this)
+        else
         {
             Destroy(gameObject);
         }

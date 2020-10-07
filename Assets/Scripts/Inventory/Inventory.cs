@@ -27,6 +27,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (DialoguePanel.instance.IsDialogueOn()) return;           // 대화 중에는 클릭 안되게
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity);
             if (hit.collider != null)    
             {
