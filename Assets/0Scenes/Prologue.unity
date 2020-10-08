@@ -4733,7 +4733,7 @@ GameObject:
   - component: {fileID: 1650871036}
   - component: {fileID: 1650871038}
   - component: {fileID: 1650871037}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
