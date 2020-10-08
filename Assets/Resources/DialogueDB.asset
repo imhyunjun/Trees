@@ -252,3 +252,6 @@ MonoBehaviour:
   - order: chapter_15
     talking: "\uB098\uBB34"
     dialogue: "\uB0A0\uCE74\uB86D\uAC8C \uAE68\uC9C4 \uC220\uBCD1."
+  - order: asdfasdf
+    talking: a
+    dialogue: a

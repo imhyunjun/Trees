@@ -62,14 +62,12 @@ public class DialogueManager : MonoBehaviour
             {
                 dialogueList.Add(dialogueDB.dataArray[i].Dialogue.ToString());
                 dialogueNameList.Add(dialogueDB.dataArray[i].Talking.ToString());
+
                 dialogueDic.Add(dialogueDB.dataArray[i].Order.ToString(), dialogueList);
                 dialogueNameDic.Add(dialogueDB.dataArray[i].Order.ToString(), dialogueNameList);
                 i++;
             }
         }                                           //dic 초기화
-
-
-        Debug.Log(dialogueDic["chapter_10"][0]);
         
     }
 
