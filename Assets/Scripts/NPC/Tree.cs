@@ -9,17 +9,17 @@ public class Tree : NPC
         ProgressStatus status = PlayerScan.instance.progressStatus;
         if (status < ProgressStatus.E_GetBackMirror)
         {
-            StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_10"));
+            DialogueManager.instance.PlayDialogue("prologue_10");
             if (PlayerScan.instance.progressStatus == ProgressStatus.E_Sleep)
                 PlayerScan.instance.progressStatus = ProgressStatus.E_TalkWithTreeFirstTime; // 나무와 첫 대화 후 과거 방 문 열림
         }
         else if(status == ProgressStatus.E_GetBackMirror)
         {
-            StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_15")); // 뭐 좀 가져 왔니?
+            DialogueManager.instance.PlayDialogue("prologue_15"); // 뭐 좀 가져 왔니?
         }
         else if(status == ProgressStatus.E_ErrandFinished)
         {
-            StartCoroutine(DialogueManager.instance.IContinueDialogue("chapter_15")); // 어디 다녀왔어~~?
+            DialogueManager.instance.PlayDialogue("chapter_15"); // 어디 다녀왔어~~?
             PlayerScan.instance.progressStatus = ProgressStatus.E_JungWannaKillFather;
             //문 여는 소리
         }

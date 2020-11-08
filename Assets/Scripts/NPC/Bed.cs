@@ -12,11 +12,11 @@ public class Bed : NPC
         ProgressStatus status = PlayerScan.instance.progressStatus;
         if(status == ProgressStatus.E_Start)
         {
-            StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_5"));
+            DialogueManager.instance.PlayDialogue("prologue_5");
         }
         else if(status == ProgressStatus.E_ChangeClothes)
         {
-            StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_6"));
+            DialogueManager.instance.PlayDialogue("prologue_6");
         }
         else if(status == ProgressStatus.E_EatMedicine)
         {

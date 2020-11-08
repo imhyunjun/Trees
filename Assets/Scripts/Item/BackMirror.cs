@@ -18,7 +18,8 @@ public class BackMirror : Item
 
     private IEnumerator UseBackMirror()
     {
-        yield return StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_16"));  // 대화 끝날 때 까지 기다린 후
+        DialogueManager.instance.PlayDialogue("prologue_16");
+        yield return new WaitUntil(()=> DialogueManager.instance.playDialogueCor == null);  // 대화 끝날 때 까지 기다린 후
 
         GameManager.instance.treeGrowStatus++;     // 나무 성장 
         PlayerScan.instance.progressStatus = ProgressStatus.E_GiveBackMirrorToTree;

@@ -13,7 +13,7 @@ public class Front : MonoBehaviour
         {
             ProgressStatus status = PlayerScan.instance.progressStatus;
             if (status == ProgressStatus.E_Start)
-                StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_3")); // 처음 들어올 때는 방으로 들어가자고 말함
+                DialogueManager.instance.PlayDialogue("prologue_3"); // 처음 들어올 때는 방으로 들어가자고 말함
         }
     }
 
@@ -33,9 +33,9 @@ public class Front : MonoBehaviour
         {
             ProgressStatus status = PlayerScan.instance.progressStatus;
             if (status < ProgressStatus.E_Sleep) // 다시 나가려고 하면 아빠가 오기전에 방으로 들어가자고 말함
-                StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_4"));
+                DialogueManager.instance.PlayDialogue("prologue_4");
             else if (status == ProgressStatus.E_TalkWithCurrentDad)
-                StartCoroutine(DialogueManager.instance.IContinueDialogue("chapter_1")); // 카드를 챙기자고 말함
+                DialogueManager.instance.PlayDialogue("chapter_1"); // 카드를 챙기자고 말함
         }
     }
 

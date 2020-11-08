@@ -12,6 +12,6 @@ public class ToSchoolDoor : Door
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (PlayerScan.instance.progressStatus == ProgressStatus.E_GetCashNCard)
-            StartCoroutine(DialogueManager.instance.IContinueDialogue("chapter_2"));         // 우선 슈퍼에 가야해
+            DialogueManager.instance.PlayDialogue("chapter_2");  // 우선 슈퍼에 가야해
     }
 }

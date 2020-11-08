@@ -68,6 +68,8 @@ public class DialogueManager : MonoBehaviour
                 i++;
             }
         }                                           //dic 초기화
+
+
         
     }
 
@@ -75,34 +77,43 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        StartCoroutine(PlayText("prologue_0"));
+        PlayDialogue("prologue_0");
 
         ButtonPanel.instance.SetUp(() =>
         {
             StartCoroutine(GameManager.instance.IFadeIn(3f));
-            StartCoroutine(IContinueDialogue("prologue_2"));                                            //혼잣말 시작
+            PlayDialogue("prologue_2");                                 //혼잣말 시작
         }, () =>
         {
-            StartCoroutine(PlayText("prologue_1"));
+            PlayDialogue("prologue_1");
         });
-
     }
 
-    public IEnumerator PlayText(string _dialogueOrder)                 //시스템과 대화할 때 나오는 경우 - 왜 시스템만 했을까 그분이
+    //public IEnumerator PlayText(string _dialogueOrder)                 // 대화를 한번만 할 때
+    //{
+    //    DialoguePanel.instance.Show(0);
+    //    dialText.text = null;
+    //    nameText.text = dialogueNameDic[_dialogueOrder][0];
+    //    string dialTxt = dialogueDic[_dialogueOrder][0]; // 한 글자씩 나오게 하는 코드
+    //    foreach (char c in dialTxt)
+    //    {
+    //        SoundManager.PlaySFX("Text_typing");
+    //        dialText.text += c;
+    //        yield return new WaitForSeconds(0.05f);
+    //    }
+
+    //}
+
+    private Coroutine _playDialogueCor = null;
+    public Coroutine playDialogueCor => _playDialogueCor;
+    public void PlayDialogue(string _dialogueOrder) 
     {
-        DialoguePanel.instance.Show(0);
-        dialText.text = null;
-        nameText.text = dialogueNameDic[_dialogueOrder][0];
-        string dialTxt = dialogueDic[_dialogueOrder][0]; // 한 글자씩 나오게 하는 코드
-        foreach (char c in dialTxt)
-        {
-            SoundManager.PlaySFX("Text_typing");
-            dialText.text += c;
-            yield return new WaitForSeconds(0.05f);
-        }
+        if (_playDialogueCor != null)
+            StopCoroutine(_playDialogueCor);
+        _playDialogueCor = StartCoroutine(IContinueDialogue(_dialogueOrder));
     }
 
-    public IEnumerator IContinueDialogue(string _dialogueOrder) 
+    private IEnumerator IContinueDialogue(string _dialogueOrder) 
     {
         DialoguePanel.instance.Show(0);
         int i = 0;
@@ -130,8 +141,8 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return)); //다음 창 바로 뜨지 않게 다시 엔터키 전까지 기다리게 하기
             dialText.text = null;
         }
-
         DialoguePanel.instance.Hide(0);
+        _playDialogueCor = null;
     }
 
     /// <summary>

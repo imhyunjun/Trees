@@ -13,7 +13,7 @@ public class PastRoomDoor : Door
     {
         if (collision.gameObject.CompareTag("Player") && !isOpened)
         {
-            StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_17"));   // 아직 들어갈 수 없다
+            DialogueManager.instance.PlayDialogue("prologue_17");   // 아직 들어갈 수 없다
         }
     }
 }

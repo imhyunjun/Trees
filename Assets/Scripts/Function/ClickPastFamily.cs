@@ -15,17 +15,17 @@ public class ClickPastFamily : MonoBehaviour
             if (!hit || DialoguePanel.instance.IsDialogueOn()) return; // 대화 중이면 클릭 안되게
             if (PlayerScan.instance.progressStatus == ProgressStatus.E_TalkWithTreeFirstTime && hit.collider.name == "PastMother")
             {
-                StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_11"));
+                DialogueManager.instance.PlayDialogue("prologue_11");
                 PlayerScan.instance.progressStatus = ProgressStatus.E_TalkWithPastMom;
             }
             else if (PlayerScan.instance.progressStatus == ProgressStatus.E_TalkWithPastMom && hit.collider.name == "PastJung")
             {
-                StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_13"));
+                DialogueManager.instance.PlayDialogue("prologue_13");
                 PlayerScan.instance.progressStatus = ProgressStatus.E_TalkWithPastJung;
             }
             else if (PlayerScan.instance.progressStatus == ProgressStatus.E_TalkWithPastJung && hit.collider.name == "PastFather")
             {
-                StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_14"));
+                DialogueManager.instance.PlayDialogue("prologue_14");
                 StartCoroutine(TalkWithFather());
                 PlayerScan.instance.progressStatus = ProgressStatus.E_TalkWithPastDad;
             }
@@ -34,7 +34,8 @@ public class ClickPastFamily : MonoBehaviour
 
     IEnumerator TalkWithFather()
     {
-        yield return StartCoroutine(DialogueManager.instance.IContinueDialogue("prologue_14"));             //아빠 대화 끝나고 
+        DialogueManager.instance.PlayDialogue("prologue_14");
+        yield return new WaitUntil(() => DialogueManager.instance.playDialogueCor == null);             //아빠 대화 끝나고 
         yield return new WaitForSeconds(1.5f);                                                              //1.5초 후에
         AudioSource audio = SoundManager.PlaySFX("Siren", true);
         backMirror.SetActive(true);  // 백미러등장
