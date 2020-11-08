@@ -307,6 +307,8 @@ MonoBehaviour:
   destinationName: 
   isOpened: 1
   playSfx: 1
+  Jung: {fileID: 1895607648}
+  Father: {fileID: 1545729703}
 --- !u!1 &136598288
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,6 +595,7 @@ MonoBehaviour:
   destinationName: House
   isOpened: 0
   playSfx: 1
+  Father: {fileID: 1545729703}
 --- !u!1 &219239767
 GameObject:
   m_ObjectHideFlags: 0

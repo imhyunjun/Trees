@@ -170,29 +170,13 @@ public class DialogueManager : MonoBehaviour
     /// <param name="_whoIsTalking"></param>    위치를 말하는 사람 기준으로 정하기
     public IEnumerator IShowDialogueBalloon(GameObject _whoIsTalking, string _dialogueOrder)
     {
-        //dialogueBalloon.transform.position = _whoIsTalking.transform.position + new Vector3(x,y, 0);    //위치 조절 다른 방법..
-        //dialogueBalloon.transform.position = _whoIsTalking.transform.position + new Vector3(10f, 10f, 0); -> 이게 왜 안되냐
-        //dialogueBalloon.transform.localPosition = _whoIsTalking.transform.position + new Vector3(10f, 10f, 0);
-        //dialogueBalloon.transform.position = Vector3.zero; ->원점하면 왜 원점아닌데가 원점이지 
-        //dialogueBalloon.GetComponent<RectTransform>().localPosition = _whoIsTalking.transform.position + new Vector3(10f, 10f, 0);
-        //Debug.Log(_whoIsTalking.transform.position);
-        //Debug.Log(dialogueBalloon.transform.position);
-        //Debug.Log(_whoIsTalking.transform.position + new Vector3(10f, 10f, 0));
-        //Debug.Log(dialogueBalloon.transform.localPosition);
-        //Debug.Log(dialogueBalloon.GetComponent<RectTransform>().position);
-        //Debug.Log(dialogueBalloon.GetComponent<RectTransform>().localPosition);
-
-        //Vector2 screenPoint = Camera.main.WorldToScreenPoint(_whoIsTalking.transform.position);
-        //Debug.Log(screenPoint);
-        //dialogueBalloon.transform.localPosition = screenPoint;
-
-
         Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(_whoIsTalking.transform.position);
         Vector2 WorldObject_ScreenPosition = new Vector2(
         ((ViewportPosition.x * cavasRect.sizeDelta.x) - (cavasRect.sizeDelta.x * 0.5f)),
         ((ViewportPosition.y * cavasRect.sizeDelta.y) - (cavasRect.sizeDelta.y * 0.5f)));
-        dialogueBalloon.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition;
-
+        dialogueBalloon.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition + new Vector2(0f, 100f);
+        Debug.Log(dialogueBalloon.GetComponent<RectTransform>().anchoredPosition);
+        Debug.Log(WorldObject_ScreenPosition);
 
         DialoguePanel.instance.Show(1);
         for (int i = 0; i < dialogueDic[_dialogueOrder].Count; i++)
