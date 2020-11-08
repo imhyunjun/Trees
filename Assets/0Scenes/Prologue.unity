@@ -4566,6 +4566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueBalloon: {fileID: 8678042}
+  cavasRect: {fileID: 906922047}
   dialText: {fileID: 1990880485}
   nameText: {fileID: 313683920}
   x: 140

@@ -16,6 +16,8 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField]
     private GameObject dialogueBalloon;
+    [SerializeField]
+    private RectTransform cavasRect;
 
     public Text dialText;
     public Text nameText;
@@ -67,17 +69,14 @@ public class DialogueManager : MonoBehaviour
                 dialogueNameDic.Add(dialogueDB.dataArray[i].Order.ToString(), dialogueNameList);
                 i++;
             }
-        }                                           //dic 초기화
-
-
-        
+        }                                           //dic 초기화 
     }
 
     IEnumerator Start()
     {
         yield return new WaitForSeconds(1f);
 
-        PlayDialogue("prologue_0");
+        PlayDialogue("prologue_0", true);
 
         ButtonPanel.instance.SetUp(() =>
         {
@@ -85,53 +84,73 @@ public class DialogueManager : MonoBehaviour
             PlayDialogue("prologue_2");                                 //혼잣말 시작
         }, () =>
         {
-            PlayDialogue("prologue_1");
+            PlayDialogue("prologue_1", true);
         });
     }
 
-    //public IEnumerator PlayText(string _dialogueOrder)                 // 대화를 한번만 할 때
-    //{
-    //    DialoguePanel.instance.Show(0);
-    //    dialText.text = null;
-    //    nameText.text = dialogueNameDic[_dialogueOrder][0];
-    //    string dialTxt = dialogueDic[_dialogueOrder][0]; // 한 글자씩 나오게 하는 코드
-    //    foreach (char c in dialTxt)
-    //    {
-    //        SoundManager.PlaySFX("Text_typing");
-    //        dialText.text += c;
-    //        yield return new WaitForSeconds(0.05f);
-    //    }
-
-    //}
 
     private Coroutine _playDialogueCor = null;
     public Coroutine playDialogueCor => _playDialogueCor;
-    public void PlayDialogue(string _dialogueOrder) 
+    private bool skip = false;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return) && _playDialogueCor != null)
+            skip = true;
+    }
+
+
+    public void PlayDialogue(string _dialogueOrder, bool isQuesstion = false)  // isQuestion이 true이면 마지막에 엔터를 쳐도 대화창이 사라지지 않음
     {
         if (_playDialogueCor != null)
             StopCoroutine(_playDialogueCor);
-        _playDialogueCor = StartCoroutine(IContinueDialogue(_dialogueOrder));
+        if (isQuesstion)
+            _playDialogueCor = StartCoroutine(IQuestionDialogue(_dialogueOrder));
+        else
+            _playDialogueCor = StartCoroutine(IContinueDialogue(_dialogueOrder));
     }
 
-    private IEnumerator IContinueDialogue(string _dialogueOrder) 
+    private IEnumerator IQuestionDialogue(string _dialogueOrder)                // 시스템이 질문할 떄 사용
+    {
+        DialoguePanel.instance.Show(0);
+        dialText.text = null;
+        nameText.text = dialogueNameDic[_dialogueOrder][0];
+        string dialTxt = dialogueDic[_dialogueOrder][0]; 
+        skip = false;
+        foreach (char c in dialTxt)
+        {
+            if (skip)
+            {
+                dialText.text = dialTxt;
+                break;
+            }
+            SoundManager.PlaySFX("Text_typing");
+            dialText.text += c;
+            yield return new WaitForSeconds(0.05f);
+        }
+        _playDialogueCor = null;
+    }
+
+    private IEnumerator IContinueDialogue(string _dialogueOrder)  // 대화
     {
         DialoguePanel.instance.Show(0);
         int i = 0;
         while (i < dialogueDic[_dialogueOrder].Count)
         {
+            skip = false;
             string testText = null;
             nameText.text = dialogueNameDic[_dialogueOrder][i];
             dialText.text = null;
             string dialTxt = dialogueDic[_dialogueOrder][i];
             foreach (char c in dialTxt)
             {
-                SoundManager.PlaySFX("Text_typing");
-                bool stop = false;
-                if (stop == false)
+                if (skip)
                 {
-                    testText += c;
-                    stop = true;
+                    dialText.text = dialTxt;
+                    break;
                 }
+                SoundManager.PlaySFX("Text_typing");
+                testText += c;
                 dialText.text = testText;
                 yield return new WaitForSeconds(0.05f);
             }
@@ -162,6 +181,18 @@ public class DialogueManager : MonoBehaviour
         //Debug.Log(dialogueBalloon.transform.localPosition);
         //Debug.Log(dialogueBalloon.GetComponent<RectTransform>().position);
         //Debug.Log(dialogueBalloon.GetComponent<RectTransform>().localPosition);
+
+        //Vector2 screenPoint = Camera.main.WorldToScreenPoint(_whoIsTalking.transform.position);
+        //Debug.Log(screenPoint);
+        //dialogueBalloon.transform.localPosition = screenPoint;
+
+
+        Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(_whoIsTalking.transform.position);
+        Vector2 WorldObject_ScreenPosition = new Vector2(
+        ((ViewportPosition.x * cavasRect.sizeDelta.x) - (cavasRect.sizeDelta.x * 0.5f)),
+        ((ViewportPosition.y * cavasRect.sizeDelta.y) - (cavasRect.sizeDelta.y * 0.5f)));
+        dialogueBalloon.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition;
+
 
         DialoguePanel.instance.Show(1);
         for (int i = 0; i < dialogueDic[_dialogueOrder].Count; i++)

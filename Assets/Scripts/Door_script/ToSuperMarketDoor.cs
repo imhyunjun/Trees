@@ -9,7 +9,13 @@ public class ToSuperMarketDoor : Door
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+    }
+
+    public override void AfterPlayerArrived()
+    {
         if (PlayerScan.instance.progressStatus == ProgressStatus.E_GetCashNCard)
             StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(marketOwner, "chapter_3"));
     }
+
 }

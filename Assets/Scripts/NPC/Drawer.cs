@@ -16,7 +16,7 @@ public class Drawer : NPC
         {
             SoundManager.PlaySFX("drawer");
 
-            DialogueManager.instance.PlayDialogue("prologue_7");
+            DialogueManager.instance.PlayDialogue("prologue_7", true);
             ButtonPanel.instance.SetUp(() =>
             {
                 SoundManager.PlaySFX("re_water_gulp");
@@ -28,7 +28,7 @@ public class Drawer : NPC
         }
         else if (status == ProgressStatus.E_ErrandFinished)
         {
-            DialogueManager.instance.PlayDialogue("chapter_12");        //천원을 넣으시겠습니까?
+            DialogueManager.instance.PlayDialogue("chapter_12", true);        //천원을 넣으시겠습니까?
             ButtonPanel.instance.SetUp(() =>
             {
                 //효과음?
