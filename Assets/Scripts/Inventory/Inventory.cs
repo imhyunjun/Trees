@@ -31,6 +31,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity);
             if (hit.collider != null)    
             {
+                Debug.Log($"Inventory Dectect {hit.collider.gameObject.name}");
                 string colliderTag = hit.collider.transform.tag;
                 switch (colliderTag)
                 {
