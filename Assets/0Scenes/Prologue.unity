@@ -307,8 +307,6 @@ MonoBehaviour:
   destinationName: 
   isOpened: 1
   playSfx: 1
-  Jung: {fileID: 1895607648}
-  Father: {fileID: 1545729703}
 --- !u!1 &136598288
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +593,6 @@ MonoBehaviour:
   destinationName: House
   isOpened: 0
   playSfx: 1
-  Father: {fileID: 1545729703}
 --- !u!1 &219239767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2258,8 +2255,6 @@ MonoBehaviour:
   itemSprite: {fileID: -6962669613251080864, guid: bff9badb68345464686b33aec9cc5b06,
     type: 3}
   canInteractWith: 
-  front: {fileID: 974108581}
-  frontDoor: {fileID: 132984645}
 --- !u!212 &713967759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2381,7 +2376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525d01d67b46f884e82710a8422212e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  father: {fileID: 1545729703}
 --- !u!1 &753937968
 GameObject:
   m_ObjectHideFlags: 0
@@ -3510,10 +3504,6 @@ MonoBehaviour:
   destinationName: House
   isOpened: 1
   playSfx: 1
-  father: {fileID: 1545729707}
-  card: {fileID: 1825641530}
-  cash: {fileID: 713967758}
-  front: {fileID: 974108581}
 --- !u!1 &1122446762
 GameObject:
   m_ObjectHideFlags: 0
@@ -4243,8 +4233,6 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: ca694582bc2783d45b6f5ef22c5868e3, type: 3}
   canInteractWith: Counter
   counter: {fileID: 1250559353}
-  marketOwner: {fileID: 1768675002}
-  father: {fileID: 1545729703}
 --- !u!61 &1350586797
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4820,7 +4808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8cde12d5c6f4546b25cbba9cab80e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alcoholBottle: {fileID: 1350586793}
 --- !u!61 &1650871038
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5619,13 +5606,8 @@ MonoBehaviour:
   itemSprite: {fileID: -6962669613251080864, guid: bff9badb68345464686b33aec9cc5b06,
     type: 3}
   canInteractWith: Counter
-  front: {fileID: 974108581}
-  frontDoor: {fileID: 132984645}
-  alcohol: {fileID: 1350586793}
   plasticbagSprite: {fileID: -2328204438550238909, guid: 611328eec8022904fa8585096d1a6050,
     type: 3}
-  marketOwner: {fileID: 1768675002}
-  father: {fileID: 1545729703}
 --- !u!212 &1825641531
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6294,6 +6276,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c599b2c6bab87ea4e99950f13bec393f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 1545729703}
+  - {fileID: 713967755}
+  - {fileID: 1825641527}
+  - {fileID: 743460589}
+  - {fileID: 974108577}
+  - {fileID: 132984642}
+  - {fileID: 1350586793}
+  - {fileID: 1768675002}
   treeGrowStatus: 0
   fadeObject: {fileID: 1920140118}
   player: {fileID: 1895607648}

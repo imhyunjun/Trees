@@ -6,10 +6,6 @@ public class Alcohol : Item
 {
     [SerializeField]
     private GameObject counter;
-    [SerializeField]
-    private GameObject marketOwner;
-    [SerializeField]
-    private GameObject father;
 
     public override void UseItem()
     {
@@ -25,7 +21,7 @@ public class Alcohol : Item
             gameObject.transform.position = tempvec;
             if (Inventory.instance.IsPlayerDoesntHaveItem("카드"))
             {
-                DialogueManager.instance.IShowDialogueBalloon(father, "chapter_7");              // 네 방으로 들어가
+                DialogueManager.instance.IShowDialogueBalloon(GameManager.GetObject<Father>().gameObject, "chapter_7");              // 네 방으로 들어가
                 PlayerScan.instance.progressStatus = ProgressStatus.E_ErrandFinished;
             }
         }
@@ -34,7 +30,7 @@ public class Alcohol : Item
             gameObject.SetActive(true);
             gameObject.transform.SetParent(counter.transform);
             gameObject.transform.position = counter.transform.position;                                         //카운터 중간(나중에 확인)
-            StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(marketOwner, "chapter_4"));            //5천원 카드니?
+            StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(GameManager.instance.GetObject("MarketOwner"), "chapter_4"));            //5천원 카드니?
 
         }
     }

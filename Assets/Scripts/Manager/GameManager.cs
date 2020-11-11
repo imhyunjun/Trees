@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public enum ProgressStatus
 {
@@ -28,6 +29,9 @@ public delegate void SceneEventHandler(bool _changeScene);
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject[] objects;
+
     private static GameManager instanced;
     public static GameManager instance => instanced;
 
@@ -38,6 +42,9 @@ public class GameManager : MonoBehaviour
 
     private Image fadeImg;                                      //페이드 효과에 쓸 화면 색깔
     private Color tempColor;                                    //색 바꿀때 쓸 임시 색
+
+    private static Dictionary<Type, GameObject> objectTypeDic;
+    private static Dictionary<string, GameObject> objectNameDic;
 
 
     private void Awake()
@@ -59,6 +66,37 @@ public class GameManager : MonoBehaviour
         tempColor = fadeImg.color;
         tempColor.a = 1;
         fadeImg.color = tempColor;                      //시작시 이미지 검은 화면
+
+        InitializeObejctDic();
+    }
+
+    private void InitializeObejctDic()
+    {
+        objectTypeDic = new Dictionary<Type, GameObject>();
+        objectNameDic = new Dictionary<string, GameObject>();
+        for(int i = 0; i < objects.Length; i++)
+        {
+            MonoBehaviour mono = objects[i].GetComponent<MonoBehaviour>();
+            if (mono != null) // 별도의 클래스가 있다면 Type 딕셔너리에, 나중에 클래스로 검색
+                objectTypeDic.Add(mono.GetType(), objects[i]);
+            else
+                objectNameDic.Add(objects[i].gameObject.name, objects[i].gameObject); // 별도의 클래스가 없다면 Name 딕셔너리에, 나중에 이름으로 검색
+        }
+    }
+
+    public GameObject GetObject(string name) // 이름으로 검색  ex) 슈퍼마켓 아줌마는 따로 클래스가 없어서 이거 사용
+    {
+        if (objectNameDic.TryGetValue(name, out GameObject target))
+            return target;
+        Debug.LogError($"GameObject의 이름이 {name}인 오브젝트가 없습니다.");
+        return null;
+    }
+    public static T GetObject<T>() where T : MonoBehaviour // 클래스로 검색
+    {
+        if (objectTypeDic.TryGetValue(typeof(T), out GameObject target))
+            return (T)target.GetComponent<MonoBehaviour>();
+        Debug.LogError($"타입이 {typeof(T)}인 오브젝트가 없습니다.");
+        return default(T);
     }
 
 
