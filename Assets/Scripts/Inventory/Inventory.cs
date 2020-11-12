@@ -49,10 +49,15 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                 if (clickedSlot != null && clickedSlot.isSlotHasItem)                 // 아이템 사용
                 {
                     Item clickedSlotItem = clickedSlot.hasItem; 
-                    if (hit.collider.name == clickedSlotItem.canInteractWith)   //인벤토리에서 물건을 꺼내고 상호작용하는 물체와 이름이 같다면 아이템 사용
+                    if (clickedSlotItem.useType == Item.UseType.Interact && hit.collider.name == clickedSlotItem.canInteractWith)   //인벤토리에서 물건을 꺼내고 상호작용하는 물체와 이름이 같다면 아이템 사용
                     {
-                        clickedSlot.UseItem();
-                        clickedSlotItem.UseItem();
+                        if (clickedSlotItem.CanUse()) // 사용 가능하다면
+                        {
+                            clickedSlot.UseItem();
+                            clickedSlotItem.UseItem();
+                        }
+                        else
+                            clickedSlotItem.FailToUse(); // 사용 실패
                         SelectSlot(null);
                     }
                     else
@@ -80,6 +85,17 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         if(clickedSlot != null)   // 슬롯 선택
         {
             clickedSlot.Select();
+            if (clickedSlot.isSlotHasItem && clickedSlot.hasItem.useType == Item.UseType.Immediately) // 선택한 슬롯의 아이템이 즉시 사용하는 아이템이면
+            {
+                if (clickedSlot.hasItem.CanUse()) // 사용 가능하면
+                {
+                    clickedSlot.hasItem.UseItem();
+                    clickedSlot.UseItem();
+                }
+                else
+                    clickedSlot.hasItem.FailToUse();
+                SelectSlot(null);
+            }
         }
     }
 
@@ -118,7 +134,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                 //break;
             for (int i = 0; i < args.Length; i ++)
             {
-                if (slot.hasItem.itemName == args[i])               //아이템이 있으면
+                if (slot.isSlotHasItem && slot.hasItem.itemName == args[i])               //아이템이 있으면
                     count++;                                        //count ++;
                 if (count == args.Length)                           //아이템이 다 있으면 true 반환
                     return true;

@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     private Color tempColor;                                    //색 바꿀때 쓸 임시 색
 
     private static Dictionary<Type, GameObject> objectTypeDic;
-    private static Dictionary<string, GameObject> objectNameDic;
+    private Dictionary<string, GameObject> objectNameDic;
 
 
     private void Awake()

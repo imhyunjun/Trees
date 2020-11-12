@@ -225,10 +225,10 @@ Transform:
   m_Children:
   - {fileID: 974108579}
   - {fileID: 1545729704}
-  - {fileID: 713967756}
-  - {fileID: 1825641528}
   - {fileID: 743460590}
   - {fileID: 1157366336}
+  - {fileID: 713967756}
+  - {fileID: 1825641528}
   m_Father: {fileID: 470162517}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -646,7 +646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2210,7 +2210,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 98466824}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &713967757
 BoxCollider2D:
@@ -2254,6 +2254,7 @@ MonoBehaviour:
   isInInventory: 0
   itemSprite: {fileID: -6962669613251080864, guid: bff9badb68345464686b33aec9cc5b06,
     type: 3}
+  useType: 0
   canInteractWith: 
 --- !u!212 &713967759
 SpriteRenderer:
@@ -2336,7 +2337,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 98466824}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &743460591
 BoxCollider2D:
@@ -2351,7 +2352,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 6.2460117, y: -3.7926335}
+  m_Offset: {x: 6.20876, y: -3.7926335}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2362,7 +2363,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.069654, y: 6.9441824}
+  m_Size: {x: 9.995149, y: 6.9441824}
   m_EdgeRadius: 0
 --- !u!114 &743460592
 MonoBehaviour:
@@ -3127,7 +3128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3664,7 +3665,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 98466824}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1157366337
 CapsuleCollider2D:
@@ -4231,6 +4232,7 @@ MonoBehaviour:
   itemName: "\uC220"
   isInInventory: 0
   itemSprite: {fileID: 21300000, guid: ca694582bc2783d45b6f5ef22c5868e3, type: 3}
+  useType: 0
   canInteractWith: Counter
   counter: {fileID: 1250559353}
 --- !u!61 &1350586797
@@ -4887,7 +4889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5032,7 +5034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5228,7 +5230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5561,7 +5563,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 98466824}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1825641529
 BoxCollider2D:
@@ -5605,6 +5607,7 @@ MonoBehaviour:
   isInInventory: 0
   itemSprite: {fileID: -6962669613251080864, guid: bff9badb68345464686b33aec9cc5b06,
     type: 3}
+  useType: 0
   canInteractWith: Counter
   plasticbagSprite: {fileID: -2328204438550238909, guid: 611328eec8022904fa8585096d1a6050,
     type: 3}
@@ -6342,7 +6345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
