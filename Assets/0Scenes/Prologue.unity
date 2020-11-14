@@ -225,10 +225,10 @@ Transform:
   m_Children:
   - {fileID: 974108579}
   - {fileID: 1545729704}
-  - {fileID: 713967756}
-  - {fileID: 1825641528}
   - {fileID: 743460590}
   - {fileID: 1157366336}
+  - {fileID: 713967756}
+  - {fileID: 1825641528}
   m_Father: {fileID: 470162517}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -307,8 +307,6 @@ MonoBehaviour:
   destinationName: 
   isOpened: 1
   playSfx: 1
-  Jung: {fileID: 1895607648}
-  Father: {fileID: 1545729703}
 --- !u!1 &136598288
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +593,6 @@ MonoBehaviour:
   destinationName: House
   isOpened: 0
   playSfx: 1
-  Father: {fileID: 1545729703}
 --- !u!1 &219239767
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2213,7 +2210,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 98466824}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &713967757
 BoxCollider2D:
@@ -2257,9 +2254,8 @@ MonoBehaviour:
   isInInventory: 0
   itemSprite: {fileID: -6962669613251080864, guid: bff9badb68345464686b33aec9cc5b06,
     type: 3}
+  useType: 0
   canInteractWith: 
-  front: {fileID: 974108581}
-  frontDoor: {fileID: 132984645}
 --- !u!212 &713967759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2341,7 +2337,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 98466824}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &743460591
 BoxCollider2D:
@@ -2356,7 +2352,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 6.2460117, y: -3.7926335}
+  m_Offset: {x: 6.20876, y: -3.7926335}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2367,7 +2363,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.069654, y: 6.9441824}
+  m_Size: {x: 9.995149, y: 6.9441824}
   m_EdgeRadius: 0
 --- !u!114 &743460592
 MonoBehaviour:
@@ -2381,7 +2377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525d01d67b46f884e82710a8422212e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  father: {fileID: 1545729703}
 --- !u!1 &753937968
 GameObject:
   m_ObjectHideFlags: 0
@@ -3133,7 +3128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3510,10 +3505,6 @@ MonoBehaviour:
   destinationName: House
   isOpened: 1
   playSfx: 1
-  father: {fileID: 1545729707}
-  card: {fileID: 1825641530}
-  cash: {fileID: 713967758}
-  front: {fileID: 974108581}
 --- !u!1 &1122446762
 GameObject:
   m_ObjectHideFlags: 0
@@ -3674,7 +3665,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 98466824}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1157366337
 CapsuleCollider2D:
@@ -4241,10 +4232,9 @@ MonoBehaviour:
   itemName: "\uC220"
   isInInventory: 0
   itemSprite: {fileID: 21300000, guid: ca694582bc2783d45b6f5ef22c5868e3, type: 3}
+  useType: 0
   canInteractWith: Counter
   counter: {fileID: 1250559353}
-  marketOwner: {fileID: 1768675002}
-  father: {fileID: 1545729703}
 --- !u!61 &1350586797
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4820,7 +4810,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8cde12d5c6f4546b25cbba9cab80e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alcoholBottle: {fileID: 1350586793}
 --- !u!61 &1650871038
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4900,7 +4889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5045,7 +5034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5241,7 +5230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5574,7 +5563,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 98466824}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1825641529
 BoxCollider2D:
@@ -5618,14 +5607,10 @@ MonoBehaviour:
   isInInventory: 0
   itemSprite: {fileID: -6962669613251080864, guid: bff9badb68345464686b33aec9cc5b06,
     type: 3}
+  useType: 0
   canInteractWith: Counter
-  front: {fileID: 974108581}
-  frontDoor: {fileID: 132984645}
-  alcohol: {fileID: 1350586793}
   plasticbagSprite: {fileID: -2328204438550238909, guid: 611328eec8022904fa8585096d1a6050,
     type: 3}
-  marketOwner: {fileID: 1768675002}
-  father: {fileID: 1545729703}
 --- !u!212 &1825641531
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6294,6 +6279,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c599b2c6bab87ea4e99950f13bec393f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 1545729703}
+  - {fileID: 713967755}
+  - {fileID: 1825641527}
+  - {fileID: 743460589}
+  - {fileID: 974108577}
+  - {fileID: 132984642}
+  - {fileID: 1350586793}
+  - {fileID: 1768675002}
   treeGrowStatus: 0
   fadeObject: {fileID: 1920140118}
   player: {fileID: 1895607648}
@@ -6351,7 +6345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
