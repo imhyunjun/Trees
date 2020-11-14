@@ -33,6 +33,7 @@ public class Card : Item                //일단 카드로 생각하고 했어�
         {
             //놓는 사운드 추가
             gameObject.SetActive(true);
+            gameObject.transform.SetParent(null);   //부모 해제
             Vector3 tempvec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             tempvec.z = 0;
             gameObject.transform.position = tempvec;

@@ -134,7 +134,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                 //break;
             for (int i = 0; i < args.Length; i ++)
             {
-                if (slot.isSlotHasItem && slot.hasItem.itemName == args[i])               //아이템이 있으면
+                if (slot.hasItem != null && slot.hasItem.itemName == args[i])               //아이템이 있으면
                     count++;                                        //count ++;
                 if (count == args.Length)                           //아이템이 다 있으면 true 반환
                     return true;
@@ -151,7 +151,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
             if (!slot.isSlotHasItem) break;
             for(int i =0; i < args.Length; i++)
             {
-                if (slot.hasItem.GetType() == args[i])
+                if (slot.hasItem != null && slot.hasItem.GetType() == args[i])
                     count++;
                 if (count == args.Length)
                     return true;

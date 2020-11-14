@@ -16,6 +16,7 @@ public class Alcohol : Item
             Debug.Log("술 내려놓기");
             //놓는 사운드 추가
             gameObject.SetActive(true);
+            gameObject.transform.SetParent(null);
             Vector3 tempvec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             tempvec.z = 0;
             gameObject.transform.position = tempvec;
