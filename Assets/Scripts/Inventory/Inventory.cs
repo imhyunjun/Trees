@@ -49,11 +49,11 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                 if (clickedSlot != null && clickedSlot.isSlotHasItem)                 // 아이템 사용
                 {
                     Item clickedSlotItem = clickedSlot.hasItem; 
-                    if (clickedSlotItem.useType == Item.UseType.Interact && hit.collider.name == clickedSlotItem.canInteractWith)   //인벤토리에서 물건을 꺼내고 상호작용하는 물체와 이름이 같다면 아이템 사용
+                    if (hit.collider.name == clickedSlotItem.canInteractWith)   //인벤토리에서 물건을 꺼내고 상호작용하는 물체와 이름이 같다면 아이템 사용
                     {
                         if (clickedSlotItem.CanUse()) // 사용 가능하다면
                         {
-                            clickedSlot.UseItem();
+                            clickedSlot.UseItem(clickedSlotItem.useType);       //아이템 사용 타입에 맞게 사용
                             clickedSlotItem.UseItem();
                         }
                         else
@@ -90,7 +90,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                 if (clickedSlot.hasItem.CanUse()) // 사용 가능하면
                 {
                     clickedSlot.hasItem.UseItem();
-                    clickedSlot.UseItem();
+                    clickedSlot.UseItem(clickedSlot.hasItem.useType);
                 }
                 else
                     clickedSlot.hasItem.FailToUse();
@@ -217,7 +217,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
     {
         foreach (Slot slot in slotList)
         {
-            if(slot.hasItem != null)
+            if(slot.hasItem != null && slot.hasItem.name == _item)
             {
                 slot.hasItem.canInteractWith = _interactObject;
             }

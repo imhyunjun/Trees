@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/0Scenes/DreamMap.unity
     guid: d708103c6289ab049968e7dd86e8659e
-  - enabled: 1
-    path: Assets/0Scenes/Chapter1.unity
-    guid: c9f16e8b45393c44cbcd2e965f01a35e
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

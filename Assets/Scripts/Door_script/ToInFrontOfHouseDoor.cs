@@ -6,8 +6,6 @@ public class ToInFrontOfHouseDoor : Door
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        {
-            isOpened = true;
-        }
+        isOpened = true;
     }
 }
