@@ -2347,8 +2347,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 32, y: 18}
-    newSize: {x: 1.67, y: 2.41}
+    oldSize: {x: 1.15, y: 0.78333336}
+    newSize: {x: 1.15, y: 0.78333336}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -2373,8 +2373,6 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: f178c55df8ff427478d67011e4116f34, type: 3}
   useType: 0
   canInteractWith: 
-  front: {fileID: 974108581}
-  frontDoor: {fileID: 132984645}
 --- !u!212 &713967759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2414,12 +2412,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: f178c55df8ff427478d67011e4116f34, type: 3}
+  m_Sprite: {fileID: 1469357384101705259, guid: f178c55df8ff427478d67011e4116f34,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.67, y: 2.41}
+  m_Size: {x: 1.15, y: 0.78333336}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3855,8 +3854,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 32, y: 18}
-    newSize: {x: 1.67, y: 2.41}
+    oldSize: {x: 1.2333333, y: 0.8}
+    newSize: {x: 1.2333333, y: 0.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -3924,12 +3923,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 70a12da3b1a0252489f327f7966eea36, type: 3}
+  m_Sprite: {fileID: -411467850244736149, guid: 70a12da3b1a0252489f327f7966eea36,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.67, y: 2.41}
+  m_Size: {x: 1.2333333, y: 0.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5737,8 +5737,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 32, y: 18}
-    newSize: {x: 1.67, y: 2.41}
+    oldSize: {x: 0.9166667, y: 0.7}
+    newSize: {x: 0.9166667, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -5765,8 +5765,6 @@ MonoBehaviour:
   canInteractWith: Counter
   plasticbagSprite: {fileID: -2328204438550238909, guid: 611328eec8022904fa8585096d1a6050,
     type: 3}
-  front: {fileID: 974108581}
-  frontDoor: {fileID: 132984645}
   marketOwner: {fileID: 1768675002}
   alchol: {fileID: 380840048}
   father: {fileID: 1545729707}
@@ -5809,12 +5807,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ae29e610d40b4d346b876c944e12a7f9, type: 3}
+  m_Sprite: {fileID: 6842777701766990305, guid: ae29e610d40b4d346b876c944e12a7f9,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.67, y: 2.41}
+  m_Size: {x: 0.9166667, y: 0.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
