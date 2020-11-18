@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class RoomDoor : Door
 {
+    [SerializeField]
+    private Father father;
+
     private void Awake()
     {
         isOpened = true;
@@ -16,7 +19,6 @@ public class RoomDoor : Door
         if (status == ProgressStatus.E_PayedDone)
         {
             isOpened = false;
-            Father father = GameManager.GetObject<Father>();
             if (Inventory.instance.IsPlayerHasItem("술", "카드"))
             {
                 StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_8"));

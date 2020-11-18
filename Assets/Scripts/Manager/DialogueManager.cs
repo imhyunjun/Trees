@@ -13,11 +13,14 @@ public class DialogueManager : MonoBehaviour
    
     Dictionary<string, List<string>> dialogueDic = new Dictionary<string, List<string>>();
     Dictionary<string, List<string>> dialogueNameDic = new Dictionary<string, List<string>>();
+    Dictionary<string, Sprite> dialogueBalloonDic = new Dictionary<string, Sprite>();
 
     [SerializeField]
     private GameObject dialogueBalloon;
     [SerializeField]
     private RectTransform cavasRect;
+    [SerializeField]
+    private Sprite[] ballonSprites;
 
     public Text dialText;
     public Text nameText;
@@ -70,6 +73,11 @@ public class DialogueManager : MonoBehaviour
                 i++;
             }
         }                                           //dic 초기화 
+
+        for(int i = 0; i < ballonSprites.Length; i++) // 말풍선 그림들 딕셔녀리에 추가
+        {
+            dialogueBalloonDic.Add(ballonSprites[i].name, ballonSprites[i]);
+        }
     }
 
     IEnumerator Start()
@@ -162,6 +170,35 @@ public class DialogueManager : MonoBehaviour
         }
         DialoguePanel.instance.Hide(0);
         _playDialogueCor = null;
+    }
+
+    // Key: 말하는 사람 오브젝트, Value : dialogue order
+    public void ShowDialogueBallon(List<KeyValuePair<GameObject, string>> dialogueList) // 원희님이 사진으로 주셔서 일단 이렇게 해놨어요ㅜㅜㅜ
+    {                                                                                                                                       // .더 좋은 구조를 계속 고민해봐야 할것 같아요ㅜㅜ
+        StartCoroutine(IShowDialogueBallonSprite(dialogueList));
+    }
+
+    private IEnumerator IShowDialogueBallonSprite(List<KeyValuePair<GameObject, string>> dialogueList)
+    {
+        for(int i = 0; i < dialogueList.Count; i++)
+        {
+            KeyValuePair<GameObject, string> pair = dialogueList[i];
+            GameObject gameObject = new GameObject("ballon");
+            gameObject.transform.SetParent(pair.Key.transform);
+            gameObject.transform.localPosition = new Vector3(0, 5.5f, 0);
+            SpriteRenderer sr = gameObject.AddComponent<SpriteRenderer>();
+            sr.sortingOrder = 10;
+            if (dialogueBalloonDic.TryGetValue(pair.Value, out Sprite sprite))
+                sr.sprite = sprite;
+            else
+                Debug.Log($"이름이 {pair.Value}인 스프라이트가 없습니다.");
+
+            yield return new WaitForSeconds(2f); // 말풍선이 지속되는 시간
+
+            Destroy(gameObject);
+
+            yield return new WaitForSeconds(1f); // 다음 말풍선과의 사이 텀
+        }
     }
 
     /// <summary>
