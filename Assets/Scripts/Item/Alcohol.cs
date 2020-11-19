@@ -17,7 +17,6 @@ public class Alcohol : Item
 
         if (PlayerScan.instance.progressStatus == ProgressStatus.E_PayedDone)
         {
-            Debug.Log("술 내려놓기");
             //놓는 사운드 추가
             gameObject.SetActive(true);
             gameObject.transform.SetParent(null);

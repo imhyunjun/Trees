@@ -28,11 +28,11 @@ public class Drawer : NPC
         }
         else if (status == ProgressStatus.E_ErrandFinished)
         {
-            DialogueManager.instance.PlayDialogue("chapter_0_12", true);        //천원을 넣으시겠습니까?
+            DialogueManager.instance.PlayDialogue("chapter_0_16", true);        //천원을 넣으시겠습니까?
             ButtonPanel.instance.SetUp(() =>
             {
                 //효과음?
-                StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(null, "chapter_0_13"));          //이제 얼마나 모은거지..
+                StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(null, "chapter_0_17"));          //이제 얼마나 모은거지..
             }, null);
         }
     }

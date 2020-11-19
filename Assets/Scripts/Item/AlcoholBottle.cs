@@ -17,7 +17,7 @@ public class AlcoholBottle : Item
 
     public override void FailToUse()
     {
-        DialogueManager.instance.PlayDialogue("chapter_0_16"); // 이걸 어떻게 깨트리지?
+        DialogueManager.instance.PlayDialogue("chapter_0_20"); // 이걸 어떻게 깨트리지?
     }
 
     public override void UseItem()

@@ -26,8 +26,6 @@ public enum ProgressStatus
 
 }
 
-public delegate void SceneEventHandler(bool _changeScene);
-
 public class GameManager : MonoBehaviour
 {
     private static GameManager instanced;

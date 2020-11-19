@@ -35,7 +35,7 @@ public class Front : MonoBehaviour
             if (status < ProgressStatus.E_Sleep) // 다시 나가려고 하면 아빠가 오기전에 방으로 들어가자고 말함
                 DialogueManager.instance.PlayDialogue("prologue_4");
             else if (status == ProgressStatus.E_TalkWithCurrentDad)
-                DialogueManager.instance.PlayDialogue("chapter_0_1"); // 카드를 챙기자고 말함
+                DialogueManager.instance.PlayDialogue("chapter_0_5"); // 카드를 챙기자고 말함
         }
     }
 

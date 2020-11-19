@@ -13,7 +13,8 @@ public class Fridge : NPC
         if (PlayerScan.instance.progressStatus == ProgressStatus.E_GetCashNCard)         //카드를 가진상태면
         {
             alcohol.gameObject.SetActive(true);
-            Inventory.instance.GetItemInSlot(alcohol.gameObject);                             //술을 가져오고
+            Inventory.instance.GetItemInSlot(alcohol.gameObject);                       //술을 가져오고
+            GetItemPanel.instance.IShowText(alcohol.GetComponent<Item>().itemName);     //술을 얻었다 표시!
             PlayerScan.instance.progressStatus = ProgressStatus.E_GetAlcholBottle;      //술을 가진 상태로 변경
         }
     }

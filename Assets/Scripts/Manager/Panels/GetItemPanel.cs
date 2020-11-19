@@ -10,7 +10,7 @@ public class GetItemPanel : PanelSingletone<GetItemPanel>
 
     public IEnumerator IShowText(string itemName)
     {
-        text.text = itemName + "를 얻었다.";
+        text.text = itemName + "를(을) 얻었다.";
         Show();
 
         yield return new WaitForSecondsRealtime(2);

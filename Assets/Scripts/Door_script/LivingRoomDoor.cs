@@ -36,7 +36,7 @@ public class LivingRoomDoor : Door
             else if (status == ProgressStatus.E_ErrandFinished)
             {
                 isOpened = false;
-                DialogueManager.instance.PlayDialogue("chapter_0_14");               //나가기 싫어..잠이나 자자
+                DialogueManager.instance.PlayDialogue("chapter_0_18");               //나가기 싫어..잠이나 자자
             }
             else
             {
