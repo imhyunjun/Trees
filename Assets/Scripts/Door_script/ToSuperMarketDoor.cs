@@ -15,7 +15,7 @@ public class ToSuperMarketDoor : Door
     public override void AfterPlayerArrived()
     {
         if (PlayerScan.instance.progressStatus == ProgressStatus.E_GetCashNCard)
-            StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(marketOwner, "chapter_3"));
+            StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(marketOwner, "chapter_0_7"));
     }
 
 }
