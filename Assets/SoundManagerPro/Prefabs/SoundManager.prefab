@@ -52,8 +52,8 @@ MonoBehaviour:
   showList: 1
   showAdd: 0
   showSFX: 1
-  showSFXDetails: 0000000000000000000000000000
-  groupAddIndex: 2
+  showSFXDetails: 000000000000000000000000000000
+  groupAddIndex: 1
   autoPrepoolAmount: 0
   autoBaseVolume: 1
   autoVolumeVariation: 0
@@ -95,6 +95,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b316fdaf22d13ad428e2beb071d414aa, type: 3}
   - {fileID: 8300000, guid: 0056159fb18ef9c40baaad68a5a37341, type: 3}
   - {fileID: 8300000, guid: 7cd09efba8a80c74884105b537587dbe, type: 3}
+  - {fileID: 8300000, guid: a97364a7b49d7d547820ef9f20c97a58, type: 3}
   unOwnedSFXObjects: []
   sfxGroups:
   - groupName: UI
@@ -133,6 +134,7 @@ MonoBehaviour:
   - bottle
   - card_reader
   - Footstep_road
+  - get_item
   clipToGroupValues:
   - UI
   - UI
@@ -148,10 +150,12 @@ MonoBehaviour:
   - Environment
   - Environment
   - Player
+  - UI
   offTheSFX: 0
   capAmount: 3
-  sfxPrePoolAmounts: 0000000014000000140000001400000014000000000000000000000000000000000000000000000000000000000000000000000000000000
+  sfxPrePoolAmounts: 000000001400000014000000140000001400000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   sfxBaseVolumes:
+  - 1
   - 1
   - 1
   - 1
@@ -181,7 +185,9 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  - 0
   sfxPitchVariations:
+  - 0
   - 0
   - 0
   - 0

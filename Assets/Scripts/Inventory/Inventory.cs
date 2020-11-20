@@ -38,6 +38,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                     Item clickedItem = hits[i].collider.GetComponent<Item>();
                     StartCoroutine(GetItemPanel.instance.IShowText(clickedItem.itemName));
                     GetItemInSlot(hits[i].collider.gameObject);
+                    SoundManager.PlaySFX("get_item");
                 }
 
                 if (clickedSlot != null && clickedSlot.isSlotHasItem)                 // 아이템 사용
