@@ -16,7 +16,6 @@ public class FatherRoomDoor : Door
         ProgressStatus status = PlayerScan.instance.progressStatus;
         if(status == ProgressStatus.E_JungWannaKillFather)
         {
-            isOpened = true;
             Inventory.instance.ChangeInteractObjectInInven(typeof(BrokenBottle), "FatherMonster");
         }
     }

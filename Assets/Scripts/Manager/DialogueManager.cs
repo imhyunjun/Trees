@@ -173,19 +173,20 @@ public class DialogueManager : MonoBehaviour
     }
 
     // Key: 말하는 사람 오브젝트, Value : dialogue order
-    public void ShowDialogueBallon(List<KeyValuePair<GameObject, string>> dialogueList) // 원희님이 사진으로 주셔서 일단 이렇게 해놨어요ㅜㅜㅜ
+    public void ShowDialogueBallon(List<KeyValuePair<GameObject, string>> _dialogueList, float _scale = 1f, float _y = 5.5f) // 원희님이 사진으로 주셔서 일단 이렇게 해놨어요ㅜㅜㅜ
     {                                                                                                                                       // .더 좋은 구조를 계속 고민해봐야 할것 같아요ㅜㅜ
-        StartCoroutine(IShowDialogueBallonSprite(dialogueList));
+        StartCoroutine(IShowDialogueBallonSprite(_dialogueList, _scale, _y));
     }
 
-    private IEnumerator IShowDialogueBallonSprite(List<KeyValuePair<GameObject, string>> dialogueList)
+    private IEnumerator IShowDialogueBallonSprite(List<KeyValuePair<GameObject, string>> _dialogueList, float _scale, float _y)
     {
-        for(int i = 0; i < dialogueList.Count; i++)
+        for(int i = 0; i < _dialogueList.Count; i++)
         {
-            KeyValuePair<GameObject, string> pair = dialogueList[i];
+            KeyValuePair<GameObject, string> pair = _dialogueList[i];
             GameObject gameObject = new GameObject("ballon");
+            gameObject.transform.localScale = Vector3.one * _scale;
             gameObject.transform.SetParent(pair.Key.transform);
-            gameObject.transform.localPosition = new Vector3(0, 5.5f, 0);
+            gameObject.transform.localPosition = new Vector3(0, _y, 0);
             SpriteRenderer sr = gameObject.AddComponent<SpriteRenderer>();
             sr.sortingOrder = 10;
             if (dialogueBalloonDic.TryGetValue(pair.Value, out Sprite sprite))

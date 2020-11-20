@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Tree : NPC
 {
+    [SerializeField]
+    private FatherRoomDoor _fatherRoomDoor;
+
     public override void Interact()
     {
         ProgressStatus status = PlayerScan.instance.progressStatus;
@@ -21,7 +24,9 @@ public class Tree : NPC
         {
             DialogueManager.instance.PlayDialogue("chapter_0_19"); // 어디 다녀왔어~~?
             PlayerScan.instance.progressStatus = ProgressStatus.E_JungWannaKillFather;
+            _fatherRoomDoor.isOpened = true;
             //문 여는 소리
+
         }
     }
 }

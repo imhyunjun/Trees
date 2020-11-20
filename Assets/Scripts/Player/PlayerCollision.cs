@@ -12,6 +12,7 @@ public class PlayerCollision : MonoBehaviour
             Door door = collision.collider.transform.GetComponent<Door>();
             if (door.isOpened)
             {
+                door.OnUseDoor();
                 if(door.playSfx) SoundManager.PlaySFX("door-open");
                 gameObject.transform.position = door.arrivePoint.transform.position;
                 Vector3 backGroundPoint = door.cameraArrivePoint.transform.position;

@@ -19,9 +19,14 @@ public class Card : Item                //일단 카드로 생각하고 했어�
         if (PlayerScan.instance.progressStatus == ProgressStatus.E_GetAlcholBottle)         //술병을 얻었을 때만
         {
             //클릭사운드 추가
-            StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(marketOwner, "chapter_0_9"));   //말풍선.. 근데 두개 넘어가는 방식 알려주시면 수정
+            List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
+            list.Add(new KeyValuePair<GameObject, string>(marketOwner, "chapter_5_0"));   // 계산 다됐어
+            list.Add(new KeyValuePair<GameObject, string>(marketOwner, "chapter_5_1"));   // 너네 아빠보고 술좀 그만하라고 해라
+            DialogueManager.instance.ShowDialogueBallon(list, 0.6f, 4.5f);
             alchol.GetComponent<SpriteRenderer>().sprite = plasticbagSprite;                   //술 스프라이트 -> 검은봉투로 변경 일단 동시에
-            alchol.GetComponent<Item>().itemName = "검은봉투";
+            Item item = alchol.GetComponent<Item>();
+            item.itemName = "검은봉투";
+            item.itemSprite = plasticbagSprite;
             Inventory.instance.ReUseItem(true, gameObject);
             PlayerScan.instance.progressStatus = ProgressStatus.E_PayedDone;
         }
@@ -35,7 +40,10 @@ public class Card : Item                //일단 카드로 생각하고 했어�
             gameObject.transform.position = tempvec;
             if (Inventory.instance.IsPlayerDoesntHaveItem("술"))
             {
-                DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_11");              // 네 방으로 들어가
+                List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
+                list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_7"));   // 네 방으로 들어가
+                DialogueManager.instance.ShowDialogueBallon(list);
+                //DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_11");              // 네 방으로 들어가
                 PlayerScan.instance.progressStatus = ProgressStatus.E_ErrandFinished;
             }
         }

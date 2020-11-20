@@ -10,7 +10,12 @@ public class ToSuperMarketDoor : Door
     public override void AfterPlayerArrived()
     {
         if (PlayerScan.instance.progressStatus == ProgressStatus.E_GetCashNCard)
-            StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(marketOwner, "chapter_0_7"));
+        {
+            //StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(marketOwner, "chapter_0_7"));
+            List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
+            list.Add(new KeyValuePair<GameObject, string>(marketOwner, "chapter_3"));
+            DialogueManager.instance.ShowDialogueBallon(list, 0.6f, 4.5f);
+        }
     }
 
 }

@@ -31,7 +31,6 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
             //RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity);
             RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity); // 자꾸 콜라이더가 겹쳐서 레이를 쏴서 
                                                                                                                                                                                                                     //충돌하는 모든 오브젝트 받아오게 변경했습니다
-            if (hits.Length == 0) SelectSlot(null);
             for(int i = 0; i < hits.Length; i++)
             {
                 Debug.Log($"Inventory Dectect {hits[i].collider.gameObject.name}");
@@ -45,6 +44,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                 if (clickedSlot != null && clickedSlot.isSlotHasItem)                 // 아이템 사용
                 {
                     Item clickedSlotItem = clickedSlot.hasItem;
+                    Debug.Log($"{hits[i].collider.name}  {clickedSlotItem.canInteractWith}");
                     if (hits[i].collider.name == clickedSlotItem.canInteractWith)   //인벤토리에서 물건을 꺼내고 상호작용하는 물체와 이름이 같다면 아이템 사용
                     {
                         if (clickedSlotItem.CanUse()) // 사용 가능하다면
@@ -54,15 +54,10 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                         }
                         else
                             clickedSlotItem.FailToUse(); // 사용 실패
-                        SelectSlot(null);
-                    }
-                    else
-                    {
-                        SelectSlot(null);
                     }
                 }
             }
-
+            SelectSlot(null);
             //if (hit.collider != null)    
             //{
             //    Debug.Log($"Inventory Dectect {hit.collider.gameObject.name}");
