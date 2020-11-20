@@ -19,10 +19,10 @@ public class RoomDoor : Door
         if (status == ProgressStatus.E_PayedDone)
         {
             //isOpened = false;
-            if (Inventory.instance.IsPlayerHasItem("술", "카드"))
+            if (Inventory.instance.IsPlayerHasItem("검은봉투", "카드"))
             {
                 List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
-                list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_9"));   // 술은?
+                list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_8"));   // 술은?
                 DialogueManager.instance.ShowDialogueBallon(list);
                 //StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_12"));
             }
