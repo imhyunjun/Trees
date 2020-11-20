@@ -29,7 +29,7 @@ public class FrontDoor : Door
         }
         else if(status == ProgressStatus.E_ErrandFinished)
         {
-            StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(GameManager.instance.player, "chapter_0_15"));  //방으로 들어가자
+            DialogueManager.instance.PlayDialogue("chapter_0_15");  //방으로 들어가자
         }
     }
 
