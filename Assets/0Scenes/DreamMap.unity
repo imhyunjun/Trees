@@ -483,7 +483,6 @@ MonoBehaviour:
   destinationName: 
   isOpened: 1
   playSfx: 1
-  brokenBottle: {fileID: 0}
 --- !u!1 &233095444
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +645,7 @@ GameObject:
   - component: {fileID: 280833092}
   - component: {fileID: 280833094}
   - component: {fileID: 280833093}
+  - component: {fileID: 280833095}
   m_Layer: 0
   m_Name: FromFatherRoomToTreeRoom
   m_TagString: Doors
@@ -710,6 +710,18 @@ MonoBehaviour:
   destinationName: DreamMap
   isOpened: 1
   playSfx: 1
+--- !u!114 &280833095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280833091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcec160a21052344a10d803d83e4438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &334593586
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,7 +867,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d200c451e7476b4bb3930976d0c988b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backMirror: {fileID: 439591826}
 --- !u!1 &666014413
 GameObject:
   m_ObjectHideFlags: 0

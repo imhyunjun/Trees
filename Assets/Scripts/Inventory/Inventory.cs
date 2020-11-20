@@ -57,48 +57,9 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                     }
                 }
             }
+
             SelectSlot(null);
-            //if (hit.collider != null)    
-            //{
-            //    Debug.Log($"Inventory Dectect {hit.collider.gameObject.name}");
-            //    string colliderTag = hit.collider.transform.tag;
-            //    switch (colliderTag)
-            //    {
-            //        case "Item":                                           // 맵에 있는 아이템 획득
-            //            //소리가 있으면 소리 추가( 검은 봉투 ) 
-
-            //            Item clickedItem = hit.collider.GetComponent<Item>();
-
-            //            StartCoroutine(GetItemPanel.instance.IShowText(clickedItem.itemName));
-
-            //            GetItemInSlot(hit.collider.gameObject);
-            //            break;
-            //    }
-
-            //    if (clickedSlot != null && clickedSlot.isSlotHasItem)                 // 아이템 사용
-            //    {
-            //        Item clickedSlotItem = clickedSlot.hasItem; 
-            //        if (hit.collider.name == clickedSlotItem.canInteractWith)   //인벤토리에서 물건을 꺼내고 상호작용하는 물체와 이름이 같다면 아이템 사용
-            //        {
-            //            if (clickedSlotItem.CanUse()) // 사용 가능하다면
-            //            {
-            //                clickedSlot.UseItem(clickedSlotItem.useType);       //아이템 사용 타입에 맞게 사용
-            //                clickedSlotItem.UseItem();
-            //            }
-            //            else
-            //                clickedSlotItem.FailToUse(); // 사용 실패
-            //            SelectSlot(null);
-            //        }
-            //        else
-            //        {
-            //            SelectSlot(null);
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    SelectSlot(null);                           // 빈 공간 클릭했을 때 슬롯 선택 헤제
-            //}
+            
         }
     }
 
