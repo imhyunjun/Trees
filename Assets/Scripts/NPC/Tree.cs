@@ -14,7 +14,10 @@ public class Tree : NPC
         {
             DialogueManager.instance.PlayDialogue("prologue_10");
             if (PlayerScan.instance.progressStatus == ProgressStatus.E_Sleep)
+            {
                 PlayerScan.instance.progressStatus = ProgressStatus.E_TalkWithTreeFirstTime; // 나무와 첫 대화 후 과거 방 문 열림
+                SoundManager.PlaySFX("door-open"); // 문열리는 효과음
+            }
         }
         else if(status == ProgressStatus.E_GetBackMirror)
         {
@@ -25,8 +28,7 @@ public class Tree : NPC
             DialogueManager.instance.PlayDialogue("chapter_0_19"); // 어디 다녀왔어~~?
             PlayerScan.instance.progressStatus = ProgressStatus.E_JungWannaKillFather;
             _fatherRoomDoor.isOpened = true;
-            //문 여는 소리
-
+            SoundManager.PlaySFX("door-open"); // 문열리는 효과음
         }
     }
 }

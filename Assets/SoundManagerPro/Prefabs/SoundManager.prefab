@@ -52,8 +52,8 @@ MonoBehaviour:
   showList: 1
   showAdd: 0
   showSFX: 1
-  showSFXDetails: 0000000000000000000000
-  groupAddIndex: 3
+  showSFXDetails: 0000000000000000000000000000
+  groupAddIndex: 2
   autoPrepoolAmount: 0
   autoBaseVolume: 1
   autoVolumeVariation: 0
@@ -92,6 +92,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7d4dfafa21a9dfb49ae2a6bf5e7ea004, type: 3}
   - {fileID: 8300000, guid: bfde4e55b75b57f41842ea071b48de92, type: 3}
   - {fileID: 8300000, guid: bceb7c0ecf5703648bf08684da486de1, type: 3}
+  - {fileID: 8300000, guid: b316fdaf22d13ad428e2beb071d414aa, type: 3}
+  - {fileID: 8300000, guid: 0056159fb18ef9c40baaad68a5a37341, type: 3}
+  - {fileID: 8300000, guid: 7cd09efba8a80c74884105b537587dbe, type: 3}
   unOwnedSFXObjects: []
   sfxGroups:
   - groupName: UI
@@ -127,6 +130,9 @@ MonoBehaviour:
   - lying-on-bed
   - clothes
   - Siren
+  - bottle
+  - card_reader
+  - Footstep_road
   clipToGroupValues:
   - UI
   - UI
@@ -139,10 +145,16 @@ MonoBehaviour:
   - Environment
   - Environment
   - Environment
+  - Environment
+  - Environment
+  - Player
   offTheSFX: 0
   capAmount: 3
-  sfxPrePoolAmounts: 0000000014000000140000001400000014000000000000000000000000000000000000000000000000000000
+  sfxPrePoolAmounts: 0000000014000000140000001400000014000000000000000000000000000000000000000000000000000000000000000000000000000000
   sfxBaseVolumes:
+  - 1
+  - 1
+  - 1
   - 1
   - 1
   - 1
@@ -166,7 +178,13 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  - 0
+  - 0
+  - 0
   sfxPitchVariations:
+  - 0
+  - 0
+  - 0
   - 0
   - 0
   - 0

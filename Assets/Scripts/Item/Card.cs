@@ -26,6 +26,7 @@ public class Card : Item                //일단 카드로 생각하고 했어�
             List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
             list.Add(new KeyValuePair<GameObject, string>(marketOwner, "chapter_5_0"));   // 계산 다됐어
             list.Add(new KeyValuePair<GameObject, string>(marketOwner, "chapter_5_1"));   // 너네 아빠보고 술좀 그만하라고 해라
+            SoundManager.PlaySFX("card_reader");
             DialogueManager.instance.ShowDialogueBallon(list, 0.6f, 4.5f);
             alchol.GetComponent<SpriteRenderer>().sprite = plasticbagSprite;                   //술 스프라이트 -> 검은봉투로 변경 일단 동시에
             Item item = alchol.GetComponent<Item>();

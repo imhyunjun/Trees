@@ -15,6 +15,12 @@ public class Alcohol : Item
     [SerializeField]
     private RoomDoor roomdoor;
 
+    public override void GetItem()
+    {
+        base.GetItem();
+        SoundManager.PlaySFX("bottle"); // 병소리 나면서 획득
+    }
+
     public override void UseItem()
     {
         base.UseItem();

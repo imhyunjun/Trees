@@ -16,6 +16,10 @@ public class PlayerSound : MonoBehaviour
             case "DreamMap":
                 SoundManager.PlayCappedSFX("Footstep3_dream", "Player");
                 break;
+
+            case "Road":
+                SoundManager.PlayCappedSFX("Footstep_road", "Player");
+                break;
         }
     }
 }

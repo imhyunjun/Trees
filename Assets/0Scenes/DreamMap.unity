@@ -709,7 +709,7 @@ MonoBehaviour:
   cameraArrivePoint: {fileID: 1667803932}
   destinationName: DreamMap
   isOpened: 1
-  playSfx: 0
+  playSfx: 1
 --- !u!1 &334593586
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,7 +2403,7 @@ MonoBehaviour:
   cameraArrivePoint: {fileID: 1667803932}
   destinationName: DreamMap
   isOpened: 1
-  playSfx: 0
+  playSfx: 1
 --- !u!1 &2005093934
 GameObject:
   m_ObjectHideFlags: 0
