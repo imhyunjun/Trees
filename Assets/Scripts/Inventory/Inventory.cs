@@ -28,10 +28,9 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         if (Input.GetMouseButtonDown(0))
         {
             if (DialoguePanel.instance.IsDialogueOn()) return;           // 대화 중에는 클릭 안되게
-            //RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity);
-            RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity); // 자꾸 콜라이더가 겹쳐서 레이를 쏴서 
-                                                                                                                                                                                                                    //충돌하는 모든 오브젝트 받아오게 변경했습니다
-            for(int i = 0; i < hits.Length; i++)
+            RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity); // 자꾸 콜라이더가 겹쳐서 레이를 쏴서                                                                                                                                                                                                                     //충돌하는 모든 오브젝트 받아오게 변경했습니다
+            if(hits.Length == 0) SelectSlot(null);
+            for (int i = 0; i < hits.Length; i++)
             {
                 Debug.Log($"Inventory Dectect {hits[i].collider.gameObject.name}");
                 if (hits[i].collider.transform.tag == "Item")
@@ -50,16 +49,19 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                         {
                             clickedSlot.UseItem(clickedSlotItem.useType);       //아이템 사용 타입에 맞게 사용
                             if(clickedSlotItem.useType != Item.UseType.Repeat)
+                            {
                                 clickedSlotItem.UseItem();
+                                SelectSlot(null);
+                            }
                         }
                         else
+                        {
                             clickedSlotItem.FailToUse(); // 사용 실패
+                            SelectSlot(null);
+                        }
                     }
                 }
-            }
-
-            SelectSlot(null);
-            
+            }            
         }
     }
 
