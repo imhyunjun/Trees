@@ -30,8 +30,4 @@ public class DialoguePanel : PanelSingletone<DialoguePanel>
         PlayerMove.canMove = true;
     }
 
-    private void Awake()
-    {
-        Debug.Log(transform.position);
-    }
 }

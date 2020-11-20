@@ -2920,6 +2920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f72037b5eaf80408cb63d16d3d70a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cash: {fileID: 713967758}
 --- !u!1 &902776359
 GameObject:
   m_ObjectHideFlags: 0

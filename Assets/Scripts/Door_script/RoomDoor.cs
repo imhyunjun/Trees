@@ -37,7 +37,7 @@ public class RoomDoor : Door
             {
                 //StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_10"));
                 List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
-                list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_9"));   // 술은?
+                list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_10"));   // 카드는?
                 DialogueManager.instance.ShowDialogueBallon(list);
             }
         }
