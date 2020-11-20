@@ -44,7 +44,6 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                 if (clickedSlot != null && clickedSlot.isSlotHasItem)                 // 아이템 사용
                 {
                     Item clickedSlotItem = clickedSlot.hasItem;
-                    Debug.Log($"{hits[i].collider.name}  {clickedSlotItem.canInteractWith}");
                     if (hits[i].collider.name == clickedSlotItem.canInteractWith)   //인벤토리에서 물건을 꺼내고 상호작용하는 물체와 이름이 같다면 아이템 사용
                     {
                         if (clickedSlotItem.CanUse()) // 사용 가능하다면
