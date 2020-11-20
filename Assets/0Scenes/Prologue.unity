@@ -580,7 +580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrivePoint: {fileID: 337277647}
   cameraArrivePoint: {fileID: 1894370977}
-  destinationName: 
+  destinationName: Road
   isOpened: 1
   playSfx: 1
   father: {fileID: 1545729707}
@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrivePoint: {fileID: 1227599787}
   cameraArrivePoint: {fileID: 393668571}
-  destinationName: House
+  destinationName: LivingRoom
   isOpened: 0
   playSfx: 1
   father: {fileID: 1545729707}
@@ -4468,7 +4468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrivePoint: {fileID: 1769578807}
   cameraArrivePoint: {fileID: 1860955032}
-  destinationName: 
+  destinationName: Road
   isOpened: 1
   playSfx: 0
   marketOwner: {fileID: 1768675002}
@@ -4818,7 +4818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrivePoint: {fileID: 1555194270}
   cameraArrivePoint: {fileID: 470162516}
-  destinationName: House
+  destinationName: LivingRoom
   isOpened: 1
   playSfx: 1
   father: {fileID: 1545729707}
@@ -6229,7 +6229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrivePoint: {fileID: 1231400898}
   cameraArrivePoint: {fileID: 470162516}
-  destinationName: 
+  destinationName: LivingRoom
   isOpened: 1
   playSfx: 1
   frontdoor: {fileID: 132984645}
