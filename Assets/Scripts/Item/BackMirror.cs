@@ -27,11 +27,11 @@ public class BackMirror : Item
         PlayerMove.canMove = false;
         GameManager.instance.StartLoadSceneCor("Prologue", 4f, 3f, "House", () =>
         {
-            Transform bed = FindObjectOfType<Bed>().transform;
-            Transform jungsRoom = bed.parent;
-            GameManager.instance.player.transform.position = new Vector3(bed.position.x, bed.position.y, 0);        // 플레이어 위치 침대
+            Bed bed = FindObjectOfType<Bed>();
+            bed.ChangeJungRoomToNight();
+            Transform jungsRoom = bed.transform.parent;
+            GameManager.instance.player.transform.position = new Vector3(bed.transform.position.x, bed.transform.position.y, 0);        // 플레이어 위치 침대
             Camera.main.transform.position = new Vector3(jungsRoom.position.x, jungsRoom.position.y, -10);       // 카메라 위치 정의 방
-
             // 일어나는 애니메이션
             PlayerMove.canMove = true;
         });

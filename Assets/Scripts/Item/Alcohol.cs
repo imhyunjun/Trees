@@ -10,6 +10,8 @@ public class Alcohol : Item
     private Father father;
     [SerializeField]
     private GameObject marketOwner;
+    [SerializeField]
+    private Transform table;
 
     public override void UseItem()
     {
@@ -19,7 +21,7 @@ public class Alcohol : Item
         {
             //놓는 사운드 추가
             gameObject.SetActive(true);
-            gameObject.transform.SetParent(null);
+            gameObject.transform.SetParent(table);
             Vector3 tempvec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             tempvec.z = 0;
             gameObject.transform.position = tempvec;

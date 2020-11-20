@@ -6,6 +6,10 @@ public class Bed : NPC
 {
     [SerializeField]
     private Sprite sleepingJung;     //일단 임시 방편 for 시연회
+    [SerializeField]
+    private SpriteRenderer jungRoom;
+    [SerializeField]
+    private Sprite nightJungRoomSprite;
 
     public override void Interact()
     {
@@ -37,4 +41,10 @@ public class Bed : NPC
         PlayerScan.instance.GetComponent<SpriteRenderer>().sortingOrder = -1;
         GameManager.instance.StartLoadSceneCor("DreamMap", 5f, 2f, "DreamMap", () => { PlayerMove.canMove = true; });
     }
+
+    public void ChangeJungRoomToNight()
+    {
+        jungRoom.sprite = nightJungRoomSprite;
+    }
+
 }

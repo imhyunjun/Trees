@@ -10,6 +10,10 @@ public class LivingRoomDoor : Door
     private Front front;
     [SerializeField]
     private CashCard cashCard;
+    [SerializeField]
+    private SpriteRenderer livingRoom;
+    [SerializeField]
+    private Sprite nightLivingRoomSprite;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -21,6 +25,7 @@ public class LivingRoomDoor : Door
             {
                 father.gameObject.SetActive(true);
                 cashCard.gameObject.SetActive(true);
+                livingRoom.sprite = nightLivingRoomSprite;
                 //DialogueManager.instance.PlayDialogue("chapter_0");
                 List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
                 GameObject player = GameManager.instance.player;

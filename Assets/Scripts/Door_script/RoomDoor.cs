@@ -21,16 +21,24 @@ public class RoomDoor : Door
             isOpened = false;
             if (Inventory.instance.IsPlayerHasItem("술", "카드"))
             {
-                StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_12"));
+                List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
+                list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_9"));   // 술은?
+                DialogueManager.instance.ShowDialogueBallon(list);
+                //StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_12"));
             }
             else if (Inventory.instance.IsPlayerHasItem("술"))              //술 안줬으면 술은?   , 두개 합친느건 나중에 생각
             {
-                StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_13"));
-
+                //StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_9"));
+                List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
+                list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_9"));   // 술은?
+                DialogueManager.instance.ShowDialogueBallon(list);
             }
             else if (Inventory.instance.IsPlayerHasItem("카드"))                 //카드를 안줬으면 카드는?
             {
-                StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_14"));
+                //StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_10"));
+                List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
+                list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_9"));   // 술은?
+                DialogueManager.instance.ShowDialogueBallon(list);
             }
         }
         else
