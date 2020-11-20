@@ -18,7 +18,8 @@ public class Alcohol : Item
     public override void GetItem()
     {
         base.GetItem();
-        SoundManager.PlaySFX("bottle"); // 병소리 나면서 획득
+        if(PlayerScan.instance.progressStatus == ProgressStatus.E_GetAlcholBottle)
+            SoundManager.PlaySFX("bottle"); // 병소리 나면서 획득
     }
 
     public override void UseItem()

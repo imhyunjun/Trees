@@ -108,14 +108,14 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-    public void PlayDialogue(string _dialogueOrder, bool isQuesstion = false)  // isQuestion이 true이면 마지막에 엔터를 쳐도 대화창이 사라지지 않음
+    public void PlayDialogue(string _dialogueOrder, bool _isQuesstion = false, System.Action _onComplete = null)  // isQuestion이 true이면 마지막에 엔터를 쳐도 대화창이 사라지지 않음
     {
         if (_playDialogueCor != null)
             StopCoroutine(_playDialogueCor);
-        if (isQuesstion)
+        if (_isQuesstion)
             _playDialogueCor = StartCoroutine(IQuestionDialogue(_dialogueOrder));
         else
-            _playDialogueCor = StartCoroutine(IContinueDialogue(_dialogueOrder));
+            _playDialogueCor = StartCoroutine(IContinueDialogue(_dialogueOrder, _onComplete));
     }
 
     private IEnumerator IQuestionDialogue(string _dialogueOrder)                // 시스템이 질문할 떄 사용
@@ -139,7 +139,7 @@ public class DialogueManager : MonoBehaviour
         _playDialogueCor = null;
     }
 
-    private IEnumerator IContinueDialogue(string _dialogueOrder)  // 대화
+    private IEnumerator IContinueDialogue(string _dialogueOrder, System.Action _OnComplete)  // 대화
     {
         DialoguePanel.instance.Show(0);
         int i = 0;
@@ -169,6 +169,7 @@ public class DialogueManager : MonoBehaviour
             dialText.text = null;
         }
         DialoguePanel.instance.Hide(0);
+        _OnComplete?.Invoke();
         _playDialogueCor = null;
     }
 

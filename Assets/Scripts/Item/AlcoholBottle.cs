@@ -23,7 +23,7 @@ public class AlcoholBottle : Item
     public override void UseItem()
     {
         // 괴물이 술병을 가져가고 깨트리는 애니메이션
-        // 술병 깨지는 효과음
+        SoundManager.PlaySFX("bottle");  // 술병 깨지는 효과음
         _borkenBottle.SetActive(true); // 일단 동시에 나중에 코루틴으로 변경
     }
 }
