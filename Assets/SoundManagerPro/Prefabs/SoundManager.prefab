@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 11400000}
   - component: {fileID: 8200002}
   - component: {fileID: 8200000}
+  - component: {fileID: 6613558787953193818}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -48,7 +49,7 @@ MonoBehaviour:
   helpOn: 1
   showInfo: 0
   showDev: 0
-  showList: 0
+  showList: 1
   showAdd: 0
   showSFX: 1
   showSFXDetails: 0000000000000000000000
@@ -58,37 +59,7 @@ MonoBehaviour:
   autoVolumeVariation: 0
   autoPitchVariation: 0
   showAsGrouped: 1
-  soundConnections:
-  - level: Title
-    isCustomLevel: 0
-    soundsToPlay:
-    - {fileID: 8300000, guid: 06512b3ffb6b16d4c8bc82a12ff8bafe, type: 3}
-    baseVolumes:
-    - 1
-    playMethod: 0
-    minDelay: 0
-    maxDelay: 0
-    delay: 0
-  - level: Prologue
-    isCustomLevel: 0
-    soundsToPlay:
-    - {fileID: 8300000, guid: a49d55be22ed62a418222bdd09985cf8, type: 3}
-    baseVolumes:
-    - 1
-    playMethod: 0
-    minDelay: 0
-    maxDelay: 0
-    delay: 0
-  - level: DreamMap
-    isCustomLevel: 0
-    soundsToPlay:
-    - {fileID: 8300000, guid: b337e567eff54fb48aa4deb37eb96df6, type: 3}
-    baseVolumes:
-    - 1
-    playMethod: 0
-    minDelay: 0
-    maxDelay: 0
-    delay: 0
+  soundConnections: []
   audios:
   - {fileID: 8200002}
   - {fileID: 8200000}
@@ -107,7 +78,7 @@ MonoBehaviour:
   offTheBGM: 0
   isPaused: 0
   movingOnFromSong: 0
-  ignoreLevelLoad: 0
+  ignoreLevelLoad: 1
   resourcesPath: Sound
   storedSFXs:
   - {fileID: 8300000, guid: a769b0ecb2738b4499c34209f729dbe9, type: 3}
@@ -403,3 +374,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6613558787953193818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235a9dd690b890b40b468d95a80d7fa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgms:
+  - {fileID: 8300000, guid: 06512b3ffb6b16d4c8bc82a12ff8bafe, type: 3}
+  - {fileID: 8300000, guid: a49d55be22ed62a418222bdd09985cf8, type: 3}
+  - {fileID: 8300000, guid: 9bd8bf973bef3cf45848d5552b84f840, type: 3}
+  - {fileID: 8300000, guid: b337e567eff54fb48aa4deb37eb96df6, type: 3}

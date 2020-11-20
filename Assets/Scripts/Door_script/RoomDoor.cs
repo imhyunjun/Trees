@@ -43,4 +43,9 @@ public class RoomDoor : Door
         }
 
     }
+
+    public override void OnUseDoor()
+    {
+        BGMManager.instance.PlayBGM(BGM.JungRoom);
+    }
 }

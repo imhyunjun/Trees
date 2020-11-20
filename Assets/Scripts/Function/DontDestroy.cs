@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class DontDestroy<T> : MonoBehaviour where T : DontDestroy<T>
 {
-    private static T instance;
+    private static T _instance;
+    public static T instance => _instance;
     private void Awake()
     {
-        if (instance == null)
-            instance = this as T;
+        if (_instance == null)
+            _instance = this as T;
         else
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);

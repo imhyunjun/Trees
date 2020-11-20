@@ -25,7 +25,7 @@ public class BackMirror : Item
         PlayerScan.instance.progressStatus = ProgressStatus.E_GiveBackMirrorToTree;
 
         PlayerMove.canMove = false;
-        GameManager.instance.StartLoadSceneCor("Prologue", 4f, 3f, "House", () =>
+        GameManager.instance.StartLoadSceneCor("Prologue", 4f, 3f, "JungRoom", () =>
         {
             Bed bed = FindObjectOfType<Bed>();
             bed.ChangeJungRoomToNight();

@@ -8,7 +8,8 @@ public class PlayerSound : MonoBehaviour
     {
         switch (GameManager.instance.locationPlayerIsIn)
         {
-            case "House":
+            case "LivingRoom":
+            case "JungRoom":
                 SoundManager.PlayCappedSFX("Footstep_inside3_re", "Player");
                 break;
 

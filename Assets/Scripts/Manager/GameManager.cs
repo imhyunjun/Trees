@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System;
 
 public enum ProgressStatus
 {
@@ -23,7 +22,6 @@ public enum ProgressStatus
     E_PayedDone,
     E_ErrandFinished,
     E_JungWannaKillFather
-
 }
 
 public class GameManager : MonoBehaviour
@@ -39,6 +37,9 @@ public class GameManager : MonoBehaviour
     private Image fadeImg;                                      //페이드 효과에 쓸 화면 색깔
     private Color tempColor;                                    //색 바꿀때 쓸 임시 색
 
+    [SerializeField]
+    private AudioClip[] bgms;
+
 
     private void Awake()
     {
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         treeGrowStatus = 0;
-        locationPlayerIsIn = "House";
+        locationPlayerIsIn = "LivingRoom";
 
         fadeImg = fadeObject.GetComponent<Image>();
         tempColor = fadeImg.color;
@@ -137,6 +138,21 @@ public class GameManager : MonoBehaviour
         StartCoroutine(IFadeIn(_fadeInTime));
 
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == _sceneName);    // 씬 로드될 때 까지 대기
+
+        switch (_playerIn)
+        {
+            case "LivingRoom":
+                BGMManager.instance.PlayBGM(BGM.LivingRoom);
+                break;
+
+            case "JungRoom":
+                BGMManager.instance.PlayBGM(BGM.JungRoom);
+                break;
+
+            case "DreamMap":
+                BGMManager.instance.PlayBGM(BGM.DreamMap);
+                break;
+        }
 
         callBack?.Invoke();
     }

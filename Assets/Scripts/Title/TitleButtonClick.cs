@@ -20,5 +20,6 @@ public class TitleButtonClick : MonoBehaviour
     {
         SceneManager.LoadScene("Prologue");
         startButton.interactable = true;
+        BGMManager.instance.PlayBGM(BGM.LivingRoom);
     }
 }
