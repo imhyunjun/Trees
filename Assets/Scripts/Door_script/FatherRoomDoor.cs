@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FatherRoomDoor : Door
-{
-    [SerializeField]
-    private BrokenBottle brokenBottle;
+{ 
     private void Awake()
     {
         isOpened = false;

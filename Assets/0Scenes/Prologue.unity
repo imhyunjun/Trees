@@ -305,7 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrivePoint: {fileID: 337277647}
   cameraArrivePoint: {fileID: 1894370977}
-  destinationName: Road
+  destinationName: 
   isOpened: 1
   playSfx: 1
   father: {fileID: 1545729707}
@@ -333,7 +333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136598288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.96, y: 5.24, z: 0}
+  m_LocalPosition: {x: 2.54, y: 2.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1187895533}
@@ -592,7 +592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrivePoint: {fileID: 1227599787}
   cameraArrivePoint: {fileID: 393668571}
-  destinationName: LivingRoom
+  destinationName: House
   isOpened: 0
   playSfx: 1
   father: {fileID: 1545729707}
@@ -1899,10 +1899,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: d65b5b8b42ae8f54780d300fb8a1b82b, type: 3}
       propertyPath: offTheBGM
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: d65b5b8b42ae8f54780d300fb8a1b82b, type: 3}
       propertyPath: offTheSFX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d65b5b8b42ae8f54780d300fb8a1b82b, type: 3}
+      propertyPath: ignoreLevelLoad
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2988,7 +2992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrivePoint: {fileID: 136598288}
   cameraArrivePoint: {fileID: 1894370977}
-  destinationName: Road
+  destinationName: 
   isOpened: 1
   playSfx: 1
 --- !u!1 &904987906
@@ -3391,7 +3395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrivePoint: {fileID: 1769578807}
   cameraArrivePoint: {fileID: 1860955032}
-  destinationName: Road
+  destinationName: 
   isOpened: 1
   playSfx: 0
   marketOwner: {fileID: 1768675002}
@@ -3408,7 +3412,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 5.077814, y: 4.5788593}
+  m_Offset: {x: 4.76182, y: 2.2314796}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3419,7 +3423,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.304699, y: 1.2275829}
+  m_Size: {x: 7.6727104, y: 1.5887165}
   m_EdgeRadius: 0
 --- !u!1 &974108577
 GameObject:
@@ -3627,7 +3631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrivePoint: {fileID: 1555194270}
   cameraArrivePoint: {fileID: 470162516}
-  destinationName: LivingRoom
+  destinationName: House
   isOpened: 1
   playSfx: 1
   father: {fileID: 1545729707}
@@ -4639,7 +4643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrivePoint: {fileID: 1231400898}
   cameraArrivePoint: {fileID: 470162516}
-  destinationName: LivingRoom
+  destinationName: 
   isOpened: 1
   playSfx: 1
   frontdoor: {fileID: 132984645}
