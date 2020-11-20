@@ -8,4 +8,9 @@ public class ToInFrontOfHouseDoor : Door
     {
         isOpened = true;
     }
+
+    public override void AfterPlayerArrived()
+    {
+        GameManager.instance.player.transform.localScale = new Vector3(-1f, 1f, 1f);
+    }
 }

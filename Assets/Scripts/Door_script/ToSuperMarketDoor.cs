@@ -9,6 +9,7 @@ public class ToSuperMarketDoor : Door
 
     public override void AfterPlayerArrived()
     {
+        GameManager.instance.player.transform.localScale = new Vector3(-1f, 1f, 1f);
         if (PlayerScan.instance.progressStatus == ProgressStatus.E_GetCashNCard)
         {
             //StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(marketOwner, "chapter_0_7"));
