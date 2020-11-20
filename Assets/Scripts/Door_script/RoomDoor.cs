@@ -6,6 +6,8 @@ public class RoomDoor : Door
 {
     [SerializeField]
     private Father father;
+    [SerializeField]
+    private LivingRoomDoor livingroomdoor;
 
     private void Awake()
     {
@@ -41,6 +43,8 @@ public class RoomDoor : Door
                 DialogueManager.instance.ShowDialogueBallon(list);
             }
         }
+        else if (status == ProgressStatus.E_ErrandFinished)
+            livingroomdoor.isOpened = false;
 
     }
 

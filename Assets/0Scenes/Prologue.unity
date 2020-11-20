@@ -1042,6 +1042,7 @@ MonoBehaviour:
   isOpened: 0
   playSfx: 1
   father: {fileID: 1545729707}
+  livingroomdoor: {fileID: 1004564000}
 --- !u!1 &219239767
 GameObject:
   m_ObjectHideFlags: 0
