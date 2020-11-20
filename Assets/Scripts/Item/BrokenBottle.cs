@@ -8,20 +8,23 @@ public class BrokenBottle : Item
 
     public override void UseItem()      
     {
-        if (canInteractWith == "MonsterFather")
+        ProgressStatus status = PlayerScan.instance.progressStatus;
+
+        if (canInteractWith == "FatherMonster" && status == ProgressStatus.E_JungWannaKillFather)
         {
             isInInventory = true;           //사용해도 그대로 남아있기
             //찌르기
             //괴물 으어억 하는 사운드
             //피를 흘리다? 이미지 변경?
             tabCount++;                     //횟수를 올린다
+            Debug.Log($"{tabCount}번 찌름");
             if (tabCount == 10)
             {
                 StartCoroutine(ICrying());
                 tabCount = 0;
             }
         }
-        else if(canInteractWith == "Tree")
+        else if(canInteractWith == "Tree" && status == ProgressStatus.E_JungWannaKillFather)
         {
             GameManager.instance.treeGrowStatus++;     // 나무 성장 
         }

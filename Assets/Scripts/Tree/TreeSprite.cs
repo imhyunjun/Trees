@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class TreeSprite : MonoBehaviour
 {
-    public Sprite tree0Sprite;
-    public Sprite tree1Sprite;
-
     private SpriteRenderer spriteRenderer;
+
+    [SerializeField]
     private List<Sprite> treeSpriteList = new List<Sprite>();
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        treeSpriteList.Add(tree0Sprite);
-        treeSpriteList.Add(tree1Sprite);
     }
 
     private void Update()

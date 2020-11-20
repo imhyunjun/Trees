@@ -44,7 +44,8 @@ public class PlayerMove : MonoBehaviour
             else
             {
                 if (playerXAxis > 0) playerSprite.flipX = false;
-                else playerSprite.flipX = true;
+                else if(playerXAxis < 0)
+                    playerSprite.flipX = true;
                 playerAnim.SetBool("IsPlayerMoving", true);
             }
         }

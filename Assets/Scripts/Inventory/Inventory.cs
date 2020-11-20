@@ -247,11 +247,11 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
     /// </summary>
     /// <param name="_item"></param>    Card 등등
     /// <param name="_interactObject"></param>  앞으로 상호작용할 물체
-    public void ChangeInteractObjectInInven(string _item, string _interactObject)
+    public void ChangeInteractObjectInInven(System.Type _item, string _interactObject)
     {
         foreach (Slot slot in slotList)
         {
-            if(slot.hasItem != null && slot.hasItem.name == _item)
+            if(slot.hasItem != null && slot.hasItem.GetType() == _item)
             {
                 slot.hasItem.canInteractWith = _interactObject;
             }

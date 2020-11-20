@@ -22,19 +22,15 @@ public class RoomDoor : Door
             if (Inventory.instance.IsPlayerHasItem("술", "카드"))
             {
                 StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_12"));
-                Debug.Log("1");
             }
             else if (Inventory.instance.IsPlayerHasItem("술"))              //술 안줬으면 술은?   , 두개 합친느건 나중에 생각
             {
-                Debug.Log("2");
                 StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_13"));
 
             }
             else if (Inventory.instance.IsPlayerHasItem("카드"))                 //카드를 안줬으면 카드는?
             {
-                Debug.Log("3");
                 StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_14"));
-
             }
         }
         else

@@ -2028,10 +2028,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5922e3266ebbbc74d80a3fb72bfcb9b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tree0Sprite: {fileID: 3163373301911615200, guid: 611328eec8022904fa8585096d1a6050,
-    type: 3}
-  tree1Sprite: {fileID: 3750372958948534995, guid: 5d426a8ede285f14dad31a6c869ef24c,
-    type: 3}
+  treeSpriteList:
+  - {fileID: 3163373301911615200, guid: 611328eec8022904fa8585096d1a6050, type: 3}
+  - {fileID: 3750372958948534995, guid: 5d426a8ede285f14dad31a6c869ef24c, type: 3}
 --- !u!114 &1783867184
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -32,8 +32,8 @@ public class Drawer : NPC
             ButtonPanel.instance.SetUp(() =>
             {
                 //효과음?
-                StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(null, "chapter_0_17"));          //이제 얼마나 모은거지..
-            }, null);
+                StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(GameManager.instance.player, "chapter_0_17"));          //이제 얼마나 모은거지..
+            }, () =>ButtonPanel.instance.Hide());
         }
     }
 }

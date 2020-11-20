@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FatherRoomDoor : Door
 {
+    [SerializeField]
+    private BrokenBottle brokenBottle;
     private void Awake()
     {
         isOpened = false;
@@ -15,6 +17,7 @@ public class FatherRoomDoor : Door
         if(status == ProgressStatus.E_JungWannaKillFather)
         {
             isOpened = true;
+            Inventory.instance.ChangeInteractObjectInInven(typeof(BrokenBottle), "FatherMonster");
         }
     }
 }
