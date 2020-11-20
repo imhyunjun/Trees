@@ -14,6 +14,8 @@ public class Card : Item                //일단 카드로 생각하고 했어�
     private Father father;
     [SerializeField]
     private Transform table;
+    [SerializeField]
+    private RoomDoor roomdoor;
 
     public override void UseItem()
     {
@@ -40,13 +42,14 @@ public class Card : Item                //일단 카드로 생각하고 했어�
             Vector3 tempvec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             tempvec.z = 0;
             gameObject.transform.position = tempvec;
-            if (Inventory.instance.IsPlayerDoesntHaveItem("술"))
+            if (Inventory.instance.IsPlayerDoesntHaveItem("검은봉투"))
             {
                 List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
                 list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_7"));   // 네 방으로 들어가
                 DialogueManager.instance.ShowDialogueBallon(list);
                 //DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_11");              // 네 방으로 들어가
                 PlayerScan.instance.progressStatus = ProgressStatus.E_ErrandFinished;
+                roomdoor.isOpened = true;
             }
         }
     }

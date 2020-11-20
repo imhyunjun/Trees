@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 280833094}
   - component: {fileID: 280833093}
   m_Layer: 0
-  m_Name: ToTreeRoom
+  m_Name: FromFatherRoomToTreeRoom
   m_TagString: Doors
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2341,7 +2341,7 @@ GameObject:
   - component: {fileID: 1948382555}
   - component: {fileID: 1948382554}
   m_Layer: 0
-  m_Name: ToTreeRoom
+  m_Name: FromAccidentToTreeRoom
   m_TagString: Doors
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2660,7 +2660,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0333333, y: 2.6166666}
+    oldSize: {x: 1.8666667, y: 3.4666667}
     newSize: {x: 1.0333333, y: 2.6166666}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

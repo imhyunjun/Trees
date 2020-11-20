@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class FromMonsterToTreeRoom : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ProgressStatus status = PlayerScan.instance.progressStatus;
+        if (status == ProgressStatus.E_JungWannaKillFather)
+            Inventory.instance.ChangeInteractObjectInInven(typeof(BrokenBottle), "Tree");
     }
 }

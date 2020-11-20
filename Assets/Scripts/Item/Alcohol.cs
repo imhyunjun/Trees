@@ -12,6 +12,8 @@ public class Alcohol : Item
     private GameObject marketOwner;
     [SerializeField]
     private Transform table;
+    [SerializeField]
+    private RoomDoor roomdoor;
 
     public override void UseItem()
     {
@@ -32,6 +34,8 @@ public class Alcohol : Item
                 list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_7"));   // 네 방으로 들어가
                 DialogueManager.instance.ShowDialogueBallon(list);
                 PlayerScan.instance.progressStatus = ProgressStatus.E_ErrandFinished;
+                roomdoor.isOpened = true;
+
             }
         }
         else if(PlayerScan.instance.progressStatus == ProgressStatus.E_GetAlcholBottle)

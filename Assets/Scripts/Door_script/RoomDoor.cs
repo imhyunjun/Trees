@@ -18,7 +18,7 @@ public class RoomDoor : Door
 
         if (status == ProgressStatus.E_PayedDone)
         {
-            isOpened = false;
+            //isOpened = false;
             if (Inventory.instance.IsPlayerHasItem("술", "카드"))
             {
                 List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
@@ -41,7 +41,6 @@ public class RoomDoor : Door
                 DialogueManager.instance.ShowDialogueBallon(list);
             }
         }
-        else
-            isOpened = true;
+
     }
 }

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ToHouseDoor : Door
 {
+    [SerializeField]
+    private FrontDoor frontdoor;
+    [SerializeField]
+    private RoomDoor roomdoor;
+
     public override void OnUseDoor()
     {
         PlayerMove.canMove = false;
@@ -17,5 +22,15 @@ public class ToHouseDoor : Door
     private void CanMove()
     {
         PlayerMove.canMove = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ProgressStatus status = PlayerScan.instance.progressStatus;
+        if (status == ProgressStatus.E_PayedDone)        //물건을 다 사고 집에 들어오면 못나감
+        {
+            frontdoor.isOpened = false;                 //다 닫기
+            roomdoor.isOpened = false;
+        }
     }
 }

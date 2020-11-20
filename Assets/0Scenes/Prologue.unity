@@ -1260,6 +1260,7 @@ MonoBehaviour:
   father: {fileID: 1545729707}
   marketOwner: {fileID: 1768675002}
   table: {fileID: 1157366336}
+  roomdoor: {fileID: 215953920}
 --- !u!212 &380840049
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1898,11 +1899,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: d65b5b8b42ae8f54780d300fb8a1b82b, type: 3}
       propertyPath: offTheBGM
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: d65b5b8b42ae8f54780d300fb8a1b82b, type: 3}
       propertyPath: offTheSFX
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65b5b8b42ae8f54780d300fb8a1b82b, type: 3}
@@ -4641,6 +4642,8 @@ MonoBehaviour:
   destinationName: 
   isOpened: 1
   playSfx: 1
+  frontdoor: {fileID: 132984645}
+  roomdoor: {fileID: 215953920}
 --- !u!1 &1503064503
 GameObject:
   m_ObjectHideFlags: 0
@@ -5655,6 +5658,7 @@ MonoBehaviour:
   alchol: {fileID: 380840048}
   father: {fileID: 1545729707}
   table: {fileID: 1157366336}
+  roomdoor: {fileID: 215953920}
 --- !u!212 &1825641531
 SpriteRenderer:
   m_ObjectHideFlags: 0
