@@ -48,11 +48,9 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                         if (clickedSlotItem.CanUse()) // 사용 가능하다면
                         {
                             clickedSlot.UseItem(clickedSlotItem.useType);       //아이템 사용 타입에 맞게 사용
-                            if(clickedSlotItem.useType != Item.UseType.Repeat)
-                            {
-                                clickedSlotItem.UseItem();
+                            clickedSlotItem.UseItem();
+                            if (clickedSlotItem.useType != Item.UseType.Repeat) 
                                 SelectSlot(null);
-                            }
                         }
                         else
                         {
