@@ -32,7 +32,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
             if(hits.Length == 0) SelectSlot(null);
             for (int i = 0; i < hits.Length; i++)
             {
-                Debug.Log($"Inventory Dectect {hits[i].collider.gameObject.name}");
+                Debug.Log($"Inventory dectect {hits[i].collider.gameObject.name}");
                 if (hits[i].collider.transform.tag == "Item")
                 {
                     Item clickedItem = hits[i].collider.GetComponent<Item>();

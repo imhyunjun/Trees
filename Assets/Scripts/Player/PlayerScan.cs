@@ -21,14 +21,8 @@ public class PlayerScan : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 3.5f, LayerMask.GetMask("object"));
-            //if (hit)
-            //{
-            //    NPC npc = hit.transform.GetComponent<NPC>();
-            //    if (npc != null) npc.Interact();
-            //}
-
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 4f, LayerMask.GetMask("object"));
+            int layerMask = (1 << LayerMask.NameToLayer("object")) + (1 << LayerMask.NameToLayer("door"));
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 4f, layerMask);
             float minDist = float.PositiveInfinity;
             int index = -1;
             for(int i = 0; i < colliders.Length; i++)
@@ -39,10 +33,23 @@ public class PlayerScan : MonoBehaviour
                     index = i;
                 }
             }
-            if (index != -1)
+            if (index == -1) return;
+            NPC npc = colliders[index].transform.GetComponent<NPC>();
+            if (npc != null)
+                npc.Interact();
+            else
             {
-                NPC npc = colliders[index].transform.GetComponent<NPC>();
-                if (npc != null) npc.Interact();
+                Door door = colliders[index].transform.GetComponent<Door>();
+                if (door != null && door.isOpened)
+                {
+                    door.OnUseDoor();
+                    if (door.playSfx) SoundManager.PlaySFX("door-open");
+                    gameObject.transform.position = door.arrivePoint.transform.position;
+                    Vector3 backGroundPoint = door.cameraArrivePoint.transform.position;
+                    Camera.main.transform.position = new Vector3(backGroundPoint.x, backGroundPoint.y, backGroundPoint.z - 10);
+                    GameManager.instance.locationPlayerIsIn = door.destinationName;
+                    door.AfterPlayerArrived();
+                }
             }
         }
     }
