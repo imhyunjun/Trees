@@ -31,6 +31,9 @@ public class ToHouseDoor : Door
         {
             frontdoor.isOpened = false;                 //다 닫기
             roomdoor.isOpened = false;
+            //RealWorldDoorManager.Instance.OpenCloseDoor(typeof(FrontDoor), false);
+            //RealWorldDoorManager.Instance.OpenCloseDoor(typeof(RoomDoor), false);
+
         }
     }
 }

@@ -1553,6 +1553,59 @@ Transform:
   m_Father: {fileID: 1187895533}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &337756756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 337756758}
+  - component: {fileID: 337756757}
+  m_Layer: 0
+  m_Name: RealWorldDoorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &337756757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337756756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9179dc64bcf2564d938b0b107d1d7a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realWorlddoors:
+  - {fileID: 215953920}
+  - {fileID: 132984645}
+  - {fileID: 1004564000}
+  - {fileID: 1308297708}
+  - {fileID: 1447573330}
+  - {fileID: 50597393}
+  - {fileID: 902776362}
+  - {fileID: 967843914}
+  - {fileID: 74969186}
+--- !u!4 &337756758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337756756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 28.448792, y: 7.865537, z: -11.933594}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &370392729
 GameObject:
   m_ObjectHideFlags: 0

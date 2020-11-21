@@ -44,7 +44,9 @@ public class RoomDoor : Door
             }
         }
         else if (status == ProgressStatus.E_ErrandFinished)
+            //RealWorldDoorManager.Instance.OpenCloseDoor(typeof(LivingRoomDoor), false);
             livingroomdoor.isOpened = false;
+
 
     }
 

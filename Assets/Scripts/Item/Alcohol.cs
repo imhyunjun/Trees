@@ -42,6 +42,7 @@ public class Alcohol : Item
                 DialogueManager.instance.ShowDialogueBallon(list);
                 PlayerScan.instance.progressStatus = ProgressStatus.E_ErrandFinished;
                 roomdoor.isOpened = true;
+                //RealWorldDoorManager.Instance.OpenCloseDoor(typeof(RoomDoor), true);
 
             }
         }
