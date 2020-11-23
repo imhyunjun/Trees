@@ -10,6 +10,12 @@ public class Bed : NPC
     private SpriteRenderer jungRoom;
     [SerializeField]
     private Sprite nightJungRoomSprite;
+    private Sprite bedDefault;
+
+    private void Awake()
+    {
+        bedDefault = gameObject.GetComponent<SpriteRenderer>().sprite;
+    }
 
     public override void Interact()
     {
@@ -39,12 +45,14 @@ public class Bed : NPC
         SoundManager.PlaySFX("lying-on-bed");
         GetComponent<SpriteRenderer>().sprite = sleepingJung;
         PlayerScan.instance.GetComponent<SpriteRenderer>().sortingOrder = -1;
-        GameManager.instance.StartLoadSceneCor("DreamMap", 5f, 2f, "DreamMap", () => { PlayerMove.canMove = true; });
+        //GameManager.instance.StartLoadSceneCor("DreamMap", 5f, 2f, "DreamMap", () => { PlayerMove.canMove = true; });
+        GameManager.instance.MoveJungCor(5f, 2f, "DreamMap", () => { PlayerMove.canMove = true; });
     }
 
     public void ChangeJungRoomToNight()
     {
         jungRoom.sprite = nightJungRoomSprite;
+        GetComponent<SpriteRenderer>().sprite = bedDefault;
     }
 
 }
