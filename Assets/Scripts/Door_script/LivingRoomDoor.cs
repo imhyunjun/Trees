@@ -5,12 +5,6 @@ using UnityEngine;
 public class LivingRoomDoor : Door
 {
     [SerializeField]
-    private Father father;
-    [SerializeField]
-    private Front front;
-    [SerializeField]
-    private CashCard cashCard;
-    [SerializeField]
     private SpriteRenderer livingRoom;
     [SerializeField]
     private Sprite nightLivingRoomSprite;
@@ -37,8 +31,9 @@ public class LivingRoomDoor : Door
     {
         if (PlayerScan.instance.progressStatus == ProgressStatus.E_GiveBackMirrorToTree)
         {
+            Father father = ObjectManager.GetObject<Father>();
             father.gameObject.SetActive(true);
-            cashCard.gameObject.SetActive(true);
+            ObjectManager.GetObject<CashCard>().gameObject.SetActive(true);
             livingRoom.sprite = nightLivingRoomSprite;
             //DialogueManager.instance.PlayDialogue("chapter_0");
             List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
@@ -49,7 +44,7 @@ public class LivingRoomDoor : Door
             list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_0_3"));
             list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_0_4"));
             DialogueManager.instance.ShowDialogueBallon(list);
-            front.CanPass(false);                                         // 못나가게 막기
+            ObjectManager.GetObject<Front>().CanPass(false);                                         // 못나가게 막기
             PlayerScan.instance.progressStatus = ProgressStatus.E_TalkWithCurrentDad;
         }
     }

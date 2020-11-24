@@ -6,8 +6,6 @@ public class AlcoholBottle : Item
 {
     [SerializeField]
     private GameObject _fatherMonster;
-    [SerializeField]
-    private GameObject _borkenBottle;
 
     private readonly float maxDistance = 8f;
     public override bool CanUse()
@@ -24,6 +22,6 @@ public class AlcoholBottle : Item
     {
         // 괴물이 술병을 가져가고 깨트리는 애니메이션
         SoundManager.PlaySFX("bottle");  // 술병 깨지는 효과음
-        _borkenBottle.SetActive(true); // 일단 동시에 나중에 코루틴으로 변경
+        ObjectManager.GetObject<BrokenBottle>().gameObject.SetActive(true); // 일단 동시에 나중에 코루틴으로 변경
     }
 }

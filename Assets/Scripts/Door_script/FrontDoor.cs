@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class FrontDoor : Door
 {
-    [SerializeField]
-    private Father father;
-
     private void Start()
     {
         isOpened = false;
@@ -24,7 +21,7 @@ public class FrontDoor : Door
         {
             // StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_12"));   //어딜 가는거야?
             List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
-            list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_8"));   //어딜 가는거야?
+            list.Add(new KeyValuePair<GameObject, string>(ObjectManager.GetObject<Father>().gameObject, "chapter_8"));   //어딜 가는거야?
             DialogueManager.instance.ShowDialogueBallon(list);
         }
         else if(status == ProgressStatus.E_ErrandFinished)

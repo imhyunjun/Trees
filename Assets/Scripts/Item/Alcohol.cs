@@ -7,13 +7,9 @@ public class Alcohol : Item
     [SerializeField]
     private GameObject counter;
     [SerializeField]
-    private Father father;
-    [SerializeField]
     private GameObject marketOwner;
     [SerializeField]
     private Transform table;
-    [SerializeField]
-    private RoomDoor roomdoor;
 
     public override void GetItem()
     {
@@ -38,10 +34,10 @@ public class Alcohol : Item
             {
                 //DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_12");              // 네 방으로 들어가
                 List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
-                list.Add(new KeyValuePair<GameObject, string>(father.gameObject, "chapter_7"));   // 네 방으로 들어가
+                list.Add(new KeyValuePair<GameObject, string>(ObjectManager.GetObject<Father>().gameObject, "chapter_7"));   // 네 방으로 들어가
                 DialogueManager.instance.ShowDialogueBallon(list);
                 PlayerScan.instance.progressStatus = ProgressStatus.E_ErrandFinished;
-                roomdoor.isOpened = true;
+                ObjectManager.GetObject<RoomDoor>().isOpened = true;
                 //RealWorldDoorManager.Instance.OpenCloseDoor(typeof(RoomDoor), true);
 
             }

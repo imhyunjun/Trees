@@ -258,7 +258,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.33439445, y: 3.1403751}
+  m_Offset: {x: 0.33439445, y: 0.089048386}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -269,7 +269,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.05032, y: 1.1358242}
+  m_Size: {x: 9.05032, y: 0.95807457}
   m_EdgeRadius: 0
 --- !u!1 &58530177
 GameObject:
@@ -433,6 +433,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.70899963, y: 4.330822}
   m_EdgeRadius: 0
+--- !u!1 &98360426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 98360427}
+  m_Layer: 0
+  m_Name: Map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &98360427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98360426}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1164660502}
+  - {fileID: 1178100327}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &98466823
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +615,6 @@ MonoBehaviour:
   destinationName: Road
   isOpened: 1
   playSfx: 1
-  father: {fileID: 1545729707}
 --- !u!1 &136598288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,10 +1184,8 @@ MonoBehaviour:
   arrivePoint: {fileID: 1227599787}
   cameraArrivePoint: {fileID: 393668571}
   destinationName: LivingRoom
-  isOpened: 0
+  isOpened: 1
   playSfx: 1
-  father: {fileID: 1545729707}
-  livingroomdoor: {fileID: 1004564000}
 --- !u!1 &219239767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,10 +2221,8 @@ MonoBehaviour:
   useType: 0
   canInteractWith: Counter
   counter: {fileID: 1250559353}
-  father: {fileID: 1545729707}
   marketOwner: {fileID: 1768675002}
   table: {fileID: 1157366336}
-  roomdoor: {fileID: 215953920}
 --- !u!212 &380840049
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2974,7 +3001,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51a58f2461f1474ca5d41532af3583d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backMirror: {fileID: 908573767}
 --- !u!60 &513060647
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4167,6 +4193,52 @@ MonoBehaviour:
   destinationName: DreamMap
   isOpened: 1
   playSfx: 1
+--- !u!1 &661249958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 661249959}
+  - component: {fileID: 661249960}
+  m_Layer: 0
+  m_Name: Object Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &661249959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661249958}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1192153064}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &661249960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661249958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b764addc05af78b4cb687b468644f20c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _map: {fileID: 98360427}
+  _objects:
+  - {fileID: 974108577}
 --- !u!1 &664314198
 GameObject:
   m_ObjectHideFlags: 0
@@ -4505,7 +4577,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: "\uCC9C\uC6D0"
   isInInventory: 0
-  itemSprite: {fileID: 21300000, guid: f178c55df8ff427478d67011e4116f34, type: 3}
+  itemSprite: {fileID: 1469357384101705259, guid: f178c55df8ff427478d67011e4116f34,
+    type: 3}
   useType: 0
   canInteractWith: 
 --- !u!212 &713967759
@@ -4568,7 +4641,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 740862903}
-  - component: {fileID: 740862906}
   - component: {fileID: 740862905}
   - component: {fileID: 740862904}
   m_Layer: 0
@@ -4604,6 +4676,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffcec160a21052344a10d803d83e4438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arrivePoint: {fileID: 1744836870}
+  cameraArrivePoint: {fileID: 703049528}
+  destinationName: DreamMap
+  isOpened: 1
+  playSfx: 1
 --- !u!61 &740862905
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4630,23 +4707,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.69522285, y: 5.0056267}
   m_EdgeRadius: 0
---- !u!114 &740862906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 740862902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 243864631271d284295f3097e053edf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrivePoint: {fileID: 1744836870}
-  cameraArrivePoint: {fileID: 703049528}
-  destinationName: DreamMap
-  isOpened: 1
-  playSfx: 1
 --- !u!1 &743460589
 GameObject:
   m_ObjectHideFlags: 0
@@ -4717,7 +4777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525d01d67b46f884e82710a8422212e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  father: {fileID: 1545729707}
 --- !u!1 &753937968
 GameObject:
   m_ObjectHideFlags: 0
@@ -5697,7 +5756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f72037b5eaf80408cb63d16d3d70a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cash: {fileID: 713967758}
 --- !u!1 &848692696
 GameObject:
   m_ObjectHideFlags: 0
@@ -6295,12 +6353,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QuitPanel: {fileID: 1422856590}
---- !u!1 &908573767 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 587103430729253998, guid: d665bb39f2941cd49bed8c5857ebef14,
-    type: 3}
-  m_PrefabInstance: {fileID: 1414933889}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &908573768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 587103430729253999, guid: d665bb39f2941cd49bed8c5857ebef14,
@@ -6851,9 +6903,6 @@ MonoBehaviour:
   destinationName: LivingRoom
   isOpened: 1
   playSfx: 1
-  father: {fileID: 1545729707}
-  front: {fileID: 974108581}
-  cashCard: {fileID: 1173875110}
   livingRoom: {fileID: 470162518}
   nightLivingRoomSprite: {fileID: 21300000, guid: 0b776fe974f22aa4c851795980889704,
     type: 3}
@@ -7376,13 +7425,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164660501}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 34.810368, y: 94.79799, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 780807711}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 98360427}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1173875107
 GameObject:
@@ -7457,13 +7506,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: "\uCE74\uB4DC\uC640 \uCC9C\uC6D0"
   isInInventory: 0
-  itemSprite: {fileID: 21300000, guid: 70a12da3b1a0252489f327f7966eea36, type: 3}
+  itemSprite: {fileID: -411467850244736149, guid: 70a12da3b1a0252489f327f7966eea36,
+    type: 3}
   useType: 1
   canInteractWith: 
-  front: {fileID: 974108581}
-  frontDoor: {fileID: 132984645}
-  card: {fileID: 1825641530}
-  cash: {fileID: 713967758}
 --- !u!212 &1173875111
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7538,13 +7584,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178100326}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -51.96875}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 623342665}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 98360427}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1187895532
 GameObject:
@@ -7610,8 +7656,9 @@ Transform:
   - {fileID: 337756758}
   - {fileID: 1503064504}
   - {fileID: 1970977126}
+  - {fileID: 661249959}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214345548
 GameObject:
@@ -7694,7 +7741,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227599787}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.1899996, y: -8.640001, z: 9}
+  m_LocalPosition: {x: 4.1899996, y: -6.76, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 393668572}
@@ -7916,7 +7963,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1265996146}
   - component: {fileID: 1265996148}
-  - component: {fileID: 1265996147}
   m_Layer: 0
   m_Name: PastAccidentRoom
   m_TagString: Untagged
@@ -7946,18 +7992,6 @@ Transform:
   m_Father: {fileID: 780807711}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1265996147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1265996145}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d200c451e7476b4bb3930976d0c988b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1265996148
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8812,8 +8846,6 @@ MonoBehaviour:
   destinationName: LivingRoom
   isOpened: 1
   playSfx: 1
-  frontdoor: {fileID: 132984645}
-  roomdoor: {fileID: 215953920}
 --- !u!1 &1473328363
 GameObject:
   m_ObjectHideFlags: 0
@@ -9733,7 +9765,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8cde12d5c6f4546b25cbba9cab80e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alcohol: {fileID: 380840048}
 --- !u!61 &1650871038
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11006,16 +11037,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: "\uCE74\uB4DC"
   isInInventory: 0
-  itemSprite: {fileID: 21300000, guid: ae29e610d40b4d346b876c944e12a7f9, type: 3}
+  itemSprite: {fileID: 6842777701766990305, guid: ae29e610d40b4d346b876c944e12a7f9,
+    type: 3}
   useType: 0
   canInteractWith: Counter
   plasticbagSprite: {fileID: -5860159116119774056, guid: aae998af605038141b2e10284b89b9d7,
     type: 3}
   marketOwner: {fileID: 1768675002}
-  alchol: {fileID: 380840048}
-  father: {fileID: 1545729707}
   table: {fileID: 1157366336}
-  roomdoor: {fileID: 215953920}
 --- !u!212 &1825641531
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11934,7 +11963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ee2a60a068083468627c11df95dcf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fatherRoomDoor: {fileID: 247873036}
 --- !u!114 &1917168566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12152,7 +12180,6 @@ MonoBehaviour:
   useType: 1
   canInteractWith: 
   _fatherMonster: {fileID: 885887178}
-  _borkenBottle: {fileID: 829694983}
 --- !u!61 &1926320527
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12294,7 +12321,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1966426560
 GameObject:
@@ -13156,7 +13183,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2119986554
 GameObject:

@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class ToHouseDoor : Door
 {
-    [SerializeField]
-    private FrontDoor frontdoor;
-    [SerializeField]
-    private RoomDoor roomdoor;
-
     public override void OnUseDoor()
     {
         PlayerMove.canMove = false;
@@ -29,8 +24,8 @@ public class ToHouseDoor : Door
         ProgressStatus status = PlayerScan.instance.progressStatus;
         if (status == ProgressStatus.E_PayedDone)        //물건을 다 사고 집에 들어오면 못나감
         {
-            frontdoor.isOpened = false;                 //다 닫기
-            roomdoor.isOpened = false;
+            ObjectManager.GetObject<FrontDoor>().isOpened = false;                 //다 닫기
+            ObjectManager.GetObject<RoomDoor>().isOpened = false;
             //RealWorldDoorManager.Instance.OpenCloseDoor(typeof(FrontDoor), false);
             //RealWorldDoorManager.Instance.OpenCloseDoor(typeof(RoomDoor), false);
 

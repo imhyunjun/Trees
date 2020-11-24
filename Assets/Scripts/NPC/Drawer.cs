@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Drawer : NPC
 {
-    [SerializeField]
-    private Cash cash;
     public override void Interact()
     {
         ProgressStatus status = PlayerScan.instance.progressStatus;
@@ -37,7 +35,7 @@ public class Drawer : NPC
                 list.Add(new KeyValuePair<GameObject, string>(GameManager.instance.player, "chapter_13")); // 이제 얼마나 모은거지..
                 DialogueManager.instance.ShowDialogueBallon(list);
                 SoundManager.PlaySFX("drawer");
-                Inventory.instance.DeleteItemInSlot(cash); // 인벤토리에서 천원 없어짐
+                Inventory.instance.DeleteItemInSlot(ObjectManager.GetObject<Cash>()); // 인벤토리에서 천원 없어짐
             }, () => {
                 DialoguePanel.instance.Hide(0);
                 ButtonPanel.instance.Hide();

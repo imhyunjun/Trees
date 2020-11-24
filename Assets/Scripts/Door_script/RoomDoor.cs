@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class RoomDoor : Door
 {
-    [SerializeField]
-    private Father father;
-    [SerializeField]
-    private LivingRoomDoor livingroomdoor;
-
-    private void Awake()
-    {
-        isOpened = true;
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,6 +11,7 @@ public class RoomDoor : Door
 
         if (status == ProgressStatus.E_PayedDone)
         {
+            Father father = ObjectManager.GetObject<Father>();
             //isOpened = false;
             if (Inventory.instance.IsPlayerHasItem("검은봉투", "카드"))
             {
@@ -45,9 +37,7 @@ public class RoomDoor : Door
         }
         else if (status == ProgressStatus.E_ErrandFinished)
             //RealWorldDoorManager.Instance.OpenCloseDoor(typeof(LivingRoomDoor), false);
-            livingroomdoor.isOpened = false;
-
-
+            ObjectManager.GetObject<LivingRoomDoor>().isOpened = false;
     }
 
     public override void OnUseDoor()
