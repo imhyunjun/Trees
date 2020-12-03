@@ -4,26 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public enum ProgressStatus
-{
-    E_Start,
-    E_ChangeClothes,
-    E_EatMedicine,
-    E_Sleep,
-    E_TalkWithTreeFirstTime,
-    E_TalkWithPastMom,
-    E_TalkWithPastJung,
-    E_TalkWithPastDad,
-    E_GetBackMirror,
-    E_GiveBackMirrorToTree,
-    E_TalkWithCurrentDad,
-    E_GetCashNCard,
-    E_GetAlcholBottle,
-    E_PayedDone,
-    E_ErrandFinished,
-    E_JungWannaKillFather
-}
-
 public class GameManager : MonoBehaviour
 {
     private static GameManager instanced;
@@ -32,10 +12,14 @@ public class GameManager : MonoBehaviour
     public int treeGrowStatus;
     public GameObject fadeObject;                       //페이드효과 줄 것
     public GameObject player;                           //플레이어오브젝트 - 씬 로드할
+
     [SerializeField]
     private GameObject Reality;                         //현실로 돌아올 떄 ( 정이 방)
     [SerializeField]
     private GameObject Dream;                           //꿈으로 갈 떄 ( 나무 방 )
+    [SerializeField]
+    private GameObject ClassRoom;
+
     public string locationPlayerIsIn;                   //플레이어가 있느 장소 - 발자국 사운드 관리
 
     private Image fadeImg;                                      //페이드 효과에 쓸 화면 색깔
@@ -66,7 +50,6 @@ public class GameManager : MonoBehaviour
         fadeImg.color = tempColor;                      //시작시 이미지 검은 화면
 
     }
-
 
     //나중에 fade in/ fadeout은 많이 쓸 것 같아서 일단 만듦
     public IEnumerator IFadeIn(float _fadeinTime)               //이건 그냥 지
@@ -179,6 +162,9 @@ public class GameManager : MonoBehaviour
             case "DreamMap":
                 Camera.main.transform.position = new Vector3(Dream.transform.position.x, Dream.transform.position.y, -10f); //카메라 좌표 설정
                 break;
+            case "ClassRoom":
+                Camera.main.transform.position = new Vector3(ClassRoom.transform.position.x, ClassRoom.transform.position.y, -10f);
+                break;
         }
         float resoulutionX = Screen.width;
         float resoulutionY = Screen.height;
@@ -205,5 +191,10 @@ public class GameManager : MonoBehaviour
         }
 
         callBack?.Invoke();
+    }
+
+    public static bool CheckCondition(ProgressStatus _pro, PlayerAnim _anim)
+    {
+        return (PlayerScan.instance.progressStatus == _pro && AnimationManager.instance.playerAnim == _anim);
     }
 }

@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class Closet : NPC
 {
-    [SerializeField]
-    private RuntimeAnimatorController pajamaAnim;  //잠옷입은 애니메이터
-
     public override void Interact()
     {
         ProgressStatus status = PlayerScan.instance.progressStatus;
-        if (status == ProgressStatus.E_Start)
+        PlayerAnim skinstatus = AnimationManager.instance.playerAnim;
+        if (status == ProgressStatus.E_Start && skinstatus == PlayerAnim.E_Uniform)
         {
             SoundManager.PlaySFX("clothes");
-            PlayerScan.instance.GetComponent<Animator>().runtimeAnimatorController = pajamaAnim;
+            AnimationManager.instance.ChangePlayerAnim(PlayerAnim.E_Pajama);
             PlayerScan.instance.progressStatus = ProgressStatus.E_ChangeClothes;
+            AnimationManager.instance.playerAnim = PlayerAnim.E_Pajama;
+        }
+        else if (GameManager.CheckCondition(ProgressStatus.E_Chapter2Start, PlayerAnim.E_Pajama))
+        {
+            SoundManager.PlaySFX("clothes");                                        //기획서에 없지만 일단 추가
+            AnimationManager.instance.ChangePlayerAnim(PlayerAnim.E_Uniform);
+            AnimationManager.instance.playerAnim = PlayerAnim.E_Uniform;
+            ObjectManager.GetObject<LivingRoomDoor>().isOpened = true;
+            ObjectManager.GetObject<FrontDoor>().isOpened = true;
+            ObjectManager.GetObject<ToSuperMarketDoor>().isOpened = false;
+            ObjectManager.GetObject<ToSchoolDoor>().isOpened = true;
         }
     }
 }

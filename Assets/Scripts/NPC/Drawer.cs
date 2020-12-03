@@ -36,10 +36,15 @@ public class Drawer : NPC
                 DialogueManager.instance.ShowDialogueBallon(list);
                 SoundManager.PlaySFX("drawer");
                 Inventory.instance.DeleteItemInSlot(ObjectManager.GetObject<Cash>()); // 인벤토리에서 천원 없어짐
-            }, () => {
+            }, () =>
+            {
                 DialoguePanel.instance.Hide(0);
                 ButtonPanel.instance.Hide();
             });
+        }
+        else if (status == ProgressStatus.E_Chapter2Start)
+        {
+            DialogueManager.instance.PlayDialogue("chapter_2_2");       //늦기전에 학교에 가자
         }
     }
 }

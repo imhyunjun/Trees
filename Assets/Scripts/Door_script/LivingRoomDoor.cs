@@ -17,12 +17,11 @@ public class LivingRoomDoor : Door
         {
             if (status == ProgressStatus.E_ErrandFinished)
             {
-                isOpened = false;
                 DialogueManager.instance.PlayDialogue("chapter_0_18");               //나가기 싫어..잠이나 자자
             }
-            else
+            else if(GameManager.CheckCondition(ProgressStatus.E_Chapter2Start, PlayerAnim.E_Pajama))
             {
-                isOpened = true;
+                DialogueManager.instance.PlayDialogue("chpater_2_1");               //학교에 가려면 옷을 입어야 해
             }
         }
     }

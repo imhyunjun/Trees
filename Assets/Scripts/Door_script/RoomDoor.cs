@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RoomDoor : Door
 {
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         ProgressStatus status = PlayerScan.instance.progressStatus;

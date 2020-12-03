@@ -26,7 +26,19 @@ public class BrokenBottle : Item
         }
         else if(canInteractWith == "Tree" && status == ProgressStatus.E_JungWannaKillFather)
         {
-            GameManager.instance.treeGrowStatus++;     // 나무 성장 
+            GameManager.instance.treeGrowStatus++;     // 나무 성장
+            PlayerScan.instance.progressStatus = ProgressStatus.E_Chapter2Start;
+
+            PlayerMove.canMove = false;
+
+            GameManager.instance.MoveJungCor(4f, 3f, "JungRoom", () =>
+            {
+                Bed bed = FindObjectOfType<Bed>();
+                Transform jungsRoom = bed.transform.parent;
+                GameManager.instance.player.transform.position = new Vector3(bed.transform.position.x, bed.transform.position.y, 0);        // 플레이어 위치 침대
+                //일어나는 애니메이션 -> 사실 이거 어떻게 할지 아직 감이 안옴
+                DialogueManager.instance.PlayDialogue("chpater_2_0");               //학교에 가야해
+            });
         }
 
     }

@@ -37,6 +37,10 @@ public class Bed : NPC
         {
             GoToDreamMap();
         }
+        else if (status == ProgressStatus.E_Chapter2Start)
+        {
+            DialogueManager.instance.PlayDialogue("chapter_2_2");       //늦기전에 학교에 가자
+        }
     }
 
     private void GoToDreamMap()
@@ -45,7 +49,6 @@ public class Bed : NPC
         SoundManager.PlaySFX("lying-on-bed");
         GetComponent<SpriteRenderer>().sprite = sleepingJung;
         PlayerScan.instance.GetComponent<SpriteRenderer>().sortingOrder = -1;
-        //GameManager.instance.StartLoadSceneCor("DreamMap", 5f, 2f, "DreamMap", () => { PlayerMove.canMove = true; });
         GameManager.instance.MoveJungCor(5f, 2f, "DreamMap", () => { PlayerMove.canMove = true; });
     }
 

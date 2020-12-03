@@ -7,6 +7,14 @@ public class ToSuperMarketDoor : Door
     [SerializeField]
     private GameObject marketOwner;
 
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (PlayerScan.instance.progressStatus == ProgressStatus.E_Chapter2Start)
+        {
+            DialogueManager.instance.PlayDialogue("chapter_2_3");   //늦기전에 학교에 가야해
+        }
+    }
+
     public override void AfterPlayerArrived()
     {
         GameManager.instance.player.transform.localScale = new Vector3(-1f, 1f, 1f);
