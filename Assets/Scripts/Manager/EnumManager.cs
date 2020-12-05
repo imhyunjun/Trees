@@ -19,6 +19,8 @@ public enum ProgressStatus
     E_ErrandFinished,
     E_JungWannaKillFather,
     E_Chapter2Start,
+    E_TeacherCallJung,
+    E_JungGotShocked                    //이제 조건이름 뭐라해야할지 모르겠다
 }
 
 //플레이어 옷

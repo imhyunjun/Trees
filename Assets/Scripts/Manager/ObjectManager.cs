@@ -12,6 +12,10 @@ public class ObjectManager : MonoBehaviour
 
     private static ObjectManager _instance;
     private static Dictionary<Type, GameObject> _objectDic;
+
+    //스크립트 없는 배경들 가져오기 위해, 맵마다 스크립트 만들기 귀찮아서 일단 이렇게 했어요
+    private static Dictionary<string, GameObject> _objectDicinString;
+    
     public static ObjectManager instance => _instance;
 
     private void Awake()
@@ -20,6 +24,10 @@ public class ObjectManager : MonoBehaviour
             _instance = this;
 
         _objectDic = new Dictionary<Type, GameObject>(); // 클래스별로 딕셔너리에 저장
+        _objectDicinString = new Dictionary<string, GameObject>();
+
+        Transform dreamBackGround = _map.transform.GetChild(0).GetChild(0);
+        Transform realBackGround = _map.transform.GetChild(1).GetChild(0);
 
         Item[] items = _map.GetComponentsInChildren<Item>(true); // 아이템들 저장
         for (int i = 0; i < items.Length; i++)
@@ -45,6 +53,21 @@ public class ObjectManager : MonoBehaviour
             if (!_objectDic.ContainsKey(mono.GetType()))
                 _objectDic.Add(mono.GetType(), _objects[i]);
         }
+
+        for(int i = 0; i < dreamBackGround.childCount; i++)                 //꿈맵안에 있는 맵들 넣기
+        {
+            Transform child = dreamBackGround.GetChild(i);
+            if (child.CompareTag("BackGround") && !_objectDicinString.ContainsKey(child.name))
+                _objectDicinString.Add(child.name, child.gameObject);     
+        }
+
+        for (int i = 0; i < realBackGround.childCount; i++)                 //꿈맵안에 있는 맵들 넣기
+        {
+            Transform child = realBackGround.GetChild(i);
+            if (child.CompareTag("BackGround") && !_objectDicinString.ContainsKey(child.name))      //현실 맵 안에 있는 맵들 넣기
+                _objectDicinString.Add(child.name, child.gameObject);
+        }
+
     }
 
     public static T GetObject<T>() where T : MonoBehaviour
@@ -53,5 +76,16 @@ public class ObjectManager : MonoBehaviour
             return gameObject.GetComponent<T>();
         Debug.LogError($"<ObjectManager> 타입이 {typeof(T)}인 오브젝트가 ObjectManager에 등록되어 있지 않습니다.");
         return null;
+    }
+
+    public static GameObject GetObject(string _mapName)
+    {
+        if (_objectDicinString.TryGetValue(_mapName, out GameObject _gameObject))
+            return _gameObject;
+        else
+        {
+            Debug.LogError($"{_mapName}을 가진 맵이 없거나 철자가 틀렸습니다.");
+            return null;
+        }
     }
 }

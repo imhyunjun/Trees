@@ -42,7 +42,6 @@ public class Card : Item                //일단 카드로 생각하고 했어�
                 List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
                 list.Add(new KeyValuePair<GameObject, string>(ObjectManager.GetObject<Father>().gameObject, "chapter_7"));   // 네 방으로 들어가
                 DialogueManager.instance.ShowDialogueBallon(list);
-                //DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_11");              // 네 방으로 들어가
                 PlayerScan.instance.progressStatus = ProgressStatus.E_ErrandFinished;
                 ObjectManager.GetObject<RoomDoor>().isOpened = true;
             }

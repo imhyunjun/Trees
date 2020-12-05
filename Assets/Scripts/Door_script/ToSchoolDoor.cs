@@ -18,7 +18,7 @@ public class ToSchoolDoor : Door
     public override void AfterPlayerArrived()
     {
         if(PlayerScan.instance.progressStatus == ProgressStatus.E_Chapter2Start)
-            GameManager.instance.MoveJungCor(3, 3, "ClassRoom");
+            GameManager.instance.MoveJungCor(3, 3, "ClassRoom", () => StartCoroutine(EnterClassRoom()));
     }
 
     private IEnumerator EnterClassRoom()
@@ -29,5 +29,12 @@ public class ToSchoolDoor : Door
         //말풍선창 번갈아가면서 나오기
         DialogueManager.instance.PlayDialogue("chapter_2_4");       //선생님에게 희망을 품는 정..
         //대화가 끝난 후에
+        //누군가 정에게 다가온다
+        //대사 말풍선창 뜨기 - 말풍선 뜨는 함수를 어떻게 해야할것 ..같은데
+        //정이 일어나는 애니메이션 감이 안옴
+        DialogueManager.instance.PlayDialogue("chpater_2_5");       //교무실로 가면 되겠지.
+        PlayerScan.instance.progressStatus = ProgressStatus.E_TeacherCallJung;
+        PlayerMove.canMove = true;
+        ObjectManager.GetObject<SchoolDoor>().isOpened = false;
     }
 }

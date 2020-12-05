@@ -176,7 +176,7 @@ MonoBehaviour:
     talking: "\uC544\uBE60"
     dialogue: "\uC2EC\uBD80\uB984\uAC12\uC774\uB791."
   - order: chapter_0_5
-    talking: 
+    talking: "\uC815"
     dialogue: "\uC77C\uB2E8 \uCE74\uB4DC\uB791 \uB3C8\uC744 \uCC59\uAE30\uC790."
   - order: chapter_0_6
     talking: "\uC815"
@@ -257,6 +257,37 @@ MonoBehaviour:
   - order: chapter_0_20
     talking: "\uC815"
     dialogue: "\uC774\uAC78 \uC5B4\uB5BB\uAC8C \uAE68\uD2B8\uB9AC\uC9C0?"
-  - order: asdfasdf
-    talking: a
-    dialogue: a
+  - order: '#Chapter2'
+    talking: 
+    dialogue: 
+  - order: chapter_2_0
+    talking: "\uC815"
+    dialogue: "\uD559\uAD50\uC5D0 \uAC00\uC57C\uD574."
+  - order: chapter_2_1
+    talking: "\uC815"
+    dialogue: "\uD559\uAD50\uC5D0 \uAC00\uB824\uBA74 \uC637\uC744 \uAC08\uC544\uC785\uC5B4\uC57C
+      \uD574."
+  - order: chapter_2_2
+    talking: "\uC815"
+    dialogue: "\uB2A6\uAE30 \uC804\uC5D0 \uD559\uAD50\uC5D0 \uAC00\uC790."
+  - order: chapter_2_3
+    talking: "\uC815"
+    dialogue: "\uB2A6\uAE30 \uC804\uC5D0 \uD559\uAD50\uC5D0 \uAC00\uC57C\uD574."
+  - order: chapter_2_4
+    talking: "\uC815"
+    dialogue: "\uB098\uB3C4 \uB2F4\uC784\uC120\uC0DD\uB2D8\uAED8 \uC0C1\uB2F4\uC744
+      \uBC1B\uC73C\uBA74 \uB3C4\uC640\uC8FC\uC2E4\uC9C0\uB3C4 \uBAB0\uB77C."
+  - order: chapter_2_4
+    talking: "\uC815"
+    dialogue: "\uD559\uAD50\uC5D0 \uCE5C\uAD6C\uAC00 \uC0DD\uAE38 \uC218 \uC788\uC744\uAE4C?"
+  - order: chapter_2_4
+    talking: "\uC815"
+    dialogue: "\uC120\uC0DD\uB2D8\uAED8 \uC544\uBC84\uC9C0 \uC77C\uC744 \uB9D0\uD574\uB3C4
+      \uB418\uB294 \uAC78\uAE4C?"
+  - order: chapter_2_5
+    talking: "\uC815"
+    dialogue: "\uAD50\uBB34\uC2E4\uB85C \uAC00\uBA74 \uB418\uACA0\uC9C0."
+  - order: chapter_2_4
+    talking: "\uC815"
+    dialogue: "\uAD50\uBB34\uC2E4\uB85C \uAC00\uC790. \uAD50\uBB34\uC2E4\uC740 \uC624\uB978\uCABD\uC5D0
+      \uC788\uC5B4."

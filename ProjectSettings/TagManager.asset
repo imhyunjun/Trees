@@ -10,6 +10,7 @@ TagManager:
   - PastFamily
   - Item
   - Slot
+  - BackGround
   layers:
   - Default
   - TransparentFX

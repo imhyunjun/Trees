@@ -154,18 +154,9 @@ public class GameManager : MonoBehaviour
     {
         yield return StartCoroutine(IFadeOut(_fadeOutTime));                      // 완전히 페이트 아웃 할 때 까지 대기
 
-        switch (_playerIn)
-        {
-            case "JungRoom":
-                Camera.main.transform.position = new Vector3(Reality.transform.position.x, Reality.transform.position.y, -10f); //카메라 좌표 설정
-                break;
-            case "DreamMap":
-                Camera.main.transform.position = new Vector3(Dream.transform.position.x, Dream.transform.position.y, -10f); //카메라 좌표 설정
-                break;
-            case "ClassRoom":
-                Camera.main.transform.position = new Vector3(ClassRoom.transform.position.x, ClassRoom.transform.position.y, -10f);
-                break;
-        }
+        Transform place = ObjectManager.GetObject(_playerIn).transform;
+        Camera.main.transform.position = new Vector3(place.position.x, place.position.y, -10f);
+
         float resoulutionX = Screen.width;
         float resoulutionY = Screen.height;
         player.gameObject.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(resoulutionX/2f, resoulutionY/2 - 5f, 10));
@@ -181,11 +172,11 @@ public class GameManager : MonoBehaviour
                 BGMManager.instance.PlayBGM(BGM.LivingRoom);
                 break;
 
-            case "JungRoom":
+            case "Jung'sRoom":
                 BGMManager.instance.PlayBGM(BGM.JungRoom);
                 break;
 
-            case "DreamMap":
+            case "TreeRoom":
                 BGMManager.instance.PlayBGM(BGM.DreamMap);
                 break;
         }

@@ -9,7 +9,7 @@ public class CashCard : Item
         base.GetItem();
         ObjectManager.GetObject<Front>().CanPass(true);
         ObjectManager.GetObject<FrontDoor>().isOpened = true;                              // 현관문 열림
-        //RealWorldDoorManager.Instance.OpenCloseDoor(typeof(FrontDoor), true);
+        
         PlayerScan.instance.progressStatus = ProgressStatus.E_GetCashNCard;
         Inventory.instance.DeleteItemInSlot(this); // 캐쉬카드는 없어지고 천원, 카드 각각으로 들어감
         Card card = ObjectManager.GetObject<Card>();
