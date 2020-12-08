@@ -26,9 +26,6 @@ public class ToHouseDoor : Door
         {
             ObjectManager.GetObject<FrontDoor>().isOpened = false;                 //다 닫기
             ObjectManager.GetObject<RoomDoor>().isOpened = false;
-            //RealWorldDoorManager.Instance.OpenCloseDoor(typeof(FrontDoor), false);
-            //RealWorldDoorManager.Instance.OpenCloseDoor(typeof(RoomDoor), false);
-
         }
     }
 }

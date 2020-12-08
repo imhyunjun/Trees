@@ -37,7 +37,6 @@ public class Alcohol : Item
                 DialogueManager.instance.ShowDialogueBallon(list);
                 PlayerScan.instance.progressStatus = ProgressStatus.E_ErrandFinished;
                 ObjectManager.GetObject<RoomDoor>().isOpened = true;
-
             }
         }
         else if(PlayerScan.instance.progressStatus == ProgressStatus.E_GetAlcholBottle)

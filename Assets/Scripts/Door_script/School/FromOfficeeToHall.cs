@@ -13,6 +13,7 @@ public class FromOfficeeToHall : Door
         {
             GameManager.instance.MoveJungCor(5f, 4f, "LivingRoom");
             GameManager.instance.player.transform.position = ObjectManager.GetObject<Front>().transform.position;
+            ObjectManager.GetObject<FrontDoor>().isOpened = false;
             
         }
     }

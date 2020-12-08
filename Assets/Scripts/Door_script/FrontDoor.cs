@@ -28,6 +28,10 @@ public class FrontDoor : Door
         {
             DialogueManager.instance.PlayDialogue("chapter_0_15");  //방으로 들어가자
         }
+        else if(status == ProgressStatus.E_JungGotShocked)
+        {
+            DialogueManager.instance.PlayDialogue("chapter_2_5");   //기분이 너무 안좋아 잠이나 자자.
+        }
     }
 
     public override void OnUseDoor()

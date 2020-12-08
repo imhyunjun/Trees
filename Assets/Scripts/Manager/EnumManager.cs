@@ -23,5 +23,5 @@ public enum ProgressStatus
     E_JungGotShocked                    //이제 조건이름 뭐라해야할지 모르겠다
 }
 
-//플레이어 옷
+//플레이어 옷 조건이 너무 많아질것 같아서 좀 뺐어요.. 경우의 수로..
 public enum PlayerAnim { E_Uniform, E_Pajama };

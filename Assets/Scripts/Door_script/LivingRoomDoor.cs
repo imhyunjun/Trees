@@ -34,7 +34,6 @@ public class LivingRoomDoor : Door
             father.gameObject.SetActive(true);
             ObjectManager.GetObject<CashCard>().gameObject.SetActive(true);
             livingRoom.sprite = nightLivingRoomSprite;
-            //DialogueManager.instance.PlayDialogue("chapter_0");
             List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
             GameObject player = GameManager.instance.player;
             list.Add(new KeyValuePair<GameObject, string>(player, "chapter_0_0"));
