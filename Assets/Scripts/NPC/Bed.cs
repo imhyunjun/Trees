@@ -22,11 +22,11 @@ public class Bed : NPC
     public override void Interact()
     {
         ProgressStatus status = PlayerScan.instance.progressStatus;
-        if(status == ProgressStatus.E_Start)
+        if(status == ProgressStatus.E_Start || status == ProgressStatus.E_JungGotShocked)
         {
             DialogueManager.instance.PlayDialogue("prologue_5");
         }
-        else if(status == ProgressStatus.E_ChangeClothes)
+        else if(status == ProgressStatus.E_ChangeClothes || status == ProgressStatus.E_ChangeClothes2)
         {
             DialogueManager.instance.PlayDialogue("prologue_6");
         }
@@ -43,15 +43,29 @@ public class Bed : NPC
         {
             DialogueManager.instance.PlayDialogue("chapter_2_2");       //늦기전에 학교에 가자
         }
+        else if(status == ProgressStatus.E_EatMedicine2)
+        {
+            GoToDreamMap(() =>
+            {
+                DialogueManager.instance.PlayDialogue("chapter_2_8", false, () => {  // 나무 : 오늘 하루는 어땠어?  ~~
+                    ObjectManager.GetObject<MirrorRoomDoor>().isOpened = true;
+                    SoundManager.PlaySFX("door-open"); // 문열리는 효과음
+                });
+            });
+        }
     }
 
-    private void GoToDreamMap()
+    private void GoToDreamMap(System.Action afterMove = null)
     {
         PlayerMove.canMove = false;
         SoundManager.PlaySFX("lying-on-bed");
         GetComponent<SpriteRenderer>().sprite = sleepingJung;
         PlayerScan.instance.GetComponent<SpriteRenderer>().sortingOrder = -1;
-        GameManager.instance.MoveJungCor(5f, 2f, "TreeRoom", () => { PlayerMove.canMove = true; });
+        GameManager.instance.MoveJungCor(5f, 2f, "TreeRoom", () => 
+        {
+            PlayerMove.canMove = true;
+            afterMove?.Invoke();
+        });
     }
 
     public void ChangeJungRoomToNight()

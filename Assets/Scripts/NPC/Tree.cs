@@ -30,5 +30,9 @@ public class Tree : NPC
                 SoundManager.PlaySFX("door-open"); // 문열리는 효과음
             });
         }
+        else if(status == ProgressStatus.E_EndMirrorRoom)
+        {
+            DialogueManager.instance.PlayDialogue("chapter_2_10", false, ()=> { PlayerScan.instance.progressStatus = ProgressStatus.E_TalkWithTreeAfterMirror; }); // 얼굴에 나비 멋지다
+        }
     }
 }

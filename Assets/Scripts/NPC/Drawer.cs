@@ -8,11 +8,11 @@ public class Drawer : NPC
     {
         ProgressStatus status = PlayerScan.instance.progressStatus;
 
-        if (status == ProgressStatus.E_Start)
+        if (status == ProgressStatus.E_Start || status == ProgressStatus.E_JungGotShocked)
         {
             DialogueManager.instance.PlayDialogue("prologue_5");
         }
-        else if (status == ProgressStatus.E_ChangeClothes)
+        else if (status == ProgressStatus.E_ChangeClothes || status == ProgressStatus.E_ChangeClothes2)
         {
             SoundManager.PlaySFX("drawer");
 
@@ -20,7 +20,8 @@ public class Drawer : NPC
             ButtonPanel.instance.SetUp(() =>
             {
                 SoundManager.PlaySFX("re_water_gulp");
-                PlayerScan.instance.progressStatus = ProgressStatus.E_EatMedicine;
+                if (status == ProgressStatus.E_ChangeClothes) PlayerScan.instance.progressStatus = ProgressStatus.E_EatMedicine;
+                else if (status == ProgressStatus.E_ChangeClothes2) PlayerScan.instance.progressStatus = ProgressStatus.E_EatMedicine2;
             }, () =>
             {
                 DialogueManager.instance.PlayDialogue("prologue_8");

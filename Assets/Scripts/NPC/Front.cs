@@ -42,7 +42,9 @@ public class Front : MonoBehaviour
             }   
             else if (status == ProgressStatus.E_TalkWithCurrentDad)
                 DialogueManager.instance.PlayDialogue("chapter_0_5"); // 카드를 챙기자고 말함
-            
+            else if(status == ProgressStatus.E_JungGotShocked)
+                DialogueManager.instance.PlayDialogue("chapter_2_7"); // 기분이 안좋아 잠이나 자자
+
         }
     }
 

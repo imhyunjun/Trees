@@ -32,7 +32,7 @@ public class ToSchoolDoor : Door
         //누군가 정에게 다가온다
         //대사 말풍선창 뜨기 - 말풍선 뜨는 함수를 어떻게 해야할것 ..같은데
         //정이 일어나는 애니메이션 감이 안옴
-        DialogueManager.instance.PlayDialogue("chpater_2_5");       //교무실로 가면 되겠지.
+        DialogueManager.instance.PlayDialogue("chapter_2_5");       //교무실로 가면 되겠지.
         PlayerScan.instance.progressStatus = ProgressStatus.E_TeacherCallJung;
         PlayerMove.canMove = true;
         ObjectManager.GetObject<SchoolDoor>().isOpened = false;
