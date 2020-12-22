@@ -21,7 +21,7 @@ public class LivingRoomDoor : Door
             }
             else if(GameManager.CheckCondition(ProgressStatus.E_Chapter2Start, PlayerAnim.E_Pajama))
             {
-                DialogueManager.instance.PlayDialogue("chpater_2_1");               //학교에 가려면 옷을 입어야 해
+                DialogueManager.instance.PlayDialogue("chapter_2_1");               //학교에 가려면 옷을 입어야 해
             }
         }
     }

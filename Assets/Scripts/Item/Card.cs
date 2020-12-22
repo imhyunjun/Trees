@@ -26,7 +26,10 @@ public class Card : Item                //일단 카드로 생각하고 했어�
             alchol.GetComponent<SpriteRenderer>().sprite = plasticbagSprite;                   //술 스프라이트 -> 검은봉투로 변경 일단 동시에
             alchol.itemName = "검은봉투";
             alchol.itemSprite = plasticbagSprite;
+            alchol.canInteractWith = "Table";
             Inventory.instance.ReUseItem(true, gameObject);
+            ObjectManager.GetObject<FromSuperMarketToOutDoor>().isOpened = true;
+            ObjectManager.GetObject<Alcohol>().Collider.enabled = true;
             PlayerScan.instance.progressStatus = ProgressStatus.E_PayedDone;
         }
         else if (PlayerScan.instance.progressStatus == ProgressStatus.E_PayedDone)
@@ -37,6 +40,7 @@ public class Card : Item                //일단 카드로 생각하고 했어�
             Vector3 tempvec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             tempvec.z = 0;
             gameObject.transform.position = tempvec;
+            GetComponent<Collider2D>().enabled = false;                   // 콜라이더 꺼서 다시 못먹게
             if (Inventory.instance.IsPlayerDoesntHaveItem("검은봉투"))
             {
                 List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();

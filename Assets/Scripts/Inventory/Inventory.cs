@@ -25,20 +25,21 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
 
     private void Update()
     {
+        if (DialoguePanel.instance.IsDialogueOn()) return;           // 대화 중에는 클릭 안되게
+
         if (Input.GetMouseButtonDown(0))
         {
-            if (DialoguePanel.instance.IsDialogueOn()) return;           // 대화 중에는 클릭 안되게
             RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity); // 자꾸 콜라이더가 겹쳐서 레이를 쏴서                                                                                                                                                                                                                     //충돌하는 모든 오브젝트 받아오게 변경했습니다
-            if(hits.Length == 0) SelectSlot(null);
             for (int i = 0; i < hits.Length; i++)
             {
-                Debug.Log($"Inventory dectect {hits[i].collider.gameObject.name}");
+                Debug.Log($"Inventory detect {hits[i].collider.gameObject.name}");
                 if (hits[i].collider.transform.tag == "Item")
                 {
                     Item clickedItem = hits[i].collider.GetComponent<Item>();
                     StartCoroutine(GetItemPanel.instance.IShowText(clickedItem.itemName));
                     GetItemInSlot(hits[i].collider.gameObject);
                     SoundManager.PlaySFX("get_item");
+                    return;
                 }
 
                 if (clickedSlot != null && clickedSlot.isSlotHasItem)                 // 아이템 사용
@@ -50,7 +51,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                         {
                             clickedSlot.UseItem(clickedSlotItem.useType);       //아이템 사용 타입에 맞게 사용
                             clickedSlotItem.UseItem();
-                            if (clickedSlotItem.useType != Item.UseType.Repeat) 
+                            if (clickedSlotItem.useType != Item.UseType.Repeat)
                                 SelectSlot(null);
                         }
                         else
@@ -58,9 +59,11 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                             clickedSlotItem.FailToUse(); // 사용 실패
                             SelectSlot(null);
                         }
+                        return;
                     }
                 }
-            }            
+            }
+            SelectSlot(null);
         }
     }
 

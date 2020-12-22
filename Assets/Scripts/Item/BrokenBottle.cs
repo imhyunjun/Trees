@@ -38,6 +38,7 @@ public class BrokenBottle : Item
                 GameManager.instance.player.transform.position = new Vector3(bed.transform.position.x, bed.transform.position.y, 0);        // 플레이어 위치 침대
                 //일어나는 애니메이션 -> 사실 이거 어떻게 할지 아직 감이 안옴
                 bed.ChangeJungRoomToMorning();
+                ObjectManager.GetObject<LivingRoomDoor>().isOpened = true;
                 DialogueManager.instance.PlayDialogue("chapter_2_0");               //학교에 가야해
             });
         }
