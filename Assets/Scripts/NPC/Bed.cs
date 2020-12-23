@@ -60,7 +60,7 @@ public class Bed : NPC
         PlayerMove.canMove = false;
         SoundManager.PlaySFX("lying-on-bed");
         GetComponent<SpriteRenderer>().sprite = sleepingJung;
-        PlayerScan.instance.GetComponent<SpriteRenderer>().sortingOrder = -1;
+        PlayerScan.instance.GetComponent<SpriteRenderer>().enabled = false;
         GameManager.instance.MoveJungCor(5f, 2f, "TreeRoom", () => 
         {
             PlayerMove.canMove = true;

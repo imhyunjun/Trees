@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
         float resoulutionY = Screen.height;
         player.gameObject.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(resoulutionX/2f, resoulutionY/2 - 5f, 10));
 
-        player.GetComponent<SpriteRenderer>().sortingOrder = 3;
+        player.GetComponent<SpriteRenderer>().enabled = true;
         locationPlayerIsIn = _playerIn;
 
         StartCoroutine(IFadeIn(_fadeInTime));
