@@ -8,7 +8,8 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
     [SerializeField]
     private Transform inventoryItemsPool;                   //  얻은 아이템들 여기에 임시로 두기
 
-    private List<Slot> slotList = new List<Slot>(6);                    //슬롯관리
+    [HideInInspector]
+    public List<Slot> slotList = new List<Slot>(6);                    //슬롯관리
     private Slot clickedSlot;                                           //클릭된 슬롯
     private int maxSlotCount;                                           //최대 슬롯 개수
 
