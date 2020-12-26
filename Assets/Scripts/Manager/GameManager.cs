@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     private GameObject ClassRoom;
 
     public string locationPlayerIsIn;                   //플레이어가 있느 장소 - 발자국 사운드 관리
+    public string currentlocation;                      //위에랑 합치면 좋겠지만 일단 따로
 
     private Image fadeImg;                                      //페이드 효과에 쓸 화면 색깔
     private Color tempColor;                                    //색 바꿀때 쓸 임시 색

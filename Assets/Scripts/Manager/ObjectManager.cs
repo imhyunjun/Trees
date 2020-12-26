@@ -18,8 +18,9 @@ public class ObjectManager : MonoBehaviour
     
     public static ObjectManager instance => _instance;
 
-    public List<string> doorsL = new List<string>();
-
+    public List<Type> doorsL = new List<Type>();
+    public List<bool> doorsB = new List<bool>();
+  
     private void Awake()
     {
         if (_instance == null)
@@ -43,7 +44,8 @@ public class ObjectManager : MonoBehaviour
             if (!_objectDic.ContainsKey(doors[i].GetType()))
             {
                 _objectDic.Add(doors[i].GetType(), doors[i].gameObject);
-                doorsL.Add(doors[i].GetType().ToString());
+                doorsL.Add(doors[i].GetType());
+                doorsB.Add(doors[i].isOpened);
             }
         }
         NPC[] npcs = _map.GetComponentsInChildren<NPC>(true); // npc들 저장
