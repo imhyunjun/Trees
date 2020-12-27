@@ -18,7 +18,7 @@ public class ToSchoolDoor : Door
     public override void AfterPlayerArrived()
     {
         if(PlayerScan.instance.progressStatus == ProgressStatus.E_Chapter2Start)
-            GameManager.instance.MoveJungCor(3, 3, "ClassRoom", () => StartCoroutine(EnterClassRoom()));
+            GameManager.instance.MoveJungCor(3, 3, "ClassRoom", "ClassRoom", () => StartCoroutine(EnterClassRoom()));
     }
 
     private IEnumerator EnterClassRoom()

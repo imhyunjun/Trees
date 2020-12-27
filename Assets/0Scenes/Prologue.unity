@@ -3285,7 +3285,7 @@ GameObject:
   - component: {fileID: 429007224}
   - component: {fileID: 429007225}
   m_Layer: 0
-  m_Name: DataManager
+  m_Name: Data Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3317,6 +3317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17dca6e2fc25ab14fb9bd1c44a0b860d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startButton: {fileID: 0}
+  loadButton: {fileID: 0}
 --- !u!1 &430572296
 GameObject:
   m_ObjectHideFlags: 0
@@ -15411,7 +15413,7 @@ MonoBehaviour:
   Dream: {fileID: 703049528}
   ClassRoom: {fileID: 1788345927}
   locationPlayerIsIn: 
-  bgms: []
+  map: 
 --- !u!1 &1971038710
 GameObject:
   m_ObjectHideFlags: 0
@@ -15807,8 +15809,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 429007225}
-        m_MethodName: SaveData
+      - m_Target: {fileID: 906922048}
+        m_MethodName: SaveGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

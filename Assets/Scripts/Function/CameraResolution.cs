@@ -17,7 +17,6 @@ public class CameraResolution : MonoBehaviour
                              
         //16:10과 차이가 얼마나 나는지 비교
         ratio = ((float)Screen.width / Screen.height) / ((float)wantScale.x / wantScale.y);
-        Debug.LogError(ratio);
 
         if (ratio > 1f)
         {

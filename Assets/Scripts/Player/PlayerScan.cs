@@ -48,6 +48,7 @@ public class PlayerScan : MonoBehaviour
                     Vector3 backGroundPoint = door.cameraArrivePoint.transform.position;
                     Camera.main.transform.position = new Vector3(backGroundPoint.x, backGroundPoint.y, backGroundPoint.z - 10);
                     GameManager.instance.locationPlayerIsIn = door.destinationName;
+                    GameManager.instance.map = door.cameraArrivePoint.name;
                     door.AfterPlayerArrived();
                 }
             }

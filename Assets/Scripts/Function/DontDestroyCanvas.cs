@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class DontDestroyCanvas : DontDestroy<DontDestroyCanvas>
 {
-
+    public void SaveGame()
+    {
+        DataManager.instance.SaveData();
+    }
 }

@@ -11,7 +11,7 @@ public class FromOfficeeToHall : Door
 
         if(status == ProgressStatus.E_JungGotShocked)
         {
-            GameManager.instance.MoveJungCor(5f, 4f, "LivingRoom");
+            GameManager.instance.MoveJungCor(5f, 4f, "LivingRoom", "LivingRoom");
             GameManager.instance.player.transform.position = ObjectManager.GetObject<Front>().transform.position;
             ObjectManager.GetObject<FrontDoor>().isOpened = false;
             

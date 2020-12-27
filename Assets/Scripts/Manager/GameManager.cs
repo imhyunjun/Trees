@@ -21,13 +21,10 @@ public class GameManager : MonoBehaviour
     private GameObject ClassRoom;
 
     public string locationPlayerIsIn;                   //플레이어가 있느 장소 - 발자국 사운드 관리
-    public string currentlocation;                      //위에랑 합치면 좋겠지만 일단 따로
+    public string map;
 
     private Image fadeImg;                                      //페이드 효과에 쓸 화면 색깔
     private Color tempColor;                                    //색 바꿀때 쓸 임시 색
-
-    [SerializeField]
-    private AudioClip[] bgms;
 
 
     private void Awake()
@@ -42,14 +39,18 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        treeGrowStatus = 0;
-        locationPlayerIsIn = "LivingRoom";
-
         fadeImg = fadeObject.GetComponent<Image>();
         tempColor = fadeImg.color;
         tempColor.a = 1;
         fadeImg.color = tempColor;                      //시작시 이미지 검은 화면
+    }
 
+    public void GameStart() // 게임 처음부터 시작
+    {
+        treeGrowStatus = 0;
+        locationPlayerIsIn = "LivingRoom";
+        map = "LivingRoom";
+        StartCoroutine(DialogueManager.instance.GameStart());
     }
 
     //나중에 fade in/ fadeout은 많이 쓸 것 같아서 일단 만듦
@@ -134,11 +135,11 @@ public class GameManager : MonoBehaviour
                 BGMManager.instance.PlayBGM(BGM.LivingRoom);
                 break;
 
-            case "JungRoom":
+            case "Jung'sRoom":
                 BGMManager.instance.PlayBGM(BGM.JungRoom);
                 break;
 
-            case "DreamMap":
+            case "TreeRoom":
                 BGMManager.instance.PlayBGM(BGM.DreamMap);
                 break;
         }
@@ -146,16 +147,16 @@ public class GameManager : MonoBehaviour
         callBack?.Invoke();
     }
 
-    public void MoveJungCor(float _fadeOutTime, float _fadeInTime, string _playerIn, System.Action callBack = null)
+    public void MoveJungCor(float _fadeOutTime, float _fadeInTime, string _playerIn, string _map, System.Action callBack = null)
     {
-        StartCoroutine(IMoveJung(_fadeOutTime, _fadeInTime, _playerIn, callBack));
+        StartCoroutine(IMoveJung(_fadeOutTime, _fadeInTime, _playerIn, _map, callBack));
     }
 
-    public IEnumerator IMoveJung(float _fadeOutTime, float _fadeInTime, string _playerIn, System.Action callBack = null)
+    public IEnumerator IMoveJung(float _fadeOutTime, float _fadeInTime, string _playerIn, string _map, System.Action callBack = null)
     {
         yield return StartCoroutine(IFadeOut(_fadeOutTime));                      // 완전히 페이트 아웃 할 때 까지 대기
 
-        Transform place = ObjectManager.GetObject(_playerIn).transform;
+        Transform place = ObjectManager.GetObject(_map).transform;
         Camera.main.transform.position = new Vector3(place.position.x, place.position.y, -10f);
 
         float resoulutionX = Screen.width;
@@ -164,10 +165,11 @@ public class GameManager : MonoBehaviour
 
         player.GetComponent<SpriteRenderer>().enabled = true;
         locationPlayerIsIn = _playerIn;
+        map = _map;
 
         StartCoroutine(IFadeIn(_fadeInTime));
 
-        switch (_playerIn)
+        switch (_map)
         {
             case "LivingRoom":
                 BGMManager.instance.PlayBGM(BGM.LivingRoom);

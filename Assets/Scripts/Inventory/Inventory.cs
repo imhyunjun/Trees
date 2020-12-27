@@ -13,6 +13,8 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
     private Slot clickedSlot;                                           //클릭된 슬롯
     private int maxSlotCount;                                           //최대 슬롯 개수
 
+    public readonly static int slotCount = 6;
+
     private void Awake()
     {
         maxSlotCount = 6;

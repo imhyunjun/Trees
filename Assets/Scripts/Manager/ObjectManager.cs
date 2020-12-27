@@ -19,7 +19,16 @@ public class ObjectManager : MonoBehaviour
     public static ObjectManager instance => _instance;
 
     public List<Type> doorsL = new List<Type>();
-    public List<bool> doorsB = new List<bool>();
+    public List<bool> doorsB
+    {
+        get
+        {
+            List<bool> result = new List<bool>();
+            for(int i = 0; i < doorsL.Count; i++)
+                result.Add(_objectDic[doorsL[i]].GetComponent<Door>().isOpened);
+            return result;
+        }
+    }
   
     private void Awake()
     {
@@ -45,7 +54,6 @@ public class ObjectManager : MonoBehaviour
             {
                 _objectDic.Add(doors[i].GetType(), doors[i].gameObject);
                 doorsL.Add(doors[i].GetType());
-                doorsB.Add(doors[i].isOpened);
             }
         }
         NPC[] npcs = _map.GetComponentsInChildren<NPC>(true); // npc들 저장
@@ -93,6 +101,15 @@ public class ObjectManager : MonoBehaviour
         {
             Debug.LogError($"{_mapName}을 가진 맵이 없거나 철자가 틀렸습니다.");
             return null;
+        }
+    }
+
+    public void ApplyDoorStatus(List<string> doorName, List<bool> doorStatus)
+    {
+        for(int i = 0; i < doorName.Count; i++)
+        {
+            Type type = Type.GetType(doorName[i]);
+            _objectDic[type].GetComponent<Door>().isOpened = doorStatus[i];
         }
     }
 }

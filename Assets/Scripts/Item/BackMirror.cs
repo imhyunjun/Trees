@@ -26,7 +26,7 @@ public class BackMirror : Item
 
         PlayerMove.canMove = false;
 
-        GameManager.instance.MoveJungCor(4f, 3f, "Jung'sRoom", () =>
+        GameManager.instance.MoveJungCor(4f, 3f, "Jung'sRoom", "Jung'sRoom", () =>
         {
             Bed bed = FindObjectOfType<Bed>();
             bed.ChangeJungRoomToNight();

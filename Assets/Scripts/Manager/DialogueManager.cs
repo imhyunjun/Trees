@@ -80,7 +80,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    IEnumerator Start()
+    public IEnumerator GameStart()
     {
         yield return new WaitForSeconds(1f);
 

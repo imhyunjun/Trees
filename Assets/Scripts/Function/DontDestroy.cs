@@ -6,7 +6,7 @@ public class DontDestroy<T> : MonoBehaviour where T : DontDestroy<T>
 {
     private static T _instance;
     public static T instance => _instance;
-    private void Awake()
+    protected void Awake()
     {
         if (_instance == null)
             _instance = this as T;

@@ -26,10 +26,6 @@ public class BGMManager : DontDestroy<BGMManager>
             case "Prologue":
                 PlayBGM(BGM.LivingRoom);
                 break;
-
-            case "DreamMap":
-                PlayBGM(BGM.DreamMap);
-                break;
         }
     }
 
