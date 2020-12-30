@@ -51,7 +51,6 @@ public class DataManager : DontDestroy<DataManager>
         List<InvenData> invenDataList = new List<InvenData>();
         StartCoroutine(SaveInvenData(invenDataList));
 
-        
     }
 
     public void OnClickStartButton()
@@ -79,6 +78,7 @@ public class DataManager : DontDestroy<DataManager>
 
         string loadData = File.ReadAllText(Application.dataPath + "/GameData.json");
         GameData data = JsonUtility.FromJson<GameData>(loadData);
+
         string loadInvenData = File.ReadAllText(Application.dataPath + "/InvenData.json");
         InvenData[] invenData = JsonConvert.DeserializeObject<InvenData[]>(loadInvenData);
         StartCoroutine(ILoadLastGame(data, invenData));
@@ -114,10 +114,10 @@ public class DataManager : DontDestroy<DataManager>
 
         while (idx < 6)
         {
-            bool tempbool = Inventory.instance.slotList[idx].isSlotHasItem;
-            //Item tempItem = Inventory.instance.slotList[i].hasItem?.GetComponent<Item>();
+            bool tempbool = Inventory.instance.slotList[idx].IsSlotHasItem;
+            Item tempItem = Inventory.instance.slotList[idx].hasItem?.GetComponent<Item>();
             yield return StartCoroutine(ImageToByte(Inventory.instance.slotList[idx].image, idx));
-            invenDataList.Add(new InvenData(tempbool, byteArrays[idx]));
+            invenDataList.Add(new InvenData(tempbool, tempItem, byteArrays[idx]));
             idx++;
             yield return null;
         }
@@ -132,8 +132,6 @@ public class DataManager : DontDestroy<DataManager>
         yield return new WaitForEndOfFrame();
 
         Texture2D newTex2D = (Texture2D)_image.mainTexture;
-        //newTex2D.ReadPixels(new Rect(0, 0, newTex.width, newTex.height), 0, 0);
-        //newTex2D.Apply
         Texture2D decompres = newTex2D.DeCompress();
         byte[] bytes = decompres.EncodeToPNG();
 
@@ -166,16 +164,17 @@ public class GameData
 [Serializable]
 public class InvenData
 {
-    public InvenData(bool ishasItem, byte[] hasItemImageToByte)
+   
+    public bool ishasItem;
+    [SerializeField] public Item hasItem;
+    public byte[] hasItemImageToByte;
+
+    public InvenData(bool ishasItem, Item hasItem, byte[] hasItemImageToByte)
     {
         this.ishasItem = ishasItem;
-        //this.hasItem = hasItem;
+        this.hasItem = hasItem;
         this.hasItemImageToByte = hasItemImageToByte;
     }
-
-    public bool ishasItem { get; set; }
-    public Item hasItem { get; set; }
-    public byte[] hasItemImageToByte { get; set; }
 }
 
 

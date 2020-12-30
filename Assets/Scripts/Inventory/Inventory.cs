@@ -45,7 +45,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                     return;
                 }
 
-                if (clickedSlot != null && clickedSlot.isSlotHasItem)                 // 아이템 사용
+                if (clickedSlot != null && clickedSlot.IsSlotHasItem)                 // 아이템 사용
                 {
                     Item clickedSlotItem = clickedSlot.hasItem;
                     if (hits[i].collider.name == clickedSlotItem.canInteractWith)   //인벤토리에서 물건을 꺼내고 상호작용하는 물체와 이름이 같다면 아이템 사용
@@ -82,7 +82,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         if(clickedSlot != null)   // 슬롯 선택
         {
             clickedSlot.Select();
-            if (clickedSlot.isSlotHasItem && clickedSlot.hasItem.useType == Item.UseType.Immediately) // 선택한 슬롯의 아이템이 즉시 사용하는 아이템이면
+            if (clickedSlot.IsSlotHasItem && clickedSlot.hasItem.useType == Item.UseType.Immediately) // 선택한 슬롯의 아이템이 즉시 사용하는 아이템이면
             {
                 if (clickedSlot.hasItem.CanUse()) // 사용 가능하면
                 {
@@ -106,7 +106,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
 
         foreach (Slot slot in slotList)
         {
-            if (!slot.isSlotHasItem)                                        //슬롯이 비어있다면 아이템 정보 추가
+            if (!slot.IsSlotHasItem)                                        //슬롯이 비어있다면 아이템 정보 추가
             {                                                               //모든 슬롯이 꽉차이는 경우는 아직 x
                 slot.GetItem(clickedItem);
                 clickedItem.GetItem();
@@ -191,7 +191,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
             Item clickedItem = _gameObject.GetComponent<Item>();
             foreach (Slot slot in slotList)
             {
-                if (!slot.isSlotHasItem)                                        //슬롯이 비어있다면 아이템 정보 추가
+                if (!slot.IsSlotHasItem)                                        //슬롯이 비어있다면 아이템 정보 추가
                 {                                                               //모든 슬롯이 꽉차이는 경우는 아직 x
                     slot.GetItem(clickedItem);
                     clickedItem.GetItem();
@@ -233,7 +233,8 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
     {
         for (int i = 0; i < slotList.Count; i++)
         {
-            //slotList[i].isSlotHasItem = invenData[i].ishasItem;
+            slotList[i].hasItem = invenData[i].hasItem;
+            slotList[i].IsSlotHasItem = invenData[i].ishasItem;
             slotList[i].image.sprite = DataManager.instance.BytesToSprite(invenData[i].hasItemImageToByte);
         }
     }

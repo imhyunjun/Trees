@@ -9,7 +9,8 @@ public class Slot : MonoBehaviour
     public Image image;                   // 아이템 이미지 컴퍼넌트
     private Sprite slotDefaultSprite;        //슬롯 기본 이미지
 
-    public bool isSlotHasItem
+    private bool isSlotHasItem;
+    public bool IsSlotHasItem
     {
         get => hasItem != null;
         set => isSlotHasItem = value;
