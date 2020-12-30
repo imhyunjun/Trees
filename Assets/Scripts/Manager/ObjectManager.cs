@@ -10,11 +10,9 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     private GameObject[] _objects;
 
+    private static Dictionary<string, GameObject> _mapDicinString;
     private static ObjectManager _instance;
     private static Dictionary<Type, GameObject> _objectDic;
-
-    //스크립트 없는 배경들 가져오기 위해, 맵마다 스크립트 만들기 귀찮아서 일단 이렇게 했어요
-    private static Dictionary<string, GameObject> _objectDicinString;
     
     public static ObjectManager instance => _instance;
 
@@ -29,6 +27,9 @@ public class ObjectManager : MonoBehaviour
             return result;
         }
     }
+
+    private Transform dreamBackGround;
+    private Transform realBackGround;
   
     private void Awake()
     {
@@ -36,10 +37,10 @@ public class ObjectManager : MonoBehaviour
             _instance = this;
 
         _objectDic = new Dictionary<Type, GameObject>(); // 클래스별로 딕셔너리에 저장
-        _objectDicinString = new Dictionary<string, GameObject>();
+        _mapDicinString = new Dictionary<string, GameObject>();
 
-        Transform dreamBackGround = _map.transform.GetChild(0).GetChild(0);
-        Transform realBackGround = _map.transform.GetChild(1).GetChild(0);
+        dreamBackGround = _map.transform.GetChild(0).GetChild(0);
+        realBackGround = _map.transform.GetChild(1).GetChild(0);
 
         Item[] items = _map.GetComponentsInChildren<Item>(true); // 아이템들 저장
         for (int i = 0; i < items.Length; i++)
@@ -62,6 +63,7 @@ public class ObjectManager : MonoBehaviour
             if (!_objectDic.ContainsKey(npcs[i].GetType()))
                 _objectDic.Add(npcs[i].GetType(), npcs[i].gameObject);
         }
+
         for(int i = 0; i < _objects.Length; i++)
         {
             MonoBehaviour mono = _objects[i].GetComponent<MonoBehaviour>(); // 그 외에 Inspector에서 할당한 오브젝트들 저장
@@ -72,15 +74,19 @@ public class ObjectManager : MonoBehaviour
         for(int i = 0; i < dreamBackGround.childCount; i++)                 //꿈맵안에 있는 맵들 넣기
         {
             Transform child = dreamBackGround.GetChild(i);
-            if (child.CompareTag("BackGround") && !_objectDicinString.ContainsKey(child.name))
-                _objectDicinString.Add(child.name, child.gameObject);     
+            if (child.CompareTag("BackGround") && !_mapDicinString.ContainsKey(child.name))
+            {
+                _mapDicinString.Add(child.name, child.gameObject);
+            }
         }
 
         for (int i = 0; i < realBackGround.childCount; i++)                 //꿈맵안에 있는 맵들 넣기
         {
             Transform child = realBackGround.GetChild(i);
-            if (child.CompareTag("BackGround") && !_objectDicinString.ContainsKey(child.name))      //현실 맵 안에 있는 맵들 넣기
-                _objectDicinString.Add(child.name, child.gameObject);
+            if (child.CompareTag("BackGround") && !_mapDicinString.ContainsKey(child.name))      //현실 맵 안에 있는 맵들 넣기
+            {
+                _mapDicinString.Add(child.name, child.gameObject);
+            }
         }
 
     }
@@ -95,7 +101,7 @@ public class ObjectManager : MonoBehaviour
 
     public static GameObject GetObject(string _mapName)
     {
-        if (_objectDicinString.TryGetValue(_mapName, out GameObject _gameObject))
+        if (_mapDicinString.TryGetValue(_mapName, out GameObject _gameObject))
             return _gameObject;
         else
         {

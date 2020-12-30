@@ -5,10 +5,16 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    private Image image;                   // 아이템 이미지 컴퍼넌트
+    //저장을 위해 public
+    public Image image;                   // 아이템 이미지 컴퍼넌트
     private Sprite slotDefaultSprite;        //슬롯 기본 이미지
 
-    public bool isSlotHasItem => hasItem != null;  //슬롯에 아이템이 있는지
+    public bool isSlotHasItem
+    {
+        get => hasItem != null;
+        set => isSlotHasItem = value;
+    }
+
     public Item hasItem;              //가지고 있는 아이템
 
     private void Awake()

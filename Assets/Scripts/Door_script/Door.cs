@@ -10,7 +10,7 @@ public class Door : MonoBehaviour //상속을 위한 문 추상 클래스, 이 �
     public GameObject cameraArrivePoint;    //각 문마다 카메라가 이동하는 지점 - 각 배경의 좌표
     public string destinationName;          //문마다 목적지 이름 - 발자국 관리용
     public bool isOpened = true;            //각 문마다 오픈 상태
-    public bool playSfx = true; // 문 열리는 효과음 나는지
+    public bool playSfx = true;             // 문 열리는 효과음 나는지
 
     public virtual void OnUseDoor()
     {
