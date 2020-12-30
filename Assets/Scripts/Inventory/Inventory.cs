@@ -54,7 +54,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                         {
                             clickedSlot.UseItem(clickedSlotItem.useType);       //아이템 사용 타입에 맞게 사용
                             clickedSlotItem.UseItem();
-                            if (clickedSlotItem.useType != Item.UseType.Repeat)
+                            if (clickedSlotItem.useType != UseType.Repeat)
                                 SelectSlot(null);
                         }
                         else
@@ -82,7 +82,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         if(clickedSlot != null)   // 슬롯 선택
         {
             clickedSlot.Select();
-            if (clickedSlot.IsSlotHasItem && clickedSlot.hasItem.useType == Item.UseType.Immediately) // 선택한 슬롯의 아이템이 즉시 사용하는 아이템이면
+            if (clickedSlot.IsSlotHasItem && clickedSlot.hasItem.useType == UseType.Immediately) // 선택한 슬롯의 아이템이 즉시 사용하는 아이템이면
             {
                 if (clickedSlot.hasItem.CanUse()) // 사용 가능하면
                 {
@@ -224,19 +224,8 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
             if (slot.hasItem != null && slot.hasItem == item)
             {
                 slot.hasItem.UseItem();
-                slot.UseItem(Item.UseType.Immediately);  
+                slot.UseItem(UseType.Immediately);  
             }
         }
     }
-
-    public void ApplyToInventory(InvenData[] invenData)
-    {
-        for (int i = 0; i < slotList.Count; i++)
-        {
-            slotList[i].hasItem = invenData[i].hasItem;
-            slotList[i].IsSlotHasItem = invenData[i].ishasItem;
-            slotList[i].image.sprite = DataManager.instance.BytesToSprite(invenData[i].hasItemImageToByte);
-        }
-    }
-
 }

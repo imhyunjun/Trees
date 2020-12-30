@@ -53,19 +53,19 @@ public class Slot : MonoBehaviour
         image.sprite = item.itemSprite;
     }
 
-    public void UseItem(Item.UseType useType)           // 슬롯에 있는 아이템을 사용했을 때
+    public void UseItem(UseType useType)           // 슬롯에 있는 아이템을 사용했을 때
     {
         switch(useType)
         {
-            case Item.UseType.Interact:
+            case UseType.Interact:
                 hasItem = null;
                 image.sprite = slotDefaultSprite;
                 break;
-            case Item.UseType.Immediately:
+            case UseType.Immediately:
                 hasItem = null;
                 image.sprite = slotDefaultSprite;
                 break;
-            case Item.UseType.Repeat:
+            case UseType.Repeat:
                 break;
 
         }

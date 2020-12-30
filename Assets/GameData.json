@@ -1,7 +1,7 @@
 {
-  "status": 8,
+  "status": 9,
   "anim": 1,
-  "treeStatus": 0,
+  "treeStatus": 1,
   "doorName": [
     "PastRoomDoor",
     "FatherRoomDoor",
@@ -54,10 +54,108 @@
     true,
     true
   ],
-  "location": "NoWhere",
-  "map": "PastAccidentRoom",
+  "itemList": [
+    {
+      "isActive": true,
+      "isInInven": false,
+      "itemName": "깨진 백미러",
+      "itemType": "BackMirror, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "interactWith": "Tree",
+      "useType": 0
+    },
+    {
+      "isActive": true,
+      "isInInven": false,
+      "itemName": "술병",
+      "itemType": "AlcoholBottle, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "interactWith": "",
+      "useType": 1
+    },
+    {
+      "isActive": false,
+      "isInInven": false,
+      "itemName": "날카롭게 깨진 술병",
+      "itemType": "BrokenBottle, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "interactWith": "FatherMonster",
+      "useType": 2
+    },
+    {
+      "isActive": true,
+      "isInInven": false,
+      "itemName": "라이터",
+      "itemType": "Lighter, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "interactWith": "TeacherMonster",
+      "useType": 2
+    },
+    {
+      "isActive": false,
+      "isInInven": false,
+      "itemName": "천원",
+      "itemType": "Cash, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "interactWith": "",
+      "useType": 0
+    },
+    {
+      "isActive": false,
+      "isInInven": false,
+      "itemName": "카드",
+      "itemType": "Card, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "interactWith": "Counter",
+      "useType": 0
+    },
+    {
+      "isActive": false,
+      "isInInven": false,
+      "itemName": "카드와 천원",
+      "itemType": "CashCard, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "interactWith": "",
+      "useType": 1
+    },
+    {
+      "isActive": false,
+      "isInInven": false,
+      "itemName": "술",
+      "itemType": "Alcohol, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "interactWith": "Counter",
+      "useType": 0
+    }
+  ],
+  "invenList": [
+    {
+      "hasItemName": null,
+      "hasItemType": null,
+      "isHasItem": false
+    },
+    {
+      "hasItemName": null,
+      "hasItemType": null,
+      "isHasItem": false
+    },
+    {
+      "hasItemName": null,
+      "hasItemType": null,
+      "isHasItem": false
+    },
+    {
+      "hasItemName": null,
+      "hasItemType": null,
+      "isHasItem": false
+    },
+    {
+      "hasItemName": null,
+      "hasItemType": null,
+      "isHasItem": false
+    },
+    {
+      "hasItemName": null,
+      "hasItemType": null,
+      "isHasItem": false
+    }
+  ],
+  "location": "Jung'sRoom",
+  "map": "Jung'sRoom",
   "playerPos": {
-    "x": 97.6902847,
-    "y": 90.2479858
+    "x": -21.50443,
+    "y": 23.89008
   }
 }

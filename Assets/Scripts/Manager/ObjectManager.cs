@@ -10,13 +10,14 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     private GameObject[] _objects;
 
-    private static Dictionary<string, GameObject> _mapDicinString;
+    public static Dictionary<string, GameObject> _mapDicinString;
     private static ObjectManager _instance;
     private static Dictionary<Type, GameObject> _objectDic;
     
     public static ObjectManager instance => _instance;
 
     public List<Type> doorsL = new List<Type>();
+    public List<Item> itemList = new List<Item>();
     public List<bool> doorsB
     {
         get
@@ -46,7 +47,10 @@ public class ObjectManager : MonoBehaviour
         for (int i = 0; i < items.Length; i++)
         {
             if (!_objectDic.ContainsKey(items[i].GetType()))
+            {
                 _objectDic.Add(items[i].GetType(), items[i].gameObject);
+                itemList.Add(items[i]);
+            }
         }
         Door[] doors = _map.GetComponentsInChildren<Door>(true); // 문들 저장
         for (int i = 0; i < doors.Length; i++)
@@ -80,10 +84,10 @@ public class ObjectManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < realBackGround.childCount; i++)                 //꿈맵안에 있는 맵들 넣기
+        for (int i = 0; i < realBackGround.childCount; i++)                 //현실 맵 안에 있는 맵들 넣기
         {
             Transform child = realBackGround.GetChild(i);
-            if (child.CompareTag("BackGround") && !_mapDicinString.ContainsKey(child.name))      //현실 맵 안에 있는 맵들 넣기
+            if (child.CompareTag("BackGround") && !_mapDicinString.ContainsKey(child.name)) 
             {
                 _mapDicinString.Add(child.name, child.gameObject);
             }
@@ -118,4 +122,5 @@ public class ObjectManager : MonoBehaviour
             _objectDic[type].GetComponent<Door>().isOpened = doorStatus[i];
         }
     }
+
 }

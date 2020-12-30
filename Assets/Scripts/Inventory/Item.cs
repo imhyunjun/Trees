@@ -1,17 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
-    public enum UseType // 아이템 사용 타입
-    {
-        Interact,       // 어떤 대상과 상호작용하면서 사용
-        Immediately,    // 그냥 클릭하면 즉시 사용
-        Repeat          // 반복 사용( 깨진 술병 )          
-    }
-
     public string itemName;
     public bool isInInventory;
     public Sprite itemSprite;

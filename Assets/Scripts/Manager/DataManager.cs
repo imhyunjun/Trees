@@ -14,13 +14,9 @@ public class DataManager : DontDestroy<DataManager>
     [SerializeField]
     private Button loadButton;
 
-    private List<byte[]> byteArrays = new List<byte[]>();
-
     protected void Awake()
     {
         base.Awake();
-        for (int i = 0; i < 6; i++)
-            byteArrays.Add(null);
         if(SceneManager.GetActiveScene().name == "Prologue") // Prologue 씬에서 시작해도 작동하기 위한 개발용 코드!!!
         {
             StartCoroutine(FOR_DEV_StartGame());
@@ -36,6 +32,19 @@ public class DataManager : DontDestroy<DataManager>
 
         gamedata.doorName = ObjectManager.instance.doorsL.ConvertAll(x => x.ToString());
         gamedata.doorStatus = ObjectManager.instance.doorsB.ConvertAll(x => x);
+        gamedata.itemList = ObjectManager.instance.itemList.ConvertAll(
+            x => new ItemData(
+                x.gameObject.activeSelf,
+                x.isInInventory,
+                x.itemName,
+                x.GetType(),
+                x.canInteractWith,
+                x.useType));
+        gamedata.invenList = Inventory.instance.slotList.ConvertAll(
+            x => new InvenData(
+                x.hasItem?.itemName,
+                x.hasItem?.GetType(),
+                x.IsSlotHasItem));
         gamedata.location = GameManager.instance.locationPlayerIsIn;
         gamedata.status = PlayerScan.instance.progressStatus;
         gamedata.treeStatus = GameManager.instance.treeGrowStatus;
@@ -47,10 +56,7 @@ public class DataManager : DontDestroy<DataManager>
         string saveData = JsonConvert.SerializeObject(gamedata, Formatting.Indented);
         File.WriteAllText(Application.dataPath + "/GameData.json", saveData);
 
-        /** 인벤토리 데이터 저장*/
-        List<InvenData> invenDataList = new List<InvenData>();
-        StartCoroutine(SaveInvenData(invenDataList));
-
+        StartCoroutine(SaveMapSpriteData());
     }
 
     public void OnClickStartButton()
@@ -79,12 +85,13 @@ public class DataManager : DontDestroy<DataManager>
         string loadData = File.ReadAllText(Application.dataPath + "/GameData.json");
         GameData data = JsonUtility.FromJson<GameData>(loadData);
 
-        string loadInvenData = File.ReadAllText(Application.dataPath + "/InvenData.json");
-        InvenData[] invenData = JsonConvert.DeserializeObject<InvenData[]>(loadInvenData);
-        StartCoroutine(ILoadLastGame(data, invenData));
+        string mapData = File.ReadAllText(Application.dataPath + "/MapData.json");
+        MapSpriteData[] mapDataArray = JsonConvert.DeserializeObject<MapSpriteData[]>(mapData);
+
+        StartCoroutine(ILoadLastGame(data, mapDataArray));
     }
 
-    IEnumerator ILoadLastGame(GameData data, InvenData[] invenData)        // 게임 데이터 로드 후 실행
+    IEnumerator ILoadLastGame(GameData data, MapSpriteData[] mapDataArray)        // 게임 데이터 로드 후 실행
     {
         SceneManager.LoadScene("Prologue");
 
@@ -97,7 +104,7 @@ public class DataManager : DontDestroy<DataManager>
             AnimationManager.instance.ChangePlayerAnim(data.anim);
             GameManager.instance.treeGrowStatus = data.treeStatus;
             ObjectManager.instance.ApplyDoorStatus(data.doorName, data.doorStatus);
-            Inventory.instance.ApplyToInventory(invenData);
+            ApplyMapSprites(mapDataArray);
 
         });
     }
@@ -108,42 +115,54 @@ public class DataManager : DontDestroy<DataManager>
         GameManager.instance.GameStart();
     }
 
-    IEnumerator SaveInvenData(List<InvenData> invenDataList)
+    IEnumerator SaveMapSpriteData()
     {
-        int idx = 0;
-
-        while (idx < 6)
+        List<MapSpriteData> mapSpriteList = new List<MapSpriteData>();
+        foreach(var dic in ObjectManager._mapDicinString)
         {
-            bool tempbool = Inventory.instance.slotList[idx].IsSlotHasItem;
-            Item tempItem = Inventory.instance.slotList[idx].hasItem?.GetComponent<Item>();
-            yield return StartCoroutine(ImageToByte(Inventory.instance.slotList[idx].image, idx));
-            invenDataList.Add(new InvenData(tempbool, tempItem, byteArrays[idx]));
-            idx++;
-            yield return null;
+            mapSpriteList.Add(new MapSpriteData(dic.Key, ImageToByte(dic.Value.GetComponent<SpriteRenderer>().sprite)));
+            yield return new WaitForEndOfFrame();
         }
 
-        string invenData = JsonConvert.SerializeObject(invenDataList, Formatting.Indented);
-        File.WriteAllText(Application.dataPath + "/InvenData.json", invenData);
-        Debug.LogError("saved");
+        string mapSaveData = JsonConvert.SerializeObject(mapSpriteList, Formatting.Indented);
+        File.WriteAllText(Application.dataPath + "/MapData.json", mapSaveData);
+
+        Debug.LogError("저장 끝");
     }
 
-    IEnumerator ImageToByte(Image _image, int i)
+    IEnumerator ImageToByte(Image _image)
     {
         yield return new WaitForEndOfFrame();
 
         Texture2D newTex2D = (Texture2D)_image.mainTexture;
         Texture2D decompres = newTex2D.DeCompress();
         byte[] bytes = decompres.EncodeToPNG();
-
-        byteArrays[i] = bytes;
-        Debug.LogError(byteArrays.Count);
     }
 
-    public Sprite BytesToSprite(byte[] _bytes)
+    byte[] ImageToByte(Sprite _sprite)
+    {
+        Texture2D newTex2D = _sprite.texture;
+        Texture2D decompres = newTex2D.DeCompress();
+        byte[] bytes = decompres.EncodeToPNG();
+        return bytes;
+    }
+
+    public Sprite BytesToSprite(byte[] _bytes, float _pixelperunit)
     {
         Texture2D tex = new Texture2D(4, 4);
         tex.LoadImage(_bytes);
-        return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+        return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), _pixelperunit);
+    }
+
+    public void ApplyMapSprites(MapSpriteData[] mapData)
+    {
+        for(int i = 0; i < mapData.Length; i++)
+        {
+            //ObjectManager.GetObject(mapData[i].mapName).GetComponent<SpriteRenderer>().sprite
+            //    = BytesToSprite(mapData[i].mapSpriteTobyte);
+            Sprite newSprite = BytesToSprite(mapData[i].mapSpriteTobyte, 60);
+            ObjectManager.GetObject(mapData[i].mapName).GetComponent<SpriteRenderer>().sprite = newSprite;
+        }
     }
 
 }
@@ -156,26 +175,79 @@ public class GameData
     public int treeStatus;                              //나무상태
     public List<string> doorName;                       //도어 이름
     public List<bool> doorStatus;                       //도어 열림 닫힘
+    public List<ItemData> itemList;
+    public List<InvenData> invenList;
     public string location;                             //플레이어있는 곳( 발자국 용 )
     public string map;
     public Vector2 playerPos;                           // 플레이어 위치
+}
+[Serializable]
+public class ItemData
+{
+    public bool isActive;
+    public bool isInInven;
+    public string itemName;         //type => string으로 변환
+    public Type itemType;           //테스트용 -> 오.json.net사용하니깐 저장 되네요
+    public string interactWith;
+    public UseType useType;
+
+    public ItemData(bool isActive, bool isInInven, string itemName, Type itemType, string interactWith, UseType useType)
+    {
+        this.isActive = isActive;
+        this.isInInven = isInInven;
+        this.itemName = itemName;
+        this.itemType = itemType;
+        this.interactWith = interactWith;
+        this.useType = useType;
+    }
+}
+
+public class MapSpriteData
+{
+    public string mapName;
+    public byte[] mapSpriteTobyte;
+
+    public MapSpriteData(string mapName, byte[] mapSpriteTobyte)
+    {
+        this.mapName = mapName;
+        this.mapSpriteTobyte = mapSpriteTobyte;
+    }
 }
 
 [Serializable]
 public class InvenData
 {
-   
-    public bool ishasItem;
-    [SerializeField] public Item hasItem;
-    public byte[] hasItemImageToByte;
+    public string hasItemName;          //가지고 있는 아이템 이름(string)
+    public Type hasItemType;            //가지고 있는 아이템 type
+    public bool isHasItem;              //아이템 소유 여부
 
-    public InvenData(bool ishasItem, Item hasItem, byte[] hasItemImageToByte)
+    public InvenData(string hasItemName, Type hasItemType, bool isHasItem)
     {
-        this.ishasItem = ishasItem;
-        this.hasItem = hasItem;
-        this.hasItemImageToByte = hasItemImageToByte;
+        this.hasItemName = hasItemName;
+        this.hasItemType = hasItemType;
+        this.isHasItem = isHasItem;
     }
 }
+
+
+
+
+//나중에 폐기 처분
+//[Serializable]
+//public class InvenData
+//{
+   
+//    public bool ishasItem;
+//    [SerializeField] public Item hasItem;
+//    public byte[] hasItemImageToByte;
+
+//    public InvenData(bool ishasItem, Item hasItem, byte[] hasItemImageToByte)
+//    {
+//        this.ishasItem = ishasItem;
+//        this.hasItem = hasItem;
+//        this.hasItemImageToByte = hasItemImageToByte;
+//    }
+//}
 
 
 

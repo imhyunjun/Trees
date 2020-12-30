@@ -4,6 +4,26 @@ using UnityEngine;
 
 public static class ExtensionMethod
 {
+    public static List<T> DictionaryToKeyLIst<T, U>(this Dictionary<T, U> dictionary)
+    {
+        List<T> keyList = new List<T>();
+        foreach(var dic in dictionary)
+        {
+            keyList.Add(dic.Key);
+        }
+        return keyList;
+    }
+
+    public static List<U> DictionaryToValueLIst<T, U>(this Dictionary<T, U> dictionary)
+    {
+        List<U> valueList = new List<U>();
+        foreach (var dic in dictionary)
+        {
+            valueList.Add(dic.Value);
+        }
+        return valueList;
+    }
+
     public static Texture2D DeCompress(this Texture2D source)
     {
         RenderTexture renderTex = RenderTexture.GetTemporary(

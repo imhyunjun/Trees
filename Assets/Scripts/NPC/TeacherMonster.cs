@@ -47,7 +47,7 @@ public class TeacherMonster : MonoBehaviour
         students[1].Move();
         Lighter lighter = ObjectManager.GetObject<Lighter>();
         lighter.canInteractWith = "Tree";
-        lighter.useType = Item.UseType.Interact;
+        lighter.useType = UseType.Interact;
         PlayerScan.instance.progressStatus = ProgressStatus.E_EndMirrorRoom;
     }
 
