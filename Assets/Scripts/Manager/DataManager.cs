@@ -131,11 +131,11 @@ public class DataManager : DontDestroy<DataManager>
     {
         yield return new WaitForEndOfFrame();
 
-        Texture newTex = _image.mainTexture;
-        Texture2D newTex2D = new Texture2D(newTex.width, newTex.height, TextureFormat.RGBA32, false);
-        newTex2D.ReadPixels(new Rect(0, 0, newTex.width, newTex.height), 0, 0);
-        newTex2D.Apply();
-        byte[] bytes = newTex2D.EncodeToPNG();
+        Texture2D newTex2D = (Texture2D)_image.mainTexture;
+        //newTex2D.ReadPixels(new Rect(0, 0, newTex.width, newTex.height), 0, 0);
+        //newTex2D.Apply
+        Texture2D decompres = newTex2D.DeCompress();
+        byte[] bytes = decompres.EncodeToPNG();
 
         byteArrays[i] = bytes;
         Debug.LogError(byteArrays.Count);
