@@ -15,6 +15,7 @@ public class BGMManager : DontDestroy<BGMManager>
     [SerializeField]
     private AudioClip[] bgms;
 
+    public BGM curBGM { get; private set; }
     private void Start()
     {
         switch (SceneManager.GetActiveScene().name)
@@ -31,6 +32,7 @@ public class BGMManager : DontDestroy<BGMManager>
 
     public void PlayBGM(BGM bgm)
     {
+        curBGM = bgm;
         SoundManager.Play(bgms[(int)bgm], true);
     }
 }

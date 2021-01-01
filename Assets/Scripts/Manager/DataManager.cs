@@ -17,7 +17,7 @@ public class DataManager : DontDestroy<DataManager>
     protected void Awake()
     {
         base.Awake();
-        if(SceneManager.GetActiveScene().name == "Prologue") // Prologue 씬에서 시작해도 작동하기 위한 개발용 코드!!!
+        if(SceneManager.GetActiveScene().name == "Prologue") // Prologue 씬에서 시작해도 작동하기 위한 개발용 코드!!! 나중에 삭제
         {
             StartCoroutine(FOR_DEV_StartGame());
         }
@@ -31,7 +31,7 @@ public class DataManager : DontDestroy<DataManager>
         GameData gamedata = new GameData();
 
         gamedata.doorName = ObjectManager.instance.doorsL.ConvertAll(x => x.ToString());
-        gamedata.doorStatus = ObjectManager.instance.doorsB.ConvertAll(x => x);
+        gamedata.doorState = ObjectManager.instance.doorsB.ConvertAll(x => x);
         gamedata.itemList = ObjectManager.instance.itemList.ConvertAll(
             x => new ItemData(
                 x.gameObject.activeSelf,
@@ -39,7 +39,8 @@ public class DataManager : DontDestroy<DataManager>
                 x.itemName,
                 x.GetType(),
                 x.canInteractWith,
-                x.useType));
+                x.useType,
+                x.transform.position));
         gamedata.invenList = Inventory.instance.slotList.ConvertAll(
             x => new InvenData(
                 x.hasItem?.itemName,
@@ -51,6 +52,7 @@ public class DataManager : DontDestroy<DataManager>
         gamedata.anim = AnimationManager.instance.playerAnim;
         gamedata.playerPos = GameManager.instance.player.transform.position;
         gamedata.map = GameManager.instance.map;
+        gamedata.bgm = BGMManager.instance.curBGM;
 
         //string saveData = JsonUtility.ToJson(gamedata);
         string saveData = JsonConvert.SerializeObject(gamedata, Formatting.Indented);
@@ -97,15 +99,18 @@ public class DataManager : DontDestroy<DataManager>
 
         yield return new WaitForSeconds(1f);
 
-        GameManager.instance.MoveJungCor(1f, 1f, data.location, data.map, () =>
+        ObjectManager.instance.ApplyItemState(data.itemList); // 아이템 데이터 적용
+        Inventory.instance.ApplyInvenState(data.invenList); // 인벤토리 데이터 적용
+
+        GameManager.instance.MoveJungCor(1f, 1f, data.location, data.map, () => // 맵 이동
         {
             GameManager.instance.player.transform.position = data.playerPos;
             PlayerScan.instance.progressStatus = data.status;
             AnimationManager.instance.ChangePlayerAnim(data.anim);
             GameManager.instance.treeGrowStatus = data.treeStatus;
-            ObjectManager.instance.ApplyDoorStatus(data.doorName, data.doorStatus);
+            ObjectManager.instance.ApplyDoorState(data.doorName, data.doorState);
+            BGMManager.instance.PlayBGM(data.bgm);
             ApplyMapSprites(mapDataArray);
-
         });
     }
 
@@ -174,12 +179,13 @@ public class GameData
     public PlayerAnim anim;                             //플레이어 옷 조건
     public int treeStatus;                              //나무상태
     public List<string> doorName;                       //도어 이름
-    public List<bool> doorStatus;                       //도어 열림 닫힘
+    public List<bool> doorState;                       //도어 열림 닫힘
     public List<ItemData> itemList;
     public List<InvenData> invenList;
     public string location;                             //플레이어있는 곳( 발자국 용 )
     public string map;
     public Vector2 playerPos;                           // 플레이어 위치
+    public BGM bgm;
 }
 [Serializable]
 public class ItemData
@@ -190,8 +196,9 @@ public class ItemData
     public Type itemType;           //테스트용 -> 오.json.net사용하니깐 저장 되네요
     public string interactWith;
     public UseType useType;
+    public Vector3 position;
 
-    public ItemData(bool isActive, bool isInInven, string itemName, Type itemType, string interactWith, UseType useType)
+    public ItemData(bool isActive, bool isInInven, string itemName, Type itemType, string interactWith, UseType useType, Vector3 position)
     {
         this.isActive = isActive;
         this.isInInven = isInInven;
@@ -199,6 +206,7 @@ public class ItemData
         this.itemType = itemType;
         this.interactWith = interactWith;
         this.useType = useType;
+        this.position = position;
     }
 }
 

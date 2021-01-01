@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-    
+
 public class Inventory : PanelSingletone<Inventory>                     //인벤토리를 싱글톤 형태로 바꿈
 {
     [SerializeField]
@@ -20,7 +20,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         maxSlotCount = 6;
         SelectSlot(null);
 
-        for (int i = 0; i < maxSlotCount; i ++)
+        for (int i = 0; i < maxSlotCount; i++)
         {
             slotList.Add(gameObject.transform.GetChild(0).GetChild(i).GetComponent<Slot>());            //슬롯리스트에 슬롯 추가
         }
@@ -72,14 +72,14 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
 
     public void SelectSlot(Slot slot)
     {
-        if(clickedSlot != null) // 이전에 선택한 슬롯이 있다면 선택 해제
+        if (clickedSlot != null) // 이전에 선택한 슬롯이 있다면 선택 해제
         {
             clickedSlot.DeSelect();
         }
 
-        clickedSlot = slot;      
+        clickedSlot = slot;
 
-        if(clickedSlot != null)   // 슬롯 선택
+        if (clickedSlot != null)   // 슬롯 선택
         {
             clickedSlot.Select();
             if (clickedSlot.IsSlotHasItem && clickedSlot.hasItem.useType == UseType.Immediately) // 선택한 슬롯의 아이템이 즉시 사용하는 아이템이면
@@ -114,7 +114,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
             }
         }
     }
-    
+
     /// <summary>
     /// 인벤토리에 물건들이 있는지
     /// </summary>
@@ -123,18 +123,18 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
     /// true : 물건이 모두 있음
     /// false : 물건이 모두 없음
     /// </returns>
-    public bool IsPlayerHasItem(params string[] args)     
+    public bool IsPlayerHasItem(params string[] args)
     {
         int count = 0;
-        foreach(Slot slot in slotList)
+        foreach (Slot slot in slotList)
         {
-            for (int i = 0; i < args.Length; i ++)
+            for (int i = 0; i < args.Length; i++)
             {
                 if (slot.hasItem != null && slot.hasItem.itemName == args[i])               //아이템이 있으면
                     count++;                                        //count ++;
                 if (count == args.Length)                           //아이템이 다 있으면 true 반환
                     return true;
-            } 
+            }
         }
         return false;                                               //하나라도 없으면 false;
     }
@@ -142,9 +142,9 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
     public bool IsPlayerHasItem(params System.Type[] args)
     {
         int count = 0;
-        foreach(Slot slot in slotList)
+        foreach (Slot slot in slotList)
         {
-            for(int i =0; i < args.Length; i++)
+            for (int i = 0; i < args.Length; i++)
             {
                 if (slot.hasItem != null && slot.hasItem.GetType() == args[i])
                     count++;
@@ -172,7 +172,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
                 if (slot.hasItem != null && slot.hasItem.itemName == args[i])               //아이템이 있으면
                     count++;                                        //count ++;
             }
-            
+
         }
         if (count == 0)
             return true;
@@ -184,9 +184,9 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
     /// 아이템 재사용(다시 인벤토리로)
     /// </summary>
     /// <param name="_canUseAgain"></param>true면 재사용, false면 아님
-    public void ReUseItem(bool _canUseAgain, GameObject _gameObject) 
+    public void ReUseItem(bool _canUseAgain, GameObject _gameObject)
     {
-        if(_canUseAgain)
+        if (_canUseAgain)
         {
             Item clickedItem = _gameObject.GetComponent<Item>();
             foreach (Slot slot in slotList)
@@ -210,7 +210,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
     {
         foreach (Slot slot in slotList)
         {
-            if(slot.hasItem != null && slot.hasItem.GetType() == _item)
+            if (slot.hasItem != null && slot.hasItem.GetType() == _item)
             {
                 slot.hasItem.canInteractWith = _interactObject;
             }
@@ -224,7 +224,23 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
             if (slot.hasItem != null && slot.hasItem == item)
             {
                 slot.hasItem.UseItem();
-                slot.UseItem(UseType.Immediately);  
+                slot.UseItem(UseType.Immediately);
+            }
+        }
+    }
+
+    public void ApplyInvenState(List<InvenData> invenData)
+    {
+        for(int i = 0; i < invenData.Count; i++)
+        {
+            InvenData data = invenData[i];
+            slotList[i].IsSlotHasItem = data.isHasItem;
+            if (data.isHasItem)
+            {
+                Item item = ObjectManager.GetObject(data.hasItemType).GetComponent<Item>();
+                item.transform.SetParent(inventoryItemsPool); // 임시로 여기에 두고 안보이게 하기
+                item.transform.localPosition = Vector3.zero;
+                slotList[i].GetItem(item);
             }
         }
     }

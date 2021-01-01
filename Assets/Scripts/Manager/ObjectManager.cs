@@ -103,6 +103,14 @@ public class ObjectManager : MonoBehaviour
         return null;
     }
 
+    public static GameObject GetObject(Type type)
+    {
+        if (_objectDic.TryGetValue(type, out GameObject gameObject))
+            return gameObject;
+        Debug.LogError($"<ObjectManager> 타입이 {type}인 오브젝트가 ObjectManager에 등록되어 있지 않습니다.");
+        return null;
+    }
+
     public static GameObject GetObject(string _mapName)
     {
         if (_mapDicinString.TryGetValue(_mapName, out GameObject _gameObject))
@@ -114,13 +122,26 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
-    public void ApplyDoorStatus(List<string> doorName, List<bool> doorStatus)
+    public void ApplyDoorState(List<string> doorName, List<bool> doorState)
     {
         for(int i = 0; i < doorName.Count; i++)
         {
             Type type = Type.GetType(doorName[i]);
-            _objectDic[type].GetComponent<Door>().isOpened = doorStatus[i];
+            _objectDic[type].GetComponent<Door>().isOpened = doorState[i];
         }
     }
 
+    public void ApplyItemState(List<ItemData> itemData)
+    {
+        for(int i = 0; i < itemData.Count; i++)
+        {
+            ItemData data = itemData[i];
+            Item item = _objectDic[data.itemType].GetComponent<Item>();
+            item.gameObject.SetActive(data.isActive);
+            item.itemName = data.itemName;
+            item.useType = data.useType;
+            item.canInteractWith = data.interactWith;
+            item.isInInventory = data.isInInven;
+        }
+    }
 }
