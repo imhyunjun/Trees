@@ -41,6 +41,7 @@ public class DataManager : DontDestroy<DataManager>
                 x.canInteractWith,
                 x.useType,
                 x.transform.position));
+      
         gamedata.invenList = Inventory.instance.slotList.ConvertAll(
             x => new InvenData(
                 x.hasItem?.itemName,
@@ -85,7 +86,9 @@ public class DataManager : DontDestroy<DataManager>
         SoundManager.PlaySFX("Click_3");
 
         string loadData = File.ReadAllText(Application.dataPath + "/GameData.json");
-        GameData data = JsonUtility.FromJson<GameData>(loadData);
+        //GameData data = JsonUtility.FromJson<GameData>(loadData);
+        GameData data = JsonConvert.DeserializeObject<GameData>(loadData);
+        Debug.Log(data.itemList[0].itemType);
 
         string mapData = File.ReadAllText(Application.dataPath + "/MapData.json");
         MapSpriteData[] mapDataArray = JsonConvert.DeserializeObject<MapSpriteData[]>(mapData);

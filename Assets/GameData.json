@@ -1,7 +1,7 @@
 {
-  "status": 9,
+  "status": 8,
   "anim": 1,
-  "treeStatus": 1,
+  "treeStatus": 0,
   "doorName": [
     "PastRoomDoor",
     "FatherRoomDoor",
@@ -28,7 +28,7 @@
     "ToSchoolHall",
     "ToSchoolOfficeDoor"
   ],
-  "doorStatus": [
+  "doorState": [
     true,
     false,
     false,
@@ -57,11 +57,16 @@
   "itemList": [
     {
       "isActive": true,
-      "isInInven": false,
+      "isInInven": true,
       "itemName": "깨진 백미러",
       "itemType": "BackMirror, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "interactWith": "Tree",
-      "useType": 0
+      "useType": 0,
+      "position": {
+        "x": 289.37207,
+        "y": 261.398,
+        "z": 90.0
+      }
     },
     {
       "isActive": true,
@@ -69,7 +74,12 @@
       "itemName": "술병",
       "itemType": "AlcoholBottle, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "interactWith": "",
-      "useType": 1
+      "useType": 1,
+      "position": {
+        "x": 4.94036865,
+        "y": 92.57799,
+        "z": 0.0
+      }
     },
     {
       "isActive": false,
@@ -77,7 +87,12 @@
       "itemName": "날카롭게 깨진 술병",
       "itemType": "BrokenBottle, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "interactWith": "FatherMonster",
-      "useType": 2
+      "useType": 2,
+      "position": {
+        "x": -6.719631,
+        "y": 89.62799,
+        "z": 0.0
+      }
     },
     {
       "isActive": true,
@@ -85,7 +100,12 @@
       "itemName": "라이터",
       "itemType": "Lighter, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "interactWith": "TeacherMonster",
-      "useType": 2
+      "useType": 2,
+      "position": {
+        "x": 36.3103676,
+        "y": 118.497986,
+        "z": 0.0
+      }
     },
     {
       "isActive": false,
@@ -93,7 +113,12 @@
       "itemName": "천원",
       "itemType": "Cash, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "interactWith": "",
-      "useType": 0
+      "useType": 0,
+      "position": {
+        "x": 5.81,
+        "y": -2.11,
+        "z": 0.0
+      }
     },
     {
       "isActive": false,
@@ -101,7 +126,12 @@
       "itemName": "카드",
       "itemType": "Card, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "interactWith": "Counter",
-      "useType": 0
+      "useType": 0,
+      "position": {
+        "x": 7.95,
+        "y": -2.11,
+        "z": 0.0
+      }
     },
     {
       "isActive": false,
@@ -109,7 +139,12 @@
       "itemName": "카드와 천원",
       "itemType": "CashCard, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "interactWith": "",
-      "useType": 1
+      "useType": 1,
+      "position": {
+        "x": 7.12,
+        "y": -2.34,
+        "z": 0.0
+      }
     },
     {
       "isActive": false,
@@ -117,14 +152,19 @@
       "itemName": "술",
       "itemType": "Alcohol, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "interactWith": "Counter",
-      "useType": 0
+      "useType": 0,
+      "position": {
+        "x": 44.1,
+        "y": 50.3080025,
+        "z": 0.0
+      }
     }
   ],
   "invenList": [
     {
-      "hasItemName": null,
-      "hasItemType": null,
-      "isHasItem": false
+      "hasItemName": "깨진 백미러",
+      "hasItemType": "BackMirror, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "isHasItem": true
     },
     {
       "hasItemName": null,
@@ -152,10 +192,11 @@
       "isHasItem": false
     }
   ],
-  "location": "Jung'sRoom",
-  "map": "Jung'sRoom",
+  "location": "NoWhere",
+  "map": "PastAccidentRoom",
   "playerPos": {
-    "x": -21.50443,
-    "y": 23.89008
-  }
+    "x": 108.330116,
+    "y": 91.1030045
+  },
+  "bgm": 3
 }

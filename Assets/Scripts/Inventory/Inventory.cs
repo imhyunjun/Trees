@@ -234,6 +234,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         for(int i = 0; i < invenData.Count; i++)
         {
             InvenData data = invenData[i];
+            Debug.LogError(data.hasItemType);
             slotList[i].IsSlotHasItem = data.isHasItem;
             if (data.isHasItem)
             {
