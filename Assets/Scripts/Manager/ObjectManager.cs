@@ -142,6 +142,7 @@ public class ObjectManager : MonoBehaviour
             item.useType = data.useType;
             item.canInteractWith = data.interactWith;
             item.isInInventory = data.isInInven;
+            item.Init();
         }
     }
 }

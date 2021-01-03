@@ -10,6 +10,8 @@ public class Alcohol : Item
     private GameObject marketOwner;
     [SerializeField]
     private Transform table;
+    [SerializeField]
+    private Sprite plasticbagSprite;
 
     private Collider2D collider;
     public Collider2D Collider => collider;
@@ -59,6 +61,15 @@ public class Alcohol : Item
             list.Add(new KeyValuePair<GameObject, string>(marketOwner, "chapter_4")); //5천원 카드니?
             collider.enabled = false;                                                   // 다시 못먹게 콜라이더 꺼둠
             DialogueManager.instance.ShowDialogueBallon(list, 0.6f, 4.5f); 
+        }
+    }
+
+    public override void Init()
+    {
+        if(PlayerScan.instance.progressStatus == ProgressStatus.E_PayedDone) // 비닐봉지 스프라이트로 바꿈
+        {
+            GetComponent<SpriteRenderer>().sprite = plasticbagSprite;
+            itemSprite = plasticbagSprite;
         }
     }
 }

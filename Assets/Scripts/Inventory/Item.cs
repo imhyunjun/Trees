@@ -34,4 +34,9 @@ public class Item : MonoBehaviour
     {
 
     }
+
+    public virtual void Init() // 이어하기 때 아이템 로드시 실행되는 함수
+    {
+
+    }
 }

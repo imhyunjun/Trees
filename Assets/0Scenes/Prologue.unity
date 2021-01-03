@@ -1656,6 +1656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69aeb65b56f507046a10a9cd22b883b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 0}
   hasItem: {fileID: 0}
 --- !u!114 &219239771
 MonoBehaviour:
@@ -2830,6 +2831,8 @@ MonoBehaviour:
   counter: {fileID: 1250559353}
   marketOwner: {fileID: 1768675002}
   table: {fileID: 1157366336}
+  plasticbagSprite: {fileID: -5860159116119774056, guid: aae998af605038141b2e10284b89b9d7,
+    type: 3}
 --- !u!212 &380840049
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5122,6 +5125,7 @@ MonoBehaviour:
   _map: {fileID: 98360427}
   _objects:
   - {fileID: 974108577}
+  itemList: []
 --- !u!1 &661544891
 GameObject:
   m_ObjectHideFlags: 0
@@ -7936,6 +7940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69aeb65b56f507046a10a9cd22b883b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 0}
   hasItem: {fileID: 0}
 --- !u!114 &955819155
 MonoBehaviour:
@@ -12636,6 +12641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69aeb65b56f507046a10a9cd22b883b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 0}
   hasItem: {fileID: 0}
 --- !u!114 &1726564165
 MonoBehaviour:
@@ -12781,6 +12787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69aeb65b56f507046a10a9cd22b883b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 0}
   hasItem: {fileID: 0}
 --- !u!114 &1744463523
 MonoBehaviour:
@@ -13027,6 +13034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69aeb65b56f507046a10a9cd22b883b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 0}
   hasItem: {fileID: 0}
 --- !u!114 &1763569712
 MonoBehaviour:
@@ -15520,6 +15528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69aeb65b56f507046a10a9cd22b883b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 0}
   hasItem: {fileID: 0}
 --- !u!114 &1971038714
 MonoBehaviour:

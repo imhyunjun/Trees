@@ -9,12 +9,7 @@ public class Slot : MonoBehaviour
     public Image image;                   // 아이템 이미지 컴퍼넌트
     private Sprite slotDefaultSprite;        //슬롯 기본 이미지
 
-    private bool isSlotHasItem;
-    public bool IsSlotHasItem
-    {
-        get => hasItem != null;
-        set => isSlotHasItem = value;
-    }
+    public bool IsSlotHasItem => hasItem != null;
 
     public Item hasItem;              //가지고 있는 아이템
 
@@ -32,7 +27,7 @@ public class Slot : MonoBehaviour
 
     public void Select()      // 슬롯이 선택 되었을 때
     {
-        if (isSlotHasItem)
+        if (IsSlotHasItem)
         {
             Color color = image.color;
             color.a = 0.5f;

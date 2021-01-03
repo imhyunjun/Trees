@@ -82,6 +82,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         if (clickedSlot != null)   // 슬롯 선택
         {
             clickedSlot.Select();
+            Debug.Log($"Clicked slot : {clickedSlot.hasItem.itemName}");
             if (clickedSlot.IsSlotHasItem && clickedSlot.hasItem.useType == UseType.Immediately) // 선택한 슬롯의 아이템이 즉시 사용하는 아이템이면
             {
                 if (clickedSlot.hasItem.CanUse()) // 사용 가능하면
@@ -234,9 +235,7 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         for(int i = 0; i < invenData.Count; i++)
         {
             InvenData data = invenData[i];
-            Debug.LogError(data.hasItemType);
-            slotList[i].IsSlotHasItem = data.isHasItem;
-            if (data.isHasItem)
+            if (data.hasItemType != null)
             {
                 Item item = ObjectManager.GetObject(data.hasItemType).GetComponent<Item>();
                 item.transform.SetParent(inventoryItemsPool); // 임시로 여기에 두고 안보이게 하기
