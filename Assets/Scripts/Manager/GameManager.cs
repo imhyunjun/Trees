@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
     //나중에 fade in/ fadeout은 많이 쓸 것 같아서 일단 만듦
     public IEnumerator IFadeIn(float _fadeinTime)               //이건 그냥 지
     {
+        fadeImg.gameObject.SetActive(true);
         Color color = fadeImg.color;
         while (color.a > 0f)
         {
@@ -65,10 +66,12 @@ public class GameManager : MonoBehaviour
         }
         if (color.a <= 0f) color.a = 0f;
         fadeImg.color = color;
+        fadeImg.gameObject.SetActive(false);
     }
 
     public IEnumerator IFadeOut(float _fadeOutTime) //fade out
     {
+        fadeImg.gameObject.SetActive(true);
         Color color = fadeImg.color;
         while (color.a < 1f)
         {
@@ -78,34 +81,7 @@ public class GameManager : MonoBehaviour
         }
         if (color.a >= 1f) color.a = 1f;
         fadeImg.color = color;
-    }
-
-    public IEnumerator IFadeIn(float _fadeinTime, GameObject _gameObject) //fade in
-    {
-        Image img = _gameObject.GetComponent<Image>();
-        Color color = img.color;
-        while (color.a > 0f)
-        {
-            color.a -= Time.deltaTime / _fadeinTime;
-            img.color = color;
-            yield return null;
-        }
-        if (color.a <= 0f) color.a = 0f;
-        img.color = color;
-    }
-
-    public IEnumerator IFadeOut(float _fadeOutTime, GameObject _gameObject) //fade out
-    {
-        Image img = _gameObject.GetComponent<Image>();
-        Color color = img.color;
-        while (color.a < 1f)
-        {
-            color.a += Time.deltaTime / _fadeOutTime;
-            img.color = color;
-            yield return null;
-        }
-        if (color.a >= 1f) color.a = 1f;
-        img.color = color;
+        fadeImg.gameObject.SetActive(false);
     }
 
     public void StartLoadSceneCor(string _sceneName, float _fadeOutTime, float _fadeInTime, string _playerIn, System.Action callBack = null)

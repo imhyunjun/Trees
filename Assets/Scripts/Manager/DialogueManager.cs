@@ -99,7 +99,7 @@ public class DialogueManager : MonoBehaviour
 
     private Coroutine _playDialogueCor = null;
     public Coroutine playDialogueCor => _playDialogueCor;
-    private bool skip = false;
+    public bool skip = false;
 
     private void Update()
     {
@@ -155,6 +155,7 @@ public class DialogueManager : MonoBehaviour
                 if (skip)
                 {
                     dialText.text = dialTxt;
+                    skip = false;
                     break;
                 }
                 SoundManager.PlaySFX("Text_typing");
@@ -162,10 +163,10 @@ public class DialogueManager : MonoBehaviour
                 dialText.text = testText;
                 yield return new WaitForSeconds(0.05f);
             }
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));                     //엔터키 전까지 기다리기
+            yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.Return) || skip));                     //엔터키 전까지 기다리기
             SoundManager.PlaySFX("Script_3 (1)");
             i++;
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return)); //다음 창 바로 뜨지 않게 다시 엔터키 전까지 기다리게 하기
+            yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.Return) || skip)); //다음 창 바로 뜨지 않게 다시 엔터키 전까지 기다리게 하기
             dialText.text = null;
         }
         DialoguePanel.instance.Hide(0);
@@ -229,4 +230,8 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    public void Skip()
+    {
+        skip = true;
+    }
 }

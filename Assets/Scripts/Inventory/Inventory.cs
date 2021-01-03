@@ -30,44 +30,48 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
     {
         if (DialoguePanel.instance.IsDialogueOn()) return;           // 대화 중에는 클릭 안되게
 
-        if (Input.GetMouseButtonDown(0))
+        Vector3 inputPos;
+        if (Application.platform == RuntimePlatform.WindowsEditor && Input.GetMouseButtonDown(0))        // Editor용 코드
+            inputPos = Input.mousePosition;
+        else if (Application.platform == RuntimePlatform.Android && Input.touchCount == 1)          // 안드로이드용 코드
+            inputPos = Input.GetTouch(0).position;
+        else return;
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(inputPos), Vector2.zero, Mathf.Infinity); // 자꾸 콜라이더가 겹쳐서 레이를 쏴서                                                                                                                                                                                                                     //충돌하는 모든 오브젝트 받아오게 변경했습니다
+        for (int i = 0; i < hits.Length; i++)
         {
-            RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity); // 자꾸 콜라이더가 겹쳐서 레이를 쏴서                                                                                                                                                                                                                     //충돌하는 모든 오브젝트 받아오게 변경했습니다
-            for (int i = 0; i < hits.Length; i++)
+            Debug.Log($"Inventory detect {hits[i].collider.gameObject.name}");
+            if (hits[i].collider.transform.tag == "Item")
             {
-                Debug.Log($"Inventory detect {hits[i].collider.gameObject.name}");
-                if (hits[i].collider.transform.tag == "Item")
+                Item clickedItem = hits[i].collider.GetComponent<Item>();
+                StartCoroutine(GetItemPanel.instance.IShowText(clickedItem.itemName));
+                GetItemInSlot(hits[i].collider.gameObject);
+                SoundManager.PlaySFX("get_item");
+                return;
+            }
+
+            if (clickedSlot != null && clickedSlot.IsSlotHasItem)                 // 아이템 사용
+            {
+                Item clickedSlotItem = clickedSlot.hasItem;
+                if (hits[i].collider.name == clickedSlotItem.canInteractWith)   //인벤토리에서 물건을 꺼내고 상호작용하는 물체와 이름이 같다면 아이템 사용
                 {
-                    Item clickedItem = hits[i].collider.GetComponent<Item>();
-                    StartCoroutine(GetItemPanel.instance.IShowText(clickedItem.itemName));
-                    GetItemInSlot(hits[i].collider.gameObject);
-                    SoundManager.PlaySFX("get_item");
+                    if (clickedSlotItem.CanUse()) // 사용 가능하다면
+                    {
+                        clickedSlot.UseItem(clickedSlotItem.useType);       //아이템 사용 타입에 맞게 사용
+                        clickedSlotItem.UseItem();
+                        if (clickedSlotItem.useType != UseType.Repeat)
+                            SelectSlot(null);
+                    }
+                    else
+                    {
+                        clickedSlotItem.FailToUse(); // 사용 실패
+                        SelectSlot(null);
+                    }
                     return;
                 }
-
-                if (clickedSlot != null && clickedSlot.IsSlotHasItem)                 // 아이템 사용
-                {
-                    Item clickedSlotItem = clickedSlot.hasItem;
-                    if (hits[i].collider.name == clickedSlotItem.canInteractWith)   //인벤토리에서 물건을 꺼내고 상호작용하는 물체와 이름이 같다면 아이템 사용
-                    {
-                        if (clickedSlotItem.CanUse()) // 사용 가능하다면
-                        {
-                            clickedSlot.UseItem(clickedSlotItem.useType);       //아이템 사용 타입에 맞게 사용
-                            clickedSlotItem.UseItem();
-                            if (clickedSlotItem.useType != UseType.Repeat)
-                                SelectSlot(null);
-                        }
-                        else
-                        {
-                            clickedSlotItem.FailToUse(); // 사용 실패
-                            SelectSlot(null);
-                        }
-                        return;
-                    }
-                }
             }
-            SelectSlot(null);
         }
+        SelectSlot(null);
     }
 
     public void SelectSlot(Slot slot)
@@ -82,7 +86,6 @@ public class Inventory : PanelSingletone<Inventory>                     //인벤
         if (clickedSlot != null)   // 슬롯 선택
         {
             clickedSlot.Select();
-            Debug.Log($"Clicked slot : {clickedSlot.hasItem.itemName}");
             if (clickedSlot.IsSlotHasItem && clickedSlot.hasItem.useType == UseType.Immediately) // 선택한 슬롯의 아이템이 즉시 사용하는 아이템이면
             {
                 if (clickedSlot.hasItem.CanUse()) // 사용 가능하면
