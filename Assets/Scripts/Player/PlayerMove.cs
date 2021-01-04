@@ -72,6 +72,17 @@ public class PlayerMove : MonoBehaviour
         {
             Debug.LogError("dragging");
             playerRigid.MovePosition(transform.position + playerMoveVec * playerSpeed * Time.fixedDeltaTime);
+            if(playerMoveVec != Vector3.zero)
+            {
+                if (playerMoveVec.x > 0) playerSprite.flipX = false;
+                else if (playerMoveVec.x < 0)
+                    playerSprite.flipX = true;
+                playerAnim.SetBool("IsPlayerMoving", true);
+            }
+        }
+        else
+        {
+            playerAnim.SetBool("IsPlayerMoving", false);
         }
     }
 
