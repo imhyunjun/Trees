@@ -18,5 +18,6 @@ public class CashCard : Item
         cash.gameObject.SetActive(true);
         Inventory.instance.GetItemInSlot(card.gameObject);
         Inventory.instance.GetItemInSlot(cash.gameObject);
+        gameObject.SetActive(false);
     }
 }

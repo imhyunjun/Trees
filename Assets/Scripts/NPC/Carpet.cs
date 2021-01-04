@@ -8,7 +8,6 @@ public class Carpet : MonoBehaviour
     {
         if(PlayerScan.instance.progressStatus == ProgressStatus.E_PayedDone)            //계산이 다 끝난 후라면
         {
-            // StartCoroutine(DialogueManager.instance.IShowDialogueBalloon(father.gameObject, "chapter_0_10"));               //나중에 null 대신 아빠
             List<KeyValuePair<GameObject, string>> list = new List<KeyValuePair<GameObject, string>>();
             list.Add(new KeyValuePair<GameObject, string>(ObjectManager.GetObject<Father>().gameObject, "chapter_6"));   // 테이블위에 올려놔
             DialogueManager.instance.ShowDialogueBallon(list);

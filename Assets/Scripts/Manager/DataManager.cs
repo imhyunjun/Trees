@@ -45,15 +45,16 @@ public class DataManager : DontDestroy<DataManager>
         gamedata.invenList = Inventory.instance.slotList.ConvertAll(
             x => new InvenData(
                 x.hasItem?.itemName,
-                x.hasItem?.GetType(),
-                x.IsSlotHasItem));
+                x.hasItem?.GetType()));
         gamedata.location = GameManager.instance.locationPlayerIsIn;
         gamedata.status = PlayerScan.instance.progressStatus;
         gamedata.treeStatus = GameManager.instance.treeGrowStatus;
         gamedata.anim = AnimationManager.instance.playerAnim;
         gamedata.playerPos = GameManager.instance.player.transform.position;
+        gamedata.playerScale = GameManager.instance.player.transform.localScale;
         gamedata.map = GameManager.instance.map;
         gamedata.bgm = BGMManager.instance.curBGM;
+        gamedata.isFathterActive = ObjectManager.GetObject<Father>().gameObject.activeSelf;
 
         //string saveData = JsonUtility.ToJson(gamedata);
         string saveData = JsonConvert.SerializeObject(gamedata, Formatting.Indented);
@@ -88,7 +89,6 @@ public class DataManager : DontDestroy<DataManager>
         string loadData = File.ReadAllText(Application.dataPath + "/GameData.json");
         //GameData data = JsonUtility.FromJson<GameData>(loadData);
         GameData data = JsonConvert.DeserializeObject<GameData>(loadData);
-        Debug.Log(data.itemList[0].itemType);
 
         string mapData = File.ReadAllText(Application.dataPath + "/MapData.json");
         MapSpriteData[] mapDataArray = JsonConvert.DeserializeObject<MapSpriteData[]>(mapData);
@@ -102,17 +102,20 @@ public class DataManager : DontDestroy<DataManager>
 
         yield return new WaitForSeconds(1f);
 
+        PlayerScan.instance.progressStatus = data.status;
+        Debug.Log($"ProgressState : {data.status}");
         ObjectManager.instance.ApplyItemState(data.itemList); // 아이템 데이터 적용
         Inventory.instance.ApplyInvenState(data.invenList); // 인벤토리 데이터 적용
 
         GameManager.instance.MoveJungCor(1f, 1f, data.location, data.map, () => // 맵 이동
         {
             GameManager.instance.player.transform.position = data.playerPos;
-            PlayerScan.instance.progressStatus = data.status;
+            GameManager.instance.player.transform.localScale = data.playerScale;
             AnimationManager.instance.ChangePlayerAnim(data.anim);
             GameManager.instance.treeGrowStatus = data.treeStatus;
             ObjectManager.instance.ApplyDoorState(data.doorName, data.doorState);
             BGMManager.instance.PlayBGM(data.bgm);
+            ObjectManager.GetObject<Father>().gameObject.SetActive(data.isFathterActive);
             ApplyMapSprites(mapDataArray);
         });
     }
@@ -188,7 +191,9 @@ public class GameData
     public string location;                             //플레이어있는 곳( 발자국 용 )
     public string map;
     public Vector2 playerPos;                           // 플레이어 위치
+    public Vector3 playerScale;                       // 플레이어 크기
     public BGM bgm;
+    public bool isFathterActive;                       //아빠 npc isActive
 }
 [Serializable]
 public class ItemData
@@ -230,13 +235,11 @@ public class InvenData
 {
     public string hasItemName;          //가지고 있는 아이템 이름(string)
     public Type hasItemType;            //가지고 있는 아이템 type
-    public bool isHasItem;              //아이템 소유 여부
 
-    public InvenData(string hasItemName, Type hasItemType, bool isHasItem)
+    public InvenData(string hasItemName, Type hasItemType)
     {
         this.hasItemName = hasItemName;
         this.hasItemType = hasItemType;
-        this.isHasItem = isHasItem;
     }
 }
 
