@@ -3,44 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class JoyStick : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class Joystick : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     [SerializeField] private float range;
-
     private RectTransform leverTransform;
-    private Vector2 firstPosition;
-    
+    private RectTransform rectTransform;
 
     private void Awake()
     {
         leverTransform = transform.GetChild(0).GetComponent<RectTransform>();
-        firstPosition = leverTransform.anchoredPosition;
+        rectTransform = GetComponent<RectTransform>();
     }
 
     public void OnBeginDrag(PointerEventData _eventData)
     {
-        Debug.LogError(_eventData.position);
-        leverTransform.anchoredPosition = _eventData.position - firstPosition;
-
+        leverTransform.anchoredPosition = _eventData.position - rectTransform.anchoredPosition;
     }
 
     public void OnDrag(PointerEventData _eventData)
     {
-        Debug.LogError("드래그 중");
         leverTransform.anchoredPosition = RestrictRange(_eventData);
+        PlayerMove.isDraging = true;
     }
 
     public void OnEndDrag(PointerEventData _eventData)
     {
-        Debug.LogError("드래그 끝");
-        leverTransform.anchoredPosition = firstPosition;
+        leverTransform.anchoredPosition = Vector2.zero;
+        PlayerMove.isDraging = false;
     }
 
     public Vector2 RestrictRange(PointerEventData _eventData)
     {
-        if (_eventData.position.magnitude < range)
-            return _eventData.position;
+        Vector2 inputVec = _eventData.position - rectTransform.anchoredPosition;
+        PlayerMove.playerMoveVec = inputVec.normalized;
+        if (inputVec.magnitude <= range)
+            return inputVec;
         else
-            return (_eventData.position - firstPosition).normalized * range;
+            return inputVec.normalized * range;
     }
 }
