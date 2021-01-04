@@ -33,6 +33,7 @@ public class PlayerScan : MonoBehaviour
                     index = i;
                 }
             }
+            Debug.LogError(index);
             if (index == -1) return;
             NPC npc = colliders[index].transform.GetComponent<NPC>();
             if (npc != null)

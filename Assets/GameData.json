@@ -1,7 +1,7 @@
 {
-  "status": 8,
-  "anim": 1,
-  "treeStatus": 0,
+  "status": 17,
+  "anim": 0,
+  "treeStatus": 2,
   "doorName": [
     "PastRoomDoor",
     "FatherRoomDoor",
@@ -30,16 +30,6 @@
   ],
   "doorState": [
     true,
-    false,
-    false,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    false,
-    true,
     true,
     false,
     true,
@@ -49,6 +39,16 @@
     true,
     true,
     true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    false,
     true,
     true,
     true,
@@ -57,20 +57,20 @@
   "itemList": [
     {
       "isActive": true,
-      "isInInven": true,
+      "isInInven": false,
       "itemName": "깨진 백미러",
       "itemType": "BackMirror, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "interactWith": "Tree",
       "useType": 0,
       "position": {
-        "x": 289.37207,
-        "y": 261.398,
-        "z": 90.0
+        "x": 109.130371,
+        "y": 88.60799,
+        "z": 0.0
       }
     },
     {
       "isActive": true,
-      "isInInven": false,
+      "isInInven": true,
       "itemName": "술병",
       "itemType": "AlcoholBottle, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "interactWith": "",
@@ -82,16 +82,16 @@
       }
     },
     {
-      "isActive": false,
-      "isInInven": false,
+      "isActive": true,
+      "isInInven": true,
       "itemName": "날카롭게 깨진 술병",
       "itemType": "BrokenBottle, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "interactWith": "FatherMonster",
+      "interactWith": "Tree",
       "useType": 2,
       "position": {
-        "x": -6.719631,
-        "y": 89.62799,
-        "z": 0.0
+        "x": 302.431946,
+        "y": 191.012268,
+        "z": 90.0
       }
     },
     {
@@ -108,7 +108,7 @@
       }
     },
     {
-      "isActive": false,
+      "isActive": true,
       "isInInven": false,
       "itemName": "천원",
       "itemType": "Cash, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -121,11 +121,11 @@
       }
     },
     {
-      "isActive": false,
+      "isActive": true,
       "isInInven": false,
       "itemName": "카드",
       "itemType": "Card, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "interactWith": "Counter",
+      "interactWith": "Table",
       "useType": 0,
       "position": {
         "x": 7.95,
@@ -134,7 +134,7 @@
       }
     },
     {
-      "isActive": false,
+      "isActive": true,
       "isInInven": false,
       "itemName": "카드와 천원",
       "itemType": "CashCard, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -147,11 +147,11 @@
       }
     },
     {
-      "isActive": false,
+      "isActive": true,
       "isInInven": false,
-      "itemName": "술",
+      "itemName": "검은봉투",
       "itemType": "Alcohol, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "interactWith": "Counter",
+      "interactWith": "Table",
       "useType": 0,
       "position": {
         "x": 44.1,
@@ -162,8 +162,8 @@
   ],
   "invenList": [
     {
-      "hasItemName": "깨진 백미러",
-      "hasItemType": "BackMirror, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "hasItemName": "날카롭게 깨진 술병",
+      "hasItemType": "BrokenBottle, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "isHasItem": true
     },
     {
@@ -192,11 +192,11 @@
       "isHasItem": false
     }
   ],
-  "location": "NoWhere",
-  "map": "PastAccidentRoom",
+  "location": "ClassRoom",
+  "map": "ClassRoom",
   "playerPos": {
-    "x": 108.330116,
-    "y": 91.1030045
+    "x": 119.3019,
+    "y": 22.61626
   },
-  "bgm": 3
+  "bgm": 1
 }
